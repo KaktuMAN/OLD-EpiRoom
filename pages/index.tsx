@@ -1,6 +1,6 @@
 import type { NextPageWithLayout } from "./_app";
 import { ReactElement } from "react";
-import FullPage from "@components/layout/FullPage";
+import MainLayout from "@components/layout/MainLayout";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -10,7 +10,7 @@ const Home: NextPageWithLayout = () => {
 }
 
 Home.getLayout = function getLayout(page: ReactElement) {
-  return <FullPage>{page}</FullPage>;
+  return <MainLayout>{page}</MainLayout>;
 }
 
 export default Home

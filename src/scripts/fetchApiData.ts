@@ -13,33 +13,31 @@ export default function fetchApiData(roomsComp: Room[]): void {
     })
 
   apiData.then((data: APIResponse[]) => {
-    data.forEach((roomData: APIResponse) => {
-      if (!roomData.room || !roomData.room.type || !roomData.codemodule) return;
+    data.forEach((activityData: APIResponse) => {
+      if (!activityData.room || !activityData.room.type || activityData.instance_location != "FR/LIL" ) return;
 
-      /* Calculate rooms occupations and define status as follows:
-      - 0: (green) room available
-      - 1: (orange) room will be occupied in the next hour
-      - 2: (red) room occupied now
-      */
-      // const nowDate = Date.now()
-      // const startDate = new Date(roomData.start).valueOf()
-      // const endDate = new Date(roomData.end).valueOf()
-      // const roomStatus = ((nowDate >= startDate) && (nowDate <= endDate)) // room occupied now
-      //   ? 2 : ((startDate - nowDate) < (1000 * 60 * 60)) // room will be occupied in the next hour
-      //     ? 1 : 0 // room available
+      const room = roomsComp.find((room) => room.intra_name === activityData.room.code);
+      let activity: Activity = {title: "", start: new Date(), end: new Date()}
 
-      const roomName = roomData.room.code
-      const roomFound = roomsComp.find((room) => room.intra_name === roomName);
-      if (roomFound)
-        roomFound.activities.push({
-          module_code: roomData.codemodule,
-          module_title: roomData.titlemodule,
-          title: roomData.acti_title || roomData.title,
-          start: new Date(roomData.start).valueOf(),
-          end: new Date(roomData.end).valueOf()
-        } as Activity)
-      else
-        console.warn(`Room ${roomName} not found in rooms list.`);
+      if (!room) {
+        console.warn(`Room ${activityData.room.code} not found in rooms list.`);
+        return;
+      }
+
+      if (activityData.id_calendar) {
+        activity.title = activityData.title
+        activity.start = new Date(activityData.start)
+        activity.end = new Date(activityData.end)
+      } else {
+        activity.module_code = activityData.codemodule
+        activity.module_title = activityData.titlemodule
+        activity.title = activityData.acti_title || activityData.title
+        activity.start = new Date(activityData.start)
+        activity.end = new Date(activityData.end)
+      }
+
+      room.activities.push(activity)
+      room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
     })
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)

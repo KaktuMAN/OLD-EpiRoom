@@ -5,6 +5,7 @@ import {Box, Stack} from "@mui/material";
 import SingleRoom from "@components/SingleRoom";
 import fetchRooms from "@scripts//fetchRooms";
 import FirstFloor from "@components/FirstFloor";
+import {Room} from "@customTypes/room";
 
 const Home: NextPageWithLayout = () => {
   const rooms = fetchRooms();

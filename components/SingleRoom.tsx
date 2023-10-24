@@ -1,16 +1,22 @@
-import { FC } from "react";
+import {FC, useState} from "react";
+import {Skeleton} from "@mui/material";
+import {Room} from "../pages";
 
 interface SingleRoomProps {
-  room_name: string;
+  roomData: Room;
   svg_path: string;
 }
 
 const SingleRoom: FC<SingleRoomProps> = (props) => {
-  const {room_name, svg_path} = props;
+  const {roomData, svg_path} = props;
   return (
     <>
-      <img alt={room_name} src={svg_path}/>
-      <p>{room_name}</p>
+      <div>
+        <Skeleton variant={"rectangular"} width={100} height={75}/>
+        <Skeleton variant={"text"} width={100} height={25}/>
+        {roomData.display_name}
+        {roomData.status}
+      </div>
     </>
   );
 };

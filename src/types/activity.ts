@@ -1,7 +1,7 @@
 export interface Activity {
-  module_code: string,
-  module_title: string,
+  module_code?: string,
+  module_title?: string,
   title: string,
-  start: number,
-  end: number,
+  start: Date,
+  end: Date,
 }

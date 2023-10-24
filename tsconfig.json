@@ -21,6 +21,7 @@
       "@assets/*": ["src/public/*"],
       "@customTypes/*": ["src/types/*"],
       "@scripts/*": ["src/scripts/*"],
+      "@public/*": ["public/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

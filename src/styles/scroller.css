@@ -1,0 +1,22 @@
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.scroll {
+  width: max-content;
+  flex-wrap: nowrap;
+  /*animation: scroll 40s linear infinite;*/
+}
+
+.scroll_container {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
+  mask: linear-gradient(90deg, transparent, white 2%, white 98%, transparent);
+}

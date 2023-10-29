@@ -4,6 +4,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from "@components/Theme";
 import CssBaseline from '@mui/material/CssBaseline';
 import { ReactElement, ReactNode} from "react";
+import "@styles/scroller.css"
+import "@styles/rooms.css"
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

@@ -18,11 +18,23 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
         {!isLoaded && (
           <>
             <Skeleton variant={"rounded"} width={100} height={75}/>
+            <br/>
             <Skeleton variant={"text"} width={100} height={25} />
           </>
         )}
-        <object data={svg_path} width={100} height={75} className={statuses[roomData.status]} onLoadStart={() => setIsLoaded(true)}/>
-        {roomData.display_name}
+        <div style={{display: isLoaded ? "block" : "none"}}>
+          <Image
+            src={svg_path}
+            alt={roomData.display_name}
+            width={100}
+            height={75}
+            className={statuses[roomData.status]}
+            onLoadingComplete={() => setIsLoaded(true)}
+          />
+          <p>
+            {roomData.display_name}
+          </p>
+        </div>
       </div>
     </>
   );

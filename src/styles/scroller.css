@@ -7,7 +7,7 @@
 .scroll {
   width: max-content;
   flex-wrap: nowrap;
-  /*animation: scroll 40s linear infinite;*/
+  animation: scroll 40s linear infinite;
 }
 
 .scroll_container {

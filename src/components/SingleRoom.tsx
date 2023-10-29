@@ -11,6 +11,7 @@ interface SingleRoomProps {
 const SingleRoom: FC<SingleRoomProps> = (props) => {
   const { roomData, svg_path } = props;
   const [isLoaded, setIsLoaded] = useState(false);
+  const statuses = ["free", "occupied", "reserved"]
   return (
     <>
       <div className="backdrop-blur-md bg-white/30">
@@ -20,17 +21,7 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
             <Skeleton variant={"text"} width={100} height={25} />
           </>
         )}
-
-        <svg fill="red">
-          <use href={`${svg_path}#ROOMS`} />
-        </svg>
-        <Image
-          src={svg_path}
-          alt={''}
-          width={100}
-          height={75}
-          onLoadingComplete={() => setIsLoaded(true)}
-        />
+        <object data={svg_path} width={100} height={75} className={statuses[roomData.status]} onLoadStart={() => setIsLoaded(true)}/>
         {roomData.display_name}
       </div>
     </>

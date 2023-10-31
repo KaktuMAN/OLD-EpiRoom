@@ -10,6 +10,7 @@ const Home: NextPageWithLayout = () => {
   const rooms = fetchRooms();
   return (
     <div style={{background: "#000000"}}>
+      <FirstFloor roomData={rooms}/>
       <div className="scroll_container">
         <Box sx={{height: 50, width: '100%'}} className="scroll">
           <Stack direction={"row"} spacing={2}>
@@ -26,7 +27,6 @@ const Home: NextPageWithLayout = () => {
           </Stack>
         </Box>
       </div>
-      <FirstFloor roomData={rooms}/>
     </div>
   )
 }

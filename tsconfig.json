@@ -19,7 +19,8 @@
       "@styles/*": ["src/styles/*"],
       "@components/*":  ["src/components/*"],
       "@assets/*": ["src/public/*"],
-      "@types/*": ["src/types/*"],
+      "@customTypes/*": ["src/types/*"],
+      "@scripts/*": ["src/scripts/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

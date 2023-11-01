@@ -1,4 +1,5 @@
-import {Dispatch} from "react";
+import { Dispatch } from "react";
+import { Activity } from "@customTypes/activity";
 
 export interface Room {
   intra_name: string,

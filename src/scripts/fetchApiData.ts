@@ -1,5 +1,5 @@
-import { Activity } from "@types/activity";
-import { Room } from "@types/room"
+import { Activity } from "@customTypes/activity";
+import { Room } from "@customTypes/room"
 
 export default function fetchApiData(roomsComp: Room[]): void {
   const apiData = fetch(`https://lille-epirooms.epitest.eu/?date=${new Date().toISOString().slice(0, 10)}`)

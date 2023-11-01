@@ -1,5 +1,5 @@
 import {FC} from "react";
-import { Room } from "@types/room";
+import { Room } from "@customTypes/room";
 
 interface FirstFloorProps {
   roomData: Room[];

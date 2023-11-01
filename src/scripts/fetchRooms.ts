@@ -1,6 +1,6 @@
 import {useState} from "react";
-import { Room } from "@types/room"
-import fetchApiData from "./fetchApiData";
+import { Room } from "@customTypes/room"
+import fetchApiData from "@scripts/fetchApiData";
 
 export default function fetchRooms(): Room[] {
   const rooms: Room[] = require('../../public/rooms/rooms.json').rooms

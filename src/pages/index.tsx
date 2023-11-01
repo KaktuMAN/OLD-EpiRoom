@@ -3,7 +3,7 @@ import {ReactElement } from "react";
 import FullPage from "@components/layout/FullPage";
 import {Box, Stack} from "@mui/material";
 import SingleRoom from "@components/SingleRoom";
-import fetchRooms from "src/scripts/fetchRooms";
+import fetchRooms from "@scripts//fetchRooms";
 import FirstFloor from "@components/FirstFloor";
 
 const Home: NextPageWithLayout = () => {

@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import {Skeleton} from "@mui/material";
 import Image from 'next/image';
-import { Room } from "@types/room";
+import { Room } from "@customTypes/room";
 
 interface SingleRoomProps {
   roomData: Room;

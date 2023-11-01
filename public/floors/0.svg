@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="597px" height="667px" viewBox="-0.5 -0.5 597 667">
+  <g>
+    <rect x="103" y="243" width="34" height="34" fill="#000000" stroke="none" pointer-events="all" />
+    <path d="M 197 224 L 197 192 L 214 192" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 386 171 L 244 171" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 430 177 L 385 177" fill="none" stroke="#000000" stroke-width="16" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 438 459 L 438 437 L 431 437 L 426 296 L 426 165" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 197 254 L 197 315 L 226 315" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 232 308 L 232 294 L 330 294" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 330 296 L 423 296" fill="none" stroke="#000000" stroke-width="7" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 511 384 L 505 168" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 425 294 L 504 292" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 230 306 L 230 354" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 19 438.14 L 88 438" fill="none" stroke="#000000" stroke-width="11" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 11 11 L 11 655" fill="none" stroke="#000000" stroke-width="22" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 589 648 L 22 648" fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 439 533 L 439 643" fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
+    <rect x="224" y="403" width="203" height="40" fill="#000000" stroke="none" pointer-events="all" />
+    <path d="M 434 486 L 434 534" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 583 650 L 582 441" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 461 175 L 500 174 L 503 176" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 143 17 L 7 17" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 130 133 L 130 22" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <rect x="18" y="170" width="67" height="69" fill="#000000" stroke="none" pointer-events="all" />
+    <path d="M 125 162 L 125 195" fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 289 115 L 206 115 L 206 20" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 500 13 L 196 15" fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 416 115 L 319 115" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 421 117 L 421 15" fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 495 115 L 494 7" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 501 111 L 480 111 L 459 111" fill="none" stroke="#000000" stroke-width="8" stroke-miterlimit="10" pointer-events="stroke" />
+    <rect x="210" y="162" width="35" height="35" fill="#000000" stroke="none" pointer-events="all" />
+    <path d="M 83 173 L 120 173" fill="none" stroke="#000000" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 443 437 L 513 437 L 513 447 L 587 447" fill="none" stroke="#000000" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 85 434 L 145 434" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
+    <path d="M 196 434 L 224 434" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
+    <g id="B-02-Elliot-Alderson">
+      <rect x="22" y="23" width="96" height="147" pointer-events="all" />
+      <rect x="116" y="23" width="12" height="139" pointer-events="all" />
+    </g>
+    <g id="S-03-Mei-Hatsume">
+      <rect x="436" y="459" width="11" height="74" pointer-events="all" />
+      <rect x="444" y="443" width="63" height="20" pointer-events="all" />
+      <rect x="446" y="453" width="131" height="188" pointer-events="all" />
+    </g>
+    <g id="S-01-Stark">
+      <rect x="199" y="194" width="13" height="119" pointer-events="all" />
+      <rect x="210" y="197" width="210" height="96" pointer-events="all" />
+      <rect x="245" y="173" width="140" height="25" pointer-events="all" />
+      <rect x="384" y="185" width="36" height="13" pointer-events="all" />
+      <rect x="210" y="292" width="14" height="21" pointer-events="all" />
+      <rect x="223" y="292" width="8" height="14" pointer-events="all" />
+    </g>
+    <g id="B-01-Bulma">
+      <rect x="208" y="20" width="207" height="93" pointer-events="all" />
+    </g>
+    <g id="S-02-Pru-Ha">
+      <rect x="88" y="435" width="136" height="21" pointer-events="all" />
+      <rect x="22" y="443" width="410" height="199" pointer-events="all" />
+    </g>
+  </g>
+</svg>

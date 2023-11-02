@@ -61,7 +61,7 @@
       <path d="M 632 832 L 632 880" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke"/>
       <path d="M 947 906 L 947 837" fill="none" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke"/>
       <path d="M 1048 711 L 1051 740 L 1163 740 L 1246 694 L 1325 847 L 1050 994 L 875 993 L 875 771" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke"/>
-      <path d="M 1065.73 711.07 L 1174.69 769.51 L 1065.73 827.94 Z" fill="#000000" transform="rotate(-28,1120.21,769.51)"/>
+      <path d="M 1065.73 711.07 L 1174.69 769.51 L 1065.73 827.94 Z" fill="#4F62EB" transform="rotate(-28,1120.21,769.51)"/>
     </g>
     <g id="floorRect">
       <rect x="431" y="641" width="190" height="109" fill="#8f8f8f"/>

@@ -12,20 +12,24 @@
         <rect x="267.28" y="729" width="8.67" height="231.33" stroke="none" transform="rotate(-2,271.62,844.66)" pointer-events="all"/>
       </g>
     </g>
-    <rect x="258" y="360" width="135" height="134" fill="#f0a30a" stroke="none" pointer-events="all"/>
-    <text x="326" y="431" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
-    <rect x="252" y="191" width="202" height="169" fill="#000" stroke="none" pointer-events="all"/>
-    <path d="M 251 191 L 251 583 L 265 972 L 843 972 L 831 723 L 942 723 L 938 382 L 476 388 L 455 188 L 251 199" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 260 722 L 478 722" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="393" y="390" width="543" height="150" fill="#000" stroke="none" pointer-events="all"/>
-    <rect x="393" y="351" width="82" height="62" fill="#000" stroke="none" pointer-events="all"/>
-    <rect x="393" y="531" width="156" height="40" fill="#000" stroke="none" pointer-events="all"/>
-    <path d="M 827 538 L 827 672" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="751" y="606" width="73" height="58.5" fill="#000" stroke="none" pointer-events="all"/>
-    <rect x="410" y="204" width="52.97" height="169" fill="#000" stroke="none" transform="rotate(-6,436.48,288.5)" pointer-events="all"/>
-    <rect x="834" y="540" width="101" height="176" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <text x="885" y="632" fill="#ffffff" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER C</text>
-    <path d="M 541.24 522 L 542 664.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 525 722 L 824 723" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <g id="floorLines">
+      <path d="M 251 191 L 251 583 L 265 972 L 843 972 L 831 723 L 942 723 L 938 382 L 476 388 L 455 188 L 251 199" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 260 722 L 478 722" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 827 538 L 827 672" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 541.24 522 L 542 664.5" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 525 722 L 824 723" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    </g>
+    <g id="floorRect">
+      <rect x="258" y="360" width="135" height="134" fill="#A39BE8" stroke="none" pointer-events="all"/>
+      <text x="326" y="431" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
+      <rect x="252" y="191" width="202" height="169" stroke="none" pointer-events="all"/>
+      <rect x="393" y="390" width="543" height="150" stroke="none" pointer-events="all"/>
+      <rect x="393" y="351" width="82" height="62" stroke="none" pointer-events="all"/>
+      <rect x="393" y="531" width="156" height="40" stroke="none" pointer-events="all"/>
+      <rect x="751" y="606" width="73" height="58.5" stroke="none" pointer-events="all"/>
+      <rect x="410" y="204" width="52.97" height="169" stroke="none" transform="rotate(-6,436.48,288.5)" pointer-events="all"/>
+      <rect x="834" y="540" width="101" height="176" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="885" y="632" fill="#ffffff" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER C</text>
+    </g>
   </g>
 </svg>

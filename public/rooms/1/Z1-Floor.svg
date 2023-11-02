@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="2000px" height="1601px" viewBox="-0.5 -0.5 2000 1601">
-  <g id="ROOMS">
+  <g>
+  <g id="rooms">
     <g id="S-11-Microtech">
       <rect x="216" y="370" width="200" height="139.98" stroke="none" pointer-events="all"/>
     </g>
     <g id="S-12-Pandora">
-      <path d="M 631 856 L 231 861 L 233 976 L 624 974 L 624 847" fill="none" stroke="#000000" stroke-width="18" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 631 856 L 231 861 L 233 976 L 624 974 L 624 847" fill="none" stroke-width="18" stroke-miterlimit="10" pointer-events="stroke"/>
       <rect x="240" y="861" width="383" height="107" stroke="none" pointer-events="all"/>
     </g>
     <g id="S-14-Poudlard">
-      <path d="M 1160 355 L 1237 604 L 1386 549 L 1300 310 L 1160 362" fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 1160 355 L 1237 604 L 1386 549 L 1300 310 L 1160 362" fill="none" stroke-width="13" stroke-miterlimit="10" pointer-events="stroke"/>
       <rect x="1195.15" y="333.83" width="149.87" height="248" stroke="none" transform="rotate(-20,1270.09,457.83)" pointer-events="all"/>
     </g>
     <g id="B-11-Gallifrey">
@@ -25,7 +26,7 @@
     </g>
     <g id="B-14-La-Matrice">
       <rect x="1305.17" y="711.09" width="145.03" height="83" stroke="none" transform="rotate(-25,1377.68,752.59)" pointer-events="all"/>
-      <path d="M 1287 735 L 1331 823 L 1461 754 L 1435 686 L 1331 726 L 1303 735 L 1294 739 L 1286 744" fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke"/>
+      <path d="M 1287 735 L 1331 823 L 1461 754 L 1435 686 L 1331 726 L 1303 735 L 1294 739 L 1286 744" fill="none" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke"/>
     </g>
     <g id="B-15-Krikkit">
       <rect x="1305.71" y="581.87" width="117.03" height="115.16" stroke="none" transform="rotate(-21,1364.22,639.45)" pointer-events="all"/>
@@ -37,65 +38,68 @@
       <rect x="219" y="617.04" width="111" height="157.05" stroke="none" transform="rotate(-1,274.5,695.57)" pointer-events="all"/>
     </g>
   </g>
-  <g>
-    <path d="M 409.44 780.36 L 429 780 L 449 780" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1283 214 L 1113 225 L 1113 245 L 1016 252 L 1055 760" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 427 722 L 427 776" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1105 854 L 1120 881" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="1032.62" y="236.01" width="69.56" height="95.58" fill="#000000" stroke="none" transform="rotate(86,1067.4,283.8)" pointer-events="all"/>
-    <rect x="1066" y="234" width="69.56" height="95.58" fill="#000000" stroke="none" transform="rotate(87,1100.78,281.79)" pointer-events="all"/>
-    <path d="M 1154 381 L 1182 681 L 1235 645 L 1242 640 L 1235 645" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="216" y="524" width="68.98" height="57" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <text x="250" y="556" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ASCENSEUR</text>
-    <path d="M 217 782 L 341 780" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 214.62 516.68 L 383 517" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 218 1000 L 209 510 L 209 363 L 423 363 L 423 520 L 620 520" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 423 581 L 423 606" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 362 848 L 516 846" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 640 845 L 640 993" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 775 985 L 774 838" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="1156.24" y="179.99" width="90.28" height="172.31" fill="#000000" stroke="none" transform="rotate(87,1201.38,266.14)" pointer-events="all"/>
-    <rect x="1242" y="253" width="85.55" height="20" fill="#000000" stroke="none" transform="rotate(70,1284.78,263)" pointer-events="all"/>
-    <rect x="217" y="580.01" width="111.22" height="38.26" fill="#000000" stroke="none" transform="rotate(-1,272.61,599.14)" pointer-events="all"/>
-    <rect x="221" y="787.77" width="109.99" height="64" fill="#000000" stroke="none" transform="rotate(-1,275.99,819.77)" pointer-events="all"/>
-    <path d="M 547 846 L 717 843" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 212 992 L 1071 988" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="880" y="837" width="71" height="67" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <text x="916" y="874" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ASCENSEUR</text>
-    <path d="M 981 853 L 1055.88 853.33" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1276 209 L 1480 768" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1406 555 L 1228 622 L 1146 354" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1166 449 L 1180 552 L 1191 661 L 1202 653 L 1179 486 L 1209 654 L 1199 550 L 1217 644 L 1227 642 L 1223 627 L 1234 631 L 1239 648" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1277 738 L 1299 727" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1304 651 L 1329 717 L 1442 674" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="625" y="639" width="80" height="139" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <text x="665" y="712" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
-    <path d="M 951 837 L 951 903 L 882 903 L 882 986" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 829 837 L 882 837 L 882 904" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="623" y="523" width="83" height="120" fill="#000000" stroke="none" pointer-events="all"/>
-    <path d="M 697 776 L 1047 764 L 1102 732" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="427" y="638" width="189" height="86" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <text x="522" y="685" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
-    <rect x="558" y="724" width="58" height="62" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <rect x="455" y="721" width="107" height="29" fill="#8f8f8f" stroke="none" pointer-events="all"/>
-    <rect x="439.18" y="710.68" width="18.06" height="38" fill="#8f8f8f" stroke="none" transform="rotate(-45,448.21,729.68)" pointer-events="all"/>
-    <path d="M 709 776 L 703 520 L 623 520 L 623 783" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 606 787 L 557 787 L 557 751 L 456 751 L 427 721 L 426 640 L 555 640 L 555 695 L 519 695 L 485 695" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 599 782 L 634.26 781.46 L 665 781" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="1080.06" y="803.24" width="137.43" height="116" fill="#f0a30a" stroke="none" transform="rotate(-29,1148.78,861.24)" pointer-events="all"/>
-    <text x="1149" y="865" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">...</text>
-    <rect x="1062" y="842" width="59" height="105" fill="#f0a30a" stroke="none" pointer-events="all"/>
-    <rect x="1062.26" y="930.7" width="61" height="30.44" fill="#f0a30a" stroke="none" transform="rotate(-30,1092.76,945.92)" pointer-events="all"/>
-    <path d="M 1063 838 L 1063 993" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1480 760 L 1067 976" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1058 843 L 1095 822" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <path d="M 1141.73 798 L 1183 775" fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="1199" y="224" width="85.55" height="111" fill="#000000" stroke="none" transform="rotate(70,1241.78,279.5)" pointer-events="all"/>
-    <rect x="1205" y="703" width="83.46" height="163.02" fill="#8f8f8f" stroke="none" transform="rotate(-28,1246.73,784.51)" pointer-events="all"/>
-    <rect x="1214.05" y="764.11" width="65" height="34" fill="none" stroke="none" pointer-events="all"/>
-    <text x="1247" y="785" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
-    <path d="M 1250 686 L 1165 733 L 1244 883 L 1324 841 L 1266 725" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="1113" y="850" width="73" height="39" fill="none" stroke="none" pointer-events="all"/>
-    <text x="1150" y="873" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
+    <g id="floorLines">
+    <path d="M 1154 381 L 1182 681 L 1235 645 L 1242 640 L 1235 645" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 409.44 780.36 L 429 780 L 449 780" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1283 214 L 1113 225 L 1113 245 L 1016 252 L 1055 760" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 427 722 L 427 776" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1105 854 L 1120 881" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 217 782 L 341 780" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 214.62 516.68 L 383 517" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 218 1000 L 209 510 L 209 363 L 423 363 L 423 520 L 620 520" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 423 581 L 423 606" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 362 848 L 516 846" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 640 845 L 640 993" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 775 985 L 774 838" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 547 846 L 717 843" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 212 992 L 1071 988" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 981 853 L 1055.88 853.33" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1276 209 L 1480 768" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1406 555 L 1228 622 L 1146 354" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1166 449 L 1180 552 L 1191 661 L 1202 653 L 1179 486 L 1209 654 L 1199 550 L 1217 644 L 1227 642 L 1223 627 L 1234 631 L 1239 648" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1277 738 L 1299 727" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1304 651 L 1329 717 L 1442 674" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 951 837 L 951 903 L 882 903 L 882 986" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 829 837 L 882 837 L 882 904" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 709 776 L 703 520 L 623 520 L 623 783" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 606 787 L 557 787 L 557 751 L 456 751 L 427 721 L 426 640 L 555 640 L 555 695 L 519 695 L 485 695" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 599 782 L 634.26 781.46 L 665 781" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1063 838 L 1063 993" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1480 760 L 1067 976" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1058 843 L 1095 822" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1141.73 798 L 1183 775" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 1250 686 L 1165 733 L 1244 883 L 1324 841 L 1266 725" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    <path d="M 697 776 L 1047 764 L 1102 732" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
+    </g>
+    <g id="floorRect">
+      <rect x="1032.62" y="236.01" width="69.56" height="95.58" stroke="none" transform="rotate(86,1067.4,283.8)" pointer-events="all"/>
+      <rect x="1066" y="234" width="69.56" height="95.58" stroke="none" transform="rotate(87,1100.78,281.79)" pointer-events="all"/>
+      <rect x="216" y="524" width="68.98" height="57" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="250" y="556" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ASCENSEUR</text>
+      <rect x="1156.24" y="179.99" width="90.28" height="172.31" stroke="none" transform="rotate(87,1201.38,266.14)" pointer-events="all"/>
+      <rect x="1242" y="253" width="85.55" height="20" stroke="none" transform="rotate(70,1284.78,263)" pointer-events="all"/>
+      <rect x="217" y="580.01" width="111.22" height="38.26" stroke="none" transform="rotate(-1,272.61,599.14)" pointer-events="all"/>
+      <rect x="221" y="787.77" width="109.99" height="64" stroke="none" transform="rotate(-1,275.99,819.77)" pointer-events="all"/>
+      <rect x="880" y="837" width="71" height="67" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="916" y="874" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ASCENSEUR</text>
+      <rect x="625" y="639" width="80" height="139" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="665" y="712" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
+      <rect x="623" y="523" width="83" height="120" stroke="none" pointer-events="all"/>
+      <rect x="427" y="638" width="189" height="86" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="522" y="685" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
+      <rect x="558" y="724" width="58" height="62" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <rect x="455" y="721" width="107" height="29" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <rect x="439.18" y="710.68" width="18.06" height="38" fill="#8f8f8f" stroke="none" transform="rotate(-45,448.21,729.68)" pointer-events="all"/>
+      <rect x="1080.06" y="803.24" width="137.43" height="116" fill="#a39be8" stroke="none" transform="rotate(-29,1148.78,861.24)" pointer-events="all"/>
+      <text x="1149" y="865" font-family="Helvetica" font-size="12px" text-anchor="middle">...</text>
+      <rect x="1062" y="842" width="59" height="105" fill="#a39be8" stroke="none" pointer-events="all"/>
+      <rect x="1062.26" y="930.7" width="61" height="30.44" fill="#a39be8" stroke="none" transform="rotate(-30,1092.76,945.92)" pointer-events="all"/>
+      <rect x="1199" y="224" width="85.55" height="111" stroke="none" transform="rotate(70,1241.78,279.5)" pointer-events="all"/>
+      <rect x="1205" y="703" width="83.46" height="163.02" fill="#8f8f8f" stroke="none" transform="rotate(-28,1246.73,784.51)" pointer-events="all"/>
+      <rect x="1214.05" y="764.11" width="65" height="34" fill="none" stroke="none" pointer-events="all"/>
+      <text x="1247" y="785" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
+      <rect x="1113" y="850" width="73" height="39" fill="none" stroke="none" pointer-events="all"/>
+      <text x="1150" y="873" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
+    </g>
   </g>
 </svg>

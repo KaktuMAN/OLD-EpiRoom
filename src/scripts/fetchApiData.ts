@@ -65,7 +65,7 @@ export default function fetchApiData(roomsComp: Room[]): void {
       }
 
       if (!room && activityData.room.code.split('/')[3].startsWith("S-33ab")) {
-        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-33a-Deep-Blue", "FR/LIL/Hopital-Militaire/S-33a-Blue-Brain"])
+        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-33a-Deep-Blue", "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"])
         return;
       }
 

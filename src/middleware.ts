@@ -3,12 +3,10 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-
-  if (!pathname.match(/\/floors\/[0-3]/g)) {
-    return NextResponse.redirect(new URL('/floors/0', request.url))
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/floors/0', request.nextUrl))
   }
-}
-
-export const config = {
-  matcher: ['/EpiRoom/floors/:path*', '/EpiRoom/'],
+  if (pathname === '/EpiRoom/') {
+    return NextResponse.redirect(new URL('/floors/0', request.nextUrl))
+  }
 }

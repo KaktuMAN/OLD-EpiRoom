@@ -5,13 +5,13 @@ https://codepen.io/sosuke/pen/Pjoqqp
  */
 
 .occupied {
-    filter: invert(12%) sepia(92%) saturate(5401%) hue-rotate(357deg) brightness(106%) contrast(116%);
+    filter: invert(30%) sepia(58%) saturate(3639%) hue-rotate(334deg) brightness(113%) contrast(88%);
 }
 
 .reserved {
-    filter: invert(99%) sepia(100%) saturate(3919%) hue-rotate(357deg) brightness(100%) contrast(104%);
+    filter: invert(90%) sepia(45%) saturate(2459%) hue-rotate(323deg) brightness(97%) contrast(90%);
 }
 
 .free {
-    filter: invert(59%) sepia(78%) saturate(4133%) hue-rotate(84deg) brightness(125%) contrast(121%);
+    filter: invert(60%) sepia(90%) saturate(250%) hue-rotate(84deg) brightness(125%) contrast(121%);
 }

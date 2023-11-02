@@ -88,7 +88,7 @@
       <rect x="607" y="526" width="94" height="115.73" stroke="none" pointer-events="all"/>
       <rect x="1011.95" y="251" width="109.97" height="65.42" stroke="none" transform="rotate(-4,1066.93,283.71)" pointer-events="all"/>
       <rect x="1278" y="217" width="14.86" height="84" fill="#8f8f8f" stroke="none" transform="rotate(-20,1285.43,259)" pointer-events="all"/>
-      <rect x="1086.02" y="798.87" width="134.5" height="123.13" fill="#A39BE8" stroke="none" transform="rotate(-29,1153.27,860.43)" pointer-events="all"/>
+      <rect x="1086.02" y="798.87" width="134.5" height="123.13" fill="#8f8f8f" stroke="none" transform="rotate(-29,1153.27,860.43)" pointer-events="all"/>
       <rect x="1041.25" y="921.25" width="79.5" height="32" stroke="none" transform="rotate(90,1081,937.25)" pointer-events="all"/>
       <rect x="1052.53" y="871.06" width="42.13" height="21" stroke="none" transform="rotate(65,1073.6,881.56)" pointer-events="all"/>
       <rect x="1026.13" y="887.7" width="134" height="12" stroke="none" transform="rotate(60,1093.13,893.7)" pointer-events="all"/>
@@ -96,7 +96,7 @@
       <rect x="1183.44" y="607.05" width="63.47" height="33.72" stroke="none" transform="rotate(72,1215.18,623.91)" pointer-events="all"/>
       <rect x="1200.39" y="216.23" width="24.97" height="194.21" stroke="none" transform="rotate(86,1212.88,313.34)" pointer-events="all"/>
       <rect x="562.99" y="669.29" width="48.01" height="69.6" stroke="none" pointer-events="all"/>
-      <text x="1158" y="864" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES&#xa;</text>
+      <text x="1158" y="864" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES&#xa;</text>
       <rect x="1123.38" y="352.73" width="139.42" height="68" stroke="none" transform="rotate(72,1193.09,386.73)" pointer-events="all"/>
       <rect x="1265.28" y="593.69" width="52.26" height="54" stroke="none" transform="rotate(70,1291.41,620.69)" pointer-events="all"/>
     </g>

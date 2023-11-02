@@ -72,10 +72,10 @@
       <rect x="306" y="594" width="34" height="34"/>
       <rect x="628" y="644" width="73" height="135" fill="#8f8f8f"/>
       <text x="665" y="715" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">ESCALIER...</text>
-      <rect x="625" y="525" width="74" height="111" fill="#A39BE8"/>
-      <text x="662" y="584" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
-      <rect x="624" y="368" width="77" height="85" fill="#A39BE8"/>
-      <text x="663" y="414" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
+      <rect x="625" y="525" width="74" height="111" fill="#8f8f8f"/>
+      <text x="662" y="584" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
+      <rect x="624" y="368" width="77" height="85" fill="#8f8f8f"/>
+      <text x="663" y="414" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
       <rect x="879.8" y="838" width="65.2" height="68" fill="#8f8f8f"/>
       <text x="912" y="875" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">ASCENSEUR&#xa;</text>
       <rect x="1202.95" y="710.89" width="83.46" height="163.02" fill="#8f8f8f" transform="rotate(-28,1244.68,792.4)"/>

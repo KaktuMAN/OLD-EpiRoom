@@ -90,16 +90,16 @@
       <rect x="558" y="724" width="58" height="62" fill="#8f8f8f" stroke="none" pointer-events="all"/>
       <rect x="455" y="721" width="107" height="29" fill="#8f8f8f" stroke="none" pointer-events="all"/>
       <rect x="439.18" y="710.68" width="18.06" height="38" fill="#8f8f8f" stroke="none" transform="rotate(-45,448.21,729.68)" pointer-events="all"/>
-      <rect x="1080.06" y="803.24" width="137.43" height="116" fill="#a39be8" stroke="none" transform="rotate(-29,1148.78,861.24)" pointer-events="all"/>
+      <rect x="1080.06" y="803.24" width="137.43" height="116" fill="#8f8f8f" stroke="none" transform="rotate(-29,1148.78,861.24)" pointer-events="all"/>
       <text x="1149" y="865" font-family="Helvetica" font-size="12px" text-anchor="middle">...</text>
-      <rect x="1062" y="842" width="59" height="105" fill="#a39be8" stroke="none" pointer-events="all"/>
-      <rect x="1062.26" y="930.7" width="61" height="30.44" fill="#a39be8" stroke="none" transform="rotate(-30,1092.76,945.92)" pointer-events="all"/>
+      <rect x="1062" y="842" width="59" height="105" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <rect x="1062.26" y="930.7" width="61" height="30.44" fill="#8f8f8f" stroke="none" transform="rotate(-30,1092.76,945.92)" pointer-events="all"/>
       <rect x="1199" y="224" width="85.55" height="111" stroke="none" transform="rotate(70,1241.78,279.5)" pointer-events="all"/>
       <rect x="1205" y="703" width="83.46" height="163.02" fill="#8f8f8f" stroke="none" transform="rotate(-28,1246.73,784.51)" pointer-events="all"/>
       <rect x="1214.05" y="764.11" width="65" height="34" fill="none" stroke="none" pointer-events="all"/>
       <text x="1247" y="785" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
       <rect x="1113" y="850" width="73" height="39" fill="none" stroke="none" pointer-events="all"/>
-      <text x="1150" y="873" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
+      <text x="1150" y="873" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
     </g>
   </g>
 </svg>

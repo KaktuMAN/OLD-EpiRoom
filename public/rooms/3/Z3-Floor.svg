@@ -20,8 +20,8 @@
       <path d="M 525 722 L 824 723" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke"/>
     </g>
     <g id="floorRect">
-      <rect x="258" y="360" width="135" height="134" fill="#A39BE8" stroke="none" pointer-events="all"/>
-      <text x="326" y="431" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
+      <rect x="258" y="360" width="135" height="134" fill="#8f8f8f" stroke="none" pointer-events="all"/>
+      <text x="326" y="431" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES</text>
       <rect x="252" y="191" width="202" height="169" stroke="none" pointer-events="all"/>
       <rect x="393" y="390" width="543" height="150" stroke="none" pointer-events="all"/>
       <rect x="393" y="351" width="82" height="62" stroke="none" pointer-events="all"/>

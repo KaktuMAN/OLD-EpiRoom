@@ -11,8 +11,8 @@ interface FloorProps {
 const Floor: FC<FloorProps> = (props) => {
   const { rooms, floor, width, height } = props;
   const [scale, setScale] = useState(0.2);
-  const statuses = ["#ff0000", "#ff8401", "#00ff75"]
-  const wallColor = "#003dff";
+  const statuses = ["#F0405B", "#EBCA43", "#55FF99"]
+  const wallColor = "#4F62EB";
   return (
     <>
       <svg width={width} height={height} preserveAspectRatio={"true"}>

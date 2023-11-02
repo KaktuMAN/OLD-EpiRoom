@@ -7,6 +7,7 @@ import fetchRooms from "@scripts/fetchRooms";
 import Floor from "@components/Floors/Floor";
 import {Room} from "@customTypes/room";
 import {useRouter} from "next/router";
+import fetchApiData from "@scripts/fetchApiData";
 
 const FloorRender: NextPageWithLayout = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const FloorRender: NextPageWithLayout = () => {
      * Every 10 minutes, fetch the rooms again
      */
     const interval = setInterval(() => {
-      rooms = fetchRooms();
+      fetchApiData(rooms)
     }, 10 * 60 * 1000);
     return () => {
       clearInterval(interval);

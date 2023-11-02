@@ -30,6 +30,10 @@ export default function fetchApiData(roomsComp: Room[]): void {
       console.error(`API REQUEST FAILED: ${error}`)
     })
 
+  roomsComp.forEach((room) => {
+    room.activities = []
+  })
+
   apiData.then((data: APIResponse[]) => {
     data.forEach((activityData: APIResponse) => {
       if (!activityData.room || !activityData.room.type || activityData.instance_location != "FR/LIL" ) return;

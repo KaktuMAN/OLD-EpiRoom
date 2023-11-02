@@ -7,12 +7,11 @@ interface FirstFloorProps {
 
 const FirstFloor: FC<FirstFloorProps> = (props) => {
   const { roomData } = props;
-  const statuses = ["free", "occupied", "reserved"]
+  const statuses = ["#ff0000", "#ff8401", "#00ff75"]
   return (
     <>
-      <svg width="1679" height="920">
-        <use href={"/rooms/1/WALLS.svg#VUE_3D-2"}/>
-        <use href={"/rooms/1/0-11-Kanojedo.svg#ROOMS"} x={535} y={215}/>
+      <svg width={1250} height={750}>
+        <use href={"../../rooms/0/Z0-Floor.svg#B-01-Bulma"} width={1250} height={750} />
       </svg>
     </>
   );

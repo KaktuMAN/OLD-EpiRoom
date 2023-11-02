@@ -3,8 +3,8 @@ import {ReactElement, useEffect} from "react";
 import FullPage from "@components/layout/FullPage";
 import {Box, Stack} from "@mui/material";
 import SingleRoom from "@components/Rooms/SingleRoom";
-import fetchRooms from "@scripts//fetchRooms";
-import FirstFloor from "@components/Floors/FirstFloor";
+import fetchRooms from "@scripts/fetchRooms";
+import Floor from "@components/Floors/Floor";
 import {Room} from "@customTypes/room";
 import {useRouter} from "next/router";
 
@@ -25,8 +25,8 @@ const FloorRender: NextPageWithLayout = () => {
   })
   return (
     <div style={{background: "#000000"}}>
+      <Floor rooms={rooms} floor={parseInt(floor)}/>
       <div className="scroll_container">
-        <FirstFloor roomData={rooms}/>
         <Box sx={{height: 50, width: '100%'}} className="scroll slow">
           <Stack direction={"row"} spacing={2}>
             {rooms.map((room) => {

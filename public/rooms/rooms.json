@@ -1,15 +1,6 @@
 {
   "rooms":[
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/0-Cour-interieure-Pierre-Robert",
-      "name":"0.Cour intérieure - Pierre Robert",
-      "display_name":"Cour intérieure - Pierre Robert",
-      "seats": 100,
-      "floor": 0,
-      "status": 0,
-      "activities": []
-    },
-    {
       "intra_name":"FR/LIL/Hopital-Militaire/B-01-Bulma",
       "name":"B.01 - Bulma",
       "display_name":"Bulma",
@@ -131,15 +122,6 @@
       "name":"S.12 - Pandora",
       "display_name":"Pandora",
       "seats": 48,
-      "floor": 1,
-      "status": 0,
-      "activities": []
-    },
-    {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-13-Cantina-de-Chalmun",
-      "name":"S.13 - Cantina de Chalmun",
-      "display_name":"Cantina de Chalmun",
-      "seats": 19,
       "floor": 1,
       "status": 0,
       "activities": []

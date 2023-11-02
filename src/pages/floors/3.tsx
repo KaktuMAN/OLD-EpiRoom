@@ -11,7 +11,7 @@ import fetchApiData from "@scripts/fetchApiData";
 
 const FloorRender: NextPageWithLayout = () => {
   const router = useRouter();
-  const { floor } = router.query as { floor: string };
+  const floor = parseInt(router.asPath.split('/').pop() as string);
   let rooms: Room[] = fetchRooms();
   useEffect(() => {
     /**
@@ -28,16 +28,16 @@ const FloorRender: NextPageWithLayout = () => {
     <div style={{background: "#000000"}}>
       <Grid container spacing={2} columns={1}>
         {[0, 1, 2, 3].map((floorId) => {
-          if (floorId === parseInt(floor)) return null;
+          if (floorId === floor) return null;
           return (
             <Grid item xs={6} key={`Floor${floorId}`}>
               <Link href={`./${floorId}`}>
-                <Floor rooms={rooms} floor={floorId} width={420} height={700/3} key={`Floor${floorId}`}/>
+                <Floor rooms={rooms} floor={floorId} width={550} height={800/3} key={`Floor${floorId}`}/>
               </Link>
             </Grid>
           )})}
       </Grid>
-      <Floor rooms={rooms} floor={parseInt(floor)} width={1250} height={750}/>
+      <Floor rooms={rooms} floor={floor} width={1250} height={750}/>
       <div className="scroll_container">
         <Box sx={{height: 50, width: '100%'}} className="scroll slow">
           <Stack direction={"row"} spacing={2}>

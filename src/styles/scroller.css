@@ -8,6 +8,7 @@
   height: 180px;
   width: max-content;
   flex-wrap: nowrap;
+  animation: scroll 20s linear infinite;
 }
 
 .scroll_container {

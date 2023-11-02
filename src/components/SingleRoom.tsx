@@ -1,5 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
+import {Skeleton} from "@mui/material";
+import Image from 'next/image';
 
 interface SingleRoomProps {
   roomData: Room;
@@ -9,6 +11,7 @@ interface SingleRoomProps {
 const SingleRoom: FC<SingleRoomProps> = (props) => {
   const { roomData, svg_path } = props;
   const [status, setStatus] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
       if (roomData.activities.length === 0) {
@@ -28,10 +31,18 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
   });
   return (
     <>
-      <div>
-        <svg height={100} width={150} y={0} x={0}>
-          <use href={svg_path} fill={["#FF0000", "#FFFF00","#00FF00"][status]} x={0} y={0}/>
-        </svg>
+      <div className="backdrop-blur-md bg-white/30">
+        {!loaded && (
+          <Skeleton variant={"rounded"} width={150} height={120}/>
+        )}
+        <Image
+          src={svg_path}
+          alt={""}
+          width={150}
+          height={100}
+          className={["occupied", "reserved", "free"][status]}
+          onLoadingComplete={() => setLoaded(true)}
+        />
         <p>
           {roomData.display_name}
         </p>

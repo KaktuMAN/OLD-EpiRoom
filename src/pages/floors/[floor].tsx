@@ -42,12 +42,12 @@ const FloorRender: NextPageWithLayout = () => {
         <Box sx={{height: 50, width: '100%'}} className="scroll slow">
           <Stack direction={"row"} spacing={2}>
             {rooms.map((room) => {
-              const svg_path = `../../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
+              const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
               const key = room.intra_name;
               return <SingleRoom roomData={room} svg_path={svg_path} key={key}/>
             })}
             {rooms.map((room) => {
-              const svg_path = `../../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
+              const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
               const key = room.intra_name;
               return <SingleRoom roomData={room} svg_path={svg_path} key={key} aria-hidden={true}/>
             })}

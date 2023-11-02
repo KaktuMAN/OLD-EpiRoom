@@ -19,10 +19,10 @@ const Floor: FC<FloorProps> = (props) => {
         {rooms.map((room) => {
           const key = room.intra_name.split('/').pop();
           if (room.floor !== floor) return null;
-          return (<use href={`../../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${scale})`} key={key}/>)
+          return (<use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${scale})`} key={key}/>)
         })}
-        <use href={`../../rooms/${floor}/Z${floor}-Floor.svg#floorRect`} fill={wallColor} transform={`scale(${scale})`}/>
-        <use href={`../../rooms/${floor}/Z${floor}-Floor.svg#floorLines`} stroke={wallColor} transform={`scale(${scale})`}/>
+        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floorRect`} fill={wallColor} transform={`scale(${scale})`}/>
+        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floorLines`} stroke={wallColor} transform={`scale(${scale})`}/>
       </svg>
     </>
   );

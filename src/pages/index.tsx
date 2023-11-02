@@ -2,9 +2,9 @@ import type { NextPageWithLayout } from "./_app";
 import {ReactElement, useEffect} from "react";
 import FullPage from "@components/layout/FullPage";
 import {Box, Stack} from "@mui/material";
-import SingleRoom from "@components/SingleRoom";
+import SingleRoom from "@components/Rooms/SingleRoom";
 import fetchRooms from "@scripts//fetchRooms";
-import FirstFloor from "@components/FirstFloor";
+import FirstFloor from "@components/Floors/FirstFloor";
 import {Room} from "@customTypes/room";
 
 const Home: NextPageWithLayout = () => {

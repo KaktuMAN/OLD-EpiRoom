@@ -8,6 +8,7 @@ export interface Room {
   seats: number,
   floor: number,
   activities: Activity[],
+  loaded: boolean,
   status: number,
   setStatus: Dispatch<number>
 }

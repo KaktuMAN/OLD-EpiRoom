@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  basePath: '/EpiRoom',
-  assetPrefix: '/EpiRoom/',
+  swcMinify: true
 }
 
 module.exports = nextConfig

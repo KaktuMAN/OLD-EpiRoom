@@ -25,18 +25,21 @@ const FloorRender: NextPageWithLayout = () => {
     };
   })
   return (
-    <div style={{background: "#000000"}}>
-      <Grid container spacing={2} columns={1}>
-        {[0, 1, 2, 3].map((floorId) => {
-          if (floorId === floor) return null;
-          return (
-            <Grid item xs={6} key={`Floor${floorId}`}>
-              <Link href={`./${floorId}`}>
-                <Floor rooms={rooms} floor={floorId} width={550} height={875/3} key={`Floor${floorId}`}/>
-              </Link>
-            </Grid>
-          )})}
-      </Grid>
+    <div style={{ background: "#000000" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh", background: "#000000" }}>
+        <Grid container spacing={2} columns={1}>
+          {[0, 1, 2, 3].map((floorId) => {
+            if (floorId === floor) return null;
+            return (
+              <Grid item xs={6} key={`Floor${floorId}`}>
+                <Link href={`./${floorId}`}>
+                  <Floor rooms={rooms} floor={floorId} width={550} height={900/3} key={`Floor${floorId}`}/>
+                </Link>
+              </Grid>
+            )})}
+        </Grid>
+        <Floor rooms={rooms} floor={floor} width={1250} height={750}/>
+      </div>
       <div className="scroll_container">
         <Box sx={{height: 50, width: '100%'}} className="scroll slow">
           <Stack direction={"row"} spacing={2}>

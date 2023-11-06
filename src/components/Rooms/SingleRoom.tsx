@@ -12,13 +12,10 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
   const { roomData, svg_path } = props;
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    const waitLoad = setInterval(() => {
+    const interval = setInterval(() => {
       if (roomData.loaded) {
-        clearInterval(waitLoad);
         setLoaded(true);
       }
-    }, 1000);
-    const interval = setInterval(() => {
       if (roomData.activities.length === 0) {
         roomData.setStatus(2);
       } else if (roomData.activities[0].start.valueOf() < Date.now() && roomData.activities[0].end.valueOf() > Date.now()) {
@@ -30,9 +27,7 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
         roomData.activities.pop();
       }
     }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   });
   return (
     <>

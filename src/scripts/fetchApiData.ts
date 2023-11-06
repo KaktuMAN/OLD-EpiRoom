@@ -53,6 +53,10 @@ export default function fetchApiData(roomsComp: Room[]): void {
         activity.end = new Date(activityData.end)
       }
 
+      if (activity.end.getTime() < new Date().getTime()) {
+        return;
+      }
+
       if (!room && activityData.room.code.split('/')[3].startsWith("S-21abc")) {
         storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-21a-Denis", "FR/LIL/Hopital-Militaire/S-21b-MacAlistair", "FR/LIL/Hopital-Militaire/S-21c-Ritchie"])
         return;

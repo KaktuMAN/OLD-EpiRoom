@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="182px" height="249px" viewBox="-0.5 -0.5 182 249">
-  <g>
-    <rect x="0" y="0" width="181" height="92" fill="#6a00ff" stroke="none" pointer-events="all"/>
-    <rect x="129.12" y="211" width="52.88" height="37.01" fill="#6a00ff" stroke="none" pointer-events="all"/>
-    <rect x="6" y="79.3" width="130.99" height="168.7" fill="#6a00ff" stroke="none" pointer-events="all"/>
-    <rect x="133.05" y="79.3" width="48.32" height="62.99" fill="#6a00ff" stroke="none" pointer-events="all"/>
+  <g id="S-21c-Ritchie">
+    <rect x="0" y="0" width="181" height="92" stroke="none" pointer-events="all"/>
+    <rect x="129.12" y="211" width="52.88" height="37.01" stroke="none" pointer-events="all"/>
+    <rect x="6" y="79.3" width="130.99" height="168.7" stroke="none" pointer-events="all"/>
+    <rect x="133.05" y="79.3" width="48.32" height="62.99" stroke="none" pointer-events="all"/>
   </g>
 </svg>

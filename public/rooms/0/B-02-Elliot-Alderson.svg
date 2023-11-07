@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="106px" height="147px" viewBox="-0.5 -0.5 106 147">
-  <g>
-    <rect x="0" y="0" width="96" height="147" fill="#6a00ff" stroke="none" pointer-events="all"/>
-    <rect x="94" y="0" width="12" height="139" fill="#6a00ff" stroke="none" pointer-events="all"/>
+  <g id="B-02-Elliot-Alderson">
+    <rect x="0" y="0" width="96" height="147" stroke="none" pointer-events="all"/>
+    <rect x="94" y="0" width="12" height="139" stroke="none" pointer-events="all"/>
   </g>
 </svg>

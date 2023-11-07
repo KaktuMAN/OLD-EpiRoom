@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="225px" height="145px" viewBox="-0.5 -0.5 225 145">
-  <g>
-    <rect x="0" y="0" width="166" height="144" fill="#6a00ff" stroke="none" pointer-events="all"/>
-    <rect x="165" y="63" width="59" height="81" fill="#6a00ff" stroke="none" pointer-events="all"/>
+  <g id="S-23a-Hedy-Lamarr">
+    <rect x="0" y="0" width="166" height="144" stroke="none" pointer-events="all"/>
+    <rect x="165" y="63" width="59" height="81" stroke="none" pointer-events="all"/>
   </g>
 </svg>

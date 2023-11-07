@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="172px" height="343px" viewBox="-0.5 -0.5 172 343">
-  <g>
-    <path d="M 22 334 L 81 329 L 78 276 L 166 251 L 97 23 L 83 24 L 82 4 L 4 10 L 26 330 L 27 337" fill="none" stroke="#6a00ff" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="37.71" y="31.04" width="94.04" height="237.93" fill="#6a00ff" stroke="none" transform="rotate(-17,84.73,150)" pointer-events="all"/>
-    <rect x="16" y="5" width="52" height="324" fill="#6a00ff" stroke="none" transform="rotate(-5,42,167)" pointer-events="all"/>
-    <rect x="54.53" y="8.69" width="26.78" height="29" fill="#6a00ff" stroke="none" transform="rotate(-4,67.92,23.19)" pointer-events="all"/>
+  <g id="S-24-Roland-Moreno">
+    <path d="M 22 334 L 81 329 L 78 276 L 166 251 L 97 23 L 83 24 L 82 4 L 4 10 L 26 330 L 27 337" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
+    <rect x="37.71" y="31.04" width="94.04" height="237.93" stroke="none" transform="rotate(-17,84.73,150)" pointer-events="all"/>
+    <rect x="16" y="5" width="52" height="324" stroke="none" transform="rotate(-5,42,167)" pointer-events="all"/>
+    <rect x="54.53" y="8.69" width="26.78" height="29" stroke="none" transform="rotate(-4,67.92,23.19)" pointer-events="all"/>
   </g>
 </svg>

@@ -50,14 +50,14 @@
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/0-11-Kanojedo",
+      "intra_name":"FR/LIL/Hopital-Militaire/O-11-Kanojedo",
       "name":"O.11 - Kanojedo",
       "display_name":"Kanojedo",
       "seats": 12,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/0-12-Arrakis",
+      "intra_name":"FR/LIL/Hopital-Militaire/O-12-Arrakis",
       "name":"O.12 - Arrakis",
       "display_name":"Arrakis",
       "seats": 10,

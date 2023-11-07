@@ -15,11 +15,11 @@ const FloorRender: NextPageWithLayout = () => {
   let rooms: Room[] = fetchRooms();
   useEffect(() => {
     /**
-     * Every 10 minutes, fetch the rooms again
+     * Every 30 minutes, fetch the rooms again
      */
     const interval = setInterval(() => {
       fetchApiData(rooms)
-    }, 10 * 60 * 1000);
+    }, 30 * 60 * 1000);
     return () => {
       clearInterval(interval);
     };

@@ -84,9 +84,6 @@ export default function fetchApiData(roomsComp: Room[]): void {
         room.activities.push(activity)
         room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
       }
-      roomsComp.forEach((room) => {
-        room.loaded = true
-      })
     })
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)

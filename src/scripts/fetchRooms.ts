@@ -14,5 +14,9 @@ export default function fetchRooms(): Room[] {
   })
 
   fetchApiData(rooms)
+
+  rooms.forEach((room) => {
+    room.loaded = true
+  })
   return rooms
 }

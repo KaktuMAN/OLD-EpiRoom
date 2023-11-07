@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
+import { Activity } from "@customTypes/activity";
 import {Skeleton} from "@mui/material";
 import Image from 'next/image';
 
@@ -11,6 +12,7 @@ interface SingleRoomProps {
 const SingleRoom: FC<SingleRoomProps> = (props) => {
   const { roomData, svg_path } = props;
   const [loaded, setLoaded] = useState(false);
+  const [activity, setActivity] = useState(null as unknown as Activity);
   useEffect(() => {
     const interval = setInterval(() => {
       if (roomData.loaded) {
@@ -19,10 +21,13 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
       if (roomData.activities.length === 0) {
         roomData.setStatus(2);
       } else if (roomData.activities[0].start.valueOf() < Date.now() && roomData.activities[0].end.valueOf() > Date.now()) {
+        setActivity(roomData.activities[0]);
         roomData.setStatus(0);
       } else if (roomData.activities[0].start.valueOf() > Date.now()) {
+        setActivity(roomData.activities[0]);
         roomData.setStatus(1);
       } else {
+        setActivity(null as unknown as Activity)
         roomData.setStatus(2);
         roomData.activities.pop();
       }
@@ -49,6 +54,12 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
             />
             <p>
               {roomData.display_name}
+              {activity ? (
+                <>
+                  <br/>
+                  {activity.title}
+                </>
+              ) : null}
             </p>
           </>
           )}

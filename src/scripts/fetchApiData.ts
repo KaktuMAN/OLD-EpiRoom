@@ -30,15 +30,13 @@ export default function fetchApiData(roomsComp: Room[]): void {
       console.error(`API REQUEST FAILED: ${error}`)
     })
 
-  roomsComp.forEach((room) => {
-    room.activities = []
-  })
+  let newRooms = roomsComp
 
   apiData.then((data: APIResponse[]) => {
     data.forEach((activityData: APIResponse) => {
       if (!activityData.room || !activityData.room.type || activityData.instance_location != "FR/LIL" ) return;
 
-      let room = roomsComp.find((room) => room.intra_name === activityData.room.code);
+      let room = newRooms.find((room) => room.intra_name === activityData.room.code);
       let activity: Activity = {title: "", start: new Date(), end: new Date()}
 
       if (activityData.id_calendar) {
@@ -58,22 +56,22 @@ export default function fetchApiData(roomsComp: Room[]): void {
       }
 
       if (!room && activityData.room.code.split('/')[3].startsWith("S-21abc")) {
-        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-21a-Denis", "FR/LIL/Hopital-Militaire/S-21b-MacAlistair", "FR/LIL/Hopital-Militaire/S-21c-Ritchie"])
+        storeDataMultipleRooms(newRooms, activity, ["FR/LIL/Hopital-Militaire/S-21a-Denis", "FR/LIL/Hopital-Militaire/S-21b-MacAlistair", "FR/LIL/Hopital-Militaire/S-21c-Ritchie"])
         return;
       }
 
       if (!room && activityData.room.code.split('/')[3].startsWith("S-23ab")) {
-        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr", "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari"])
+        storeDataMultipleRooms(newRooms, activity, ["FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr", "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari"])
         return;
       }
 
       if (!room && activityData.room.code.split('/')[3].startsWith("S-25ab")) {
-        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-25a-Gwen", "FR/LIL/Hopital-Militaire/S-25b-Barzey"])
+        storeDataMultipleRooms(newRooms, activity, ["FR/LIL/Hopital-Militaire/S-25a-Gwen", "FR/LIL/Hopital-Militaire/S-25b-Barzey"])
         return;
       }
 
       if (!room && activityData.room.code.split('/')[3].startsWith("S-33ab")) {
-        storeDataMultipleRooms(roomsComp, activity, ["FR/LIL/Hopital-Militaire/S-33a-Deep-Blue", "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"])
+        storeDataMultipleRooms(newRooms, activity, ["FR/LIL/Hopital-Militaire/S-33a-Deep-Blue", "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"])
         return;
       }
 
@@ -85,6 +83,7 @@ export default function fetchApiData(roomsComp: Room[]): void {
         room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
       }
     })
+    roomsComp = newRooms
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)
   })

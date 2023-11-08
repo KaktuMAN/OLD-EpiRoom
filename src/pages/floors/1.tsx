@@ -23,7 +23,7 @@ const FloorRender: NextPageWithLayout = () => {
     return () => {
       clearInterval(interval);
     };
-  })
+  }, [])
   return (
     <div style={{ background: "#000000" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh", background: "#000000" }}>

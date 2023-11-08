@@ -1,5 +1,5 @@
 import type { NextPageWithLayout } from "../_app";
-import {ReactElement, useEffect} from "react";
+import {ReactElement} from "react";
 import FullPage from "@components/layout/FullPage";
 import {Box, Grid, Link, Stack} from "@mui/material";
 import SingleRoom from "@components/Rooms/SingleRoom";
@@ -7,23 +7,11 @@ import fetchRooms from "@scripts/fetchRooms";
 import Floor from "@components/Floors/Floor";
 import {Room} from "@customTypes/room";
 import {useRouter} from "next/router";
-import fetchApiData from "@scripts/fetchApiData";
 
 const FloorRender: NextPageWithLayout = () => {
   const router = useRouter();
   const floor = parseInt(router.asPath.split('/').pop() as string);
   let rooms: Room[] = fetchRooms();
-  useEffect(() => {
-    /**
-     * Every 30 minutes, fetch the rooms again
-     */
-    const interval = setInterval(() => {
-      fetchApiData(rooms)
-    }, 30 * 60 * 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [])
   return (
     <div style={{ background: "#000000" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh", background: "#000000" }}>

@@ -15,6 +15,27 @@
       "floor": 0
     },
     {
+      "intra_name":"FR/LIL/Hopital-Militaire/S-01-Stark",
+      "name":"S.01 - Stark",
+      "display_name":"Stark",
+      "seats": 24,
+      "floor": 0
+    },
+    {
+      "intra_name":"FR/LIL/Hopital-Militaire/S-02-Pru-Ha",
+      "name":"S.02 - Pru'Ha",
+      "display_name":"Pru'Ha",
+      "seats": 72,
+      "floor": 0
+    },
+    {
+      "intra_name":"FR/LIL/Hopital-Militaire/S-03-Mei-Hatsume",
+      "name":"S.03 - Mei Hatsume",
+      "display_name":"Mei Hatsume",
+      "seats": 16,
+      "floor": 0
+    },
+    {
       "intra_name":"FR/LIL/Hopital-Militaire/B-11-Gallifrey",
       "name":"B.11 - Gallifrey",
       "display_name":"Gallifrey",
@@ -62,27 +83,6 @@
       "display_name":"Arrakis",
       "seats": 10,
       "floor": 1
-    },
-    {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-01-Stark",
-      "name":"S.01 - Stark",
-      "display_name":"Stark",
-      "seats": 24,
-      "floor": 0
-    },
-    {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-02-Pru-Ha",
-      "name":"S.02 - Pru'Ha",
-      "display_name":"Pru'Ha",
-      "seats": 72,
-      "floor": 0
-    },
-    {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-03-Mei-Hatsume",
-      "name":"S.03 - Mei Hatsume",
-      "display_name":"Mei Hatsume",
-      "seats": 16,
-      "floor": 0
     },
     {
       "intra_name":"FR/LIL/Hopital-Militaire/S-11-Microtech",

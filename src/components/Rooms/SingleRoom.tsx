@@ -53,7 +53,7 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
               className={["occupied", "reserved", "free"][roomData.status]}
             />
             <p>
-              {roomData.display_name}
+              {roomData.display_name} (Étage {roomData.floor})
               {activity ? (
                 <>
                   <br/>

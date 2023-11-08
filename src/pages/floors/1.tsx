@@ -14,7 +14,7 @@ const FloorRender: NextPageWithLayout = () => {
   let rooms: Room[] = fetchRooms();
   return (
     <div style={{ background: "#000000" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh", background: "#000000" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh"}}>
         <Grid container spacing={2} columns={1}>
           {[0, 1, 2, 3].map((floorId) => {
             if (floorId === floor) return null;
@@ -28,8 +28,8 @@ const FloorRender: NextPageWithLayout = () => {
         </Grid>
         <Floor rooms={rooms} floor={floor} width={1250} height={750}/>
       </div>
-      <div className="scroll_container">
-        <Box sx={{height: 50, width: '100%'}} className="scroll slow">
+      <div className="scroll_container" style={{position: "fixed", bottom: 0, left: 0, width: "100%"}}>
+        <Box className="scroll slow">
           <Stack direction={"row"} spacing={2}>
             {rooms.map((room) => {
               const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;

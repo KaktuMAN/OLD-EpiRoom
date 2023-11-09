@@ -18,6 +18,9 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
       if (roomData.loaded) {
         setLoaded(true);
       }
+      if (roomData.activities === undefined) {
+        return
+      }
       if (roomData.activities.length === 0) {
         roomData.setStatus(2);
       } else if (roomData.activities[0].start.valueOf() < Date.now() && roomData.activities[0].end.valueOf() > Date.now()) {

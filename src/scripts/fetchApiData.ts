@@ -86,5 +86,9 @@ export default function fetchApiData(roomsComp: Room[]): void {
     roomsComp = newRooms
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)
+  }).finally(() => {
+    roomsComp.forEach((room) => {
+      room.loaded = true
+    })
   })
 }

@@ -35,36 +35,34 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
     return () => clearInterval(interval);
   });
   return (
-    <>
-      <div className="backdrop-blur-md bg-white/30">
-        {!loaded ? (
-          <>
-            <Skeleton variant={"rounded"} width={200} height={120}/>
-            <br/>
-            <Skeleton variant={"rounded"} width={200} height={25}/>
-          </>
-        ) : (
-          <>
-            <Image
-              src={svg_path}
-              alt={""}
-              width={200}
-              height={100}
-              className={["occupied", "reserved", "free"][roomData.status]}
-            />
-            <p>
-              {roomData.display_name} (Étage {roomData.floor})
-              {activity ? (
-                <>
-                  <br/>
-                  {activity.title}
-                </>
-              ) : null}
-            </p>
-          </>
-          )}
-      </div>
-    </>
+    <div>
+      {!loaded ? (
+        <>
+          <Skeleton variant={"rounded"} width={200} height={120}/>
+          <br/>
+          <Skeleton variant={"rounded"} width={200} height={25}/>
+        </>
+      ) : (
+        <>
+          <Image
+            src={svg_path}
+            alt={""}
+            width={200}
+            height={100}
+            className={["occupied", "reserved", "free"][roomData.status]}
+          />
+          <p>
+            {roomData.display_name} (Étage {roomData.floor})
+            {activity ? (
+              <>
+                <br/>
+                {activity.title}
+              </>
+            ) : null}
+          </p>
+        </>
+        )}
+    </div>
   );
 };
 

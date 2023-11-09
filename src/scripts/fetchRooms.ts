@@ -1,6 +1,5 @@
 import {useState} from "react";
 import { Room } from "@customTypes/room"
-import fetchApiData from "@scripts/fetchApiData";
 
 export default function fetchRooms(): Room[] {
   const rooms: Room[] = require("@public/rooms/rooms.json").rooms
@@ -12,9 +11,6 @@ export default function fetchRooms(): Room[] {
     room.status = status
     room.setStatus = setStatus
   })
-
-  fetchApiData(rooms)
-
   rooms.forEach((room) => {
     room.loaded = true
   })

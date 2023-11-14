@@ -13,12 +13,14 @@ const Floor: FC<FloorProps> = (props) => {
   const [xScale, setXScale] = useState(1.0);
   const [yScale, setYScale] = useState(1.0);
   const statuses = ["#F0405B", "#EBCA43", "#55FF99"]
-  const wallColor = "#4F62EB";
+  const random = (Math.random() * 100).toFixed(2)
   useEffect(() => {
-    const backgroundRectangle = document.getElementById(`background${floor}`)?.getBoundingClientRect();
-    if (!backgroundRectangle) return;
-    setXScale((width / backgroundRectangle.width).toFixed(2) as unknown as number);
-    setYScale((height / backgroundRectangle.height).toFixed(2) as unknown as number);
+    const background = document.getElementById(`background_${random}`);
+    if (!background) return;
+    background.style.display = ""
+    setXScale((width / background.getBoundingClientRect().width).toFixed(2) as unknown as number);
+    setYScale((height / background.getBoundingClientRect().height).toFixed(2) as unknown as number);
+    background.style.display = "none"
   })
   return (
     <div style={{height: height, width: width}}>
@@ -28,9 +30,8 @@ const Floor: FC<FloorProps> = (props) => {
           if (room.floor !== floor) return null;
           return (<use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${xScale}, ${yScale})`} key={key}/>)
         })}
-        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floorRect`} fill={wallColor} transform={`scale(${xScale}, ${yScale})`}/>
-        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floorLines`} stroke={wallColor} transform={`scale(${xScale}, ${yScale})`}/>
-        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#background`} id={`background${floor}`}/>
+        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floor`} transform={`scale(${xScale}, ${yScale})`}/>
+        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#background`} id={`background_${random}`} style={{display: "none"}}/>
       </svg>
     </div>
   );

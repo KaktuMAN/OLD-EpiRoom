@@ -1,4 +1,4 @@
-import type { NextPageWithLayout } from "./_app";
+import type { NextPageWithLayout } from "../_app";
 import {MouseEvent, ReactElement, useEffect, useState} from "react";
 import FullPage from "@components/layout/FullPage";
 import {Box, Grid, Stack} from "@mui/material";
@@ -13,12 +13,8 @@ import Head from "next/head";
 
 const FloorRender: NextPageWithLayout = () => {
   const router = useRouter();
-  const [floor, setFloor] = useState(parseInt(router.query.floor ? router.query.floor as string : "0"));
-  const linkClick = async (event: MouseEvent, floorId: number) => {
-    event.preventDefault();
-    setFloor(floorId)
-    await router.push(`./floors?floor=${floorId}`, undefined, {shallow: true})
-  };
+  const floor_param = parseInt(router.asPath.split('/').pop() as string) || 0;
+  const floor = floor_param > 3 ? 0 : floor_param
   let rooms: Room[] = fetchRooms();
   useEffect(() => {
     fetchApiData(rooms);
@@ -31,9 +27,10 @@ const FloorRender: NextPageWithLayout = () => {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", height: "100vh" }}>
         <Grid container spacing={0} columns={1}>
           {[0, 1, 2, 3].map((floorId) => {
+            if (floorId == floor) return;
             return (
-              <Grid item xs={6} key={`Floor${floorId}`} display={floorId == floor ? "none" : ""}>
-                <Link href={"./floors"} passHref onClick={(e) => linkClick(e, floorId)}>
+              <Grid item xs={6} key={`Floor${floorId}`}>
+                <Link href={`./${floorId}`} passHref>
                   <Floor rooms={rooms} floor={floorId} width={550} height={650/3} key={`Floor${floorId}`}/>
                 </Link>
               </Grid>

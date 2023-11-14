@@ -3,9 +3,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="218px" height="283px" viewBox="-0.5 -0.5 218 283">
   <g id="S-25a-Gwen">
     <path d="M 4 129 L 49 277 L 125 250 L 134 274 L 212 245 L 125 5 L 31 4 L 67 113 L 4 134" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="83.08" y="8.51" width="89.23" height="255.67" stroke="none" transform="rotate(-20,127.69,136.35)" pointer-events="all"/>
-    <rect x="37" y="7" width="71" height="27" stroke="none" pointer-events="all"/>
-    <rect x="25.09" y="120.33" width="74.04" height="144" stroke="none" transform="rotate(-20,62.11,192.33)" pointer-events="all"/>
-    <rect x="65.21" y="97.52" width="16" height="17.12" stroke="none" transform="rotate(-20,73.21,106.08)" pointer-events="all"/>
+    <rect x="83.08" y="8.51" width="89.23" height="255.67" transform="rotate(-20,127.69,136.35)" />
+    <rect x="37" y="7" width="71" height="27" />
+    <rect x="25.09" y="120.33" width="74.04" height="144" transform="rotate(-20,62.11,192.33)" />
+    <rect x="65.21" y="97.52" width="16" height="17.12" transform="rotate(-20,73.21,106.08)" />
   </g>
 </svg>

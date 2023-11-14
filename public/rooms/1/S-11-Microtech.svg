@@ -2,6 +2,6 @@
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="140px" viewBox="-0.5 -0.5 200 140">
   <g id="S-11-Microtech">
-    <rect x="0" y="0" width="200" height="139.98" stroke="none" pointer-events="all"/>
+    <rect x="0" y="0" width="200" height="139.98" />
   </g>
 </svg>

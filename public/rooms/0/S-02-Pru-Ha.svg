@@ -2,7 +2,7 @@
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="410px" height="207px" viewBox="-0.5 -0.5 410 207">
   <g id="S-02-Pru-Ha">
-    <rect x="0" y="8" width="410" height="199" stroke="none" pointer-events="all"/>
-    <rect x="66" y="0" width="136" height="21" stroke="none" pointer-events="all"/>
+    <rect x="0" y="8" width="410" height="199" />
+    <rect x="66" y="0" width="136" height="21" />
   </g>
 </svg>

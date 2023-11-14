@@ -2,8 +2,8 @@
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="141px" height="198px" viewBox="-0.5 -0.5 141 198">
   <g id="S-03-Mei-Hatsume">
-    <rect x="10" y="10" width="131" height="188" stroke="none" pointer-events="all"/>
-    <rect x="8" y="0" width="63" height="20" stroke="none" pointer-events="all"/>
-    <rect x="0" y="16" width="11" height="74" stroke="none" pointer-events="all"/>
+    <rect x="10" y="10" width="131" height="188" />
+    <rect x="8" y="0" width="63" height="20" />
+    <rect x="0" y="16" width="11" height="74" />
   </g>
 </svg>

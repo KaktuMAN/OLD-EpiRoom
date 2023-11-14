@@ -1,91 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="2000px" height="1600px" viewBox="-0.5 -0.5 2000 1600">
+<svg xmlns="http://www.w3.org/2000/svg" width="1137px" height="626px">
+  <defs>
+    <pattern patternUnits="userSpaceOnUse" width="11.5" height="11.5" x="0" y="0" patternTransform="rotate(45)" id="mx-pattern-hatch-1-636263-0">
+      <line x1="0" y1="0" x2="0" y2="11.5" stroke="#636263" stroke-width="1.5" />
+    </pattern>
+  </defs>
   <g>
     <g id="background">
-      <rect x="0" y="0" width="2000px" height="1600px" fill-opacity="0" />
+      <rect x="0" y="0" width="1137px" height="626px" fill-opacity="0" />
     </g>
     <g id="rooms">
       <g id="B-01-Bulma">
-        <rect x="405" y="368" width="208" height="91" />
+        <rect x="214.46" y="3.49" width="188.54" height="103.51" />
       </g>
       <g id="B-02-Elliot-Alderson">
-        <rect x="314" y="369" width="12" height="139" />
-        <rect x="220" y="369" width="96" height="147" />
+        <rect x="2" y="3.48" width="95" height="153" />
       </g>
       <g id="S-01-Stark">
-        <rect x="397" y="540" width="13" height="119" />
-        <rect x="421" y="638" width="8" height="14" />
-        <rect x="408" y="638" width="14" height="21" />
-        <rect x="443" y="519" width="140" height="27" />
-        <rect x="582" y="531" width="36" height="16" />
-        <rect x="408" y="543" width="210" height="96" />
+        <rect x="214" y="158.48" width="188.48" height="117.52" />
       </g>
       <g id="S-02-Pru-Ha">
-        <rect x="286" y="781" width="136" height="21" />
-        <rect x="220" y="789" width="410" height="199" />
+        <rect x="214.55" y="387.04" width="188.45" height="35.96" />
+        <rect x="2" y="423" width="400" height="199.48" />
       </g>
       <g id="S-03-Mei-Hatsume">
-        <rect x="634" y="805" width="11" height="74" />
-        <rect x="642" y="789" width="63" height="20" />
-        <rect x="644" y="799" width="131" height="188" />
+        <rect x="405" y="421" width="171" height="201.48" />
       </g>
     </g>
-    <g id="floorLines">
-      <path d="M 395 570 L 395 538 L 412 538" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 584 517 L 442 517" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 628 523 L 583 523" fill="none" stroke-width="16" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 395 600 L 395 661 L 424 661" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 430 654 L 430 640 L 528 640" fill="none" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 528 642 L 621 642" fill="none" stroke-width="7" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 428 652 L 428 700" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 217 784.14 L 286 784" fill="none" stroke-width="11" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 209 357 L 209 1001" fill="none" stroke-width="22" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 787 994 L 220 994" fill="none" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 637 879 L 637 989" fill="none" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 781 996 L 780 787" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 341 363 L 205 363" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 328 479 L 328 368" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 323 508 L 323 541" fill="none" stroke-width="14" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 487 461 L 404 461 L 404 366" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 614 461 L 517 461" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 281 519 L 318 519" fill="none" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 283 780 L 343 780" fill="none" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 394 780 L 422 780" fill="none" stroke-width="3" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 641 783 L 711 783 L 711 793 L 785 793" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 636 805 L 636 783 L 624 783 L 624 511" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 705 730 L 705 513" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 623 640 L 703 640" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 659 519 L 701 519" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 708 363 L 402 363" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 619 463 L 619 361" fill="none" stroke-width="13" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 706 461 L 705 357" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 704 457 L 657 457" fill="none" stroke-width="8" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 632 832 L 632 880" fill="none" stroke-width="4" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 947 906 L 947 837" fill="none" stroke-width="6" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1048 711 L 1051 740 L 1163 740 L 1246 694 L 1325 847 L 1050 994 L 875 993 L 875 771" fill="none" stroke-width="12" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1065.73 711.07 L 1174.69 769.51 L 1065.73 827.94 Z" fill="#4F62EB" transform="rotate(-28,1120.21,769.51)" />
-    </g>
-    <g id="floorRect">
-      <rect x="431" y="641" width="190" height="109" fill="#8f8f8f" />
-      <text x="526" y="699" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">ESCALIER...</text>
-      <rect x="422" y="749" width="203" height="40" />
-      <rect x="216" y="516" width="67" height="69" />
-      <rect x="408" y="508" width="35" height="35" />
-      <rect x="306" y="594" width="34" height="34" />
-      <rect x="628" y="644" width="73" height="135" fill="#8f8f8f" />
-      <text x="665" y="715" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">ESCALIER...</text>
-      <rect x="625" y="525" width="74" height="111" fill="#8f8f8f" />
-      <text x="662" y="584" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
-      <rect x="624" y="368" width="77" height="85" fill="#8f8f8f" />
-      <text x="663" y="414" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">TOILETTES&#xa;</text>
-      <rect x="879.8" y="838" width="65.2" height="68" fill="#8f8f8f" />
-      <text x="912" y="875" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="11px" text-anchor="middle">ASCENSEUR&#xa;</text>
-      <rect x="1202.95" y="710.89" width="83.46" height="163.02" fill="#8f8f8f" transform="rotate(-28,1244.68,792.4)" />
-      <rect x="878" y="905" width="72" height="92.9" />
-      <rect x="1093.57" y="761.85" width="111.75" height="119" transform="rotate(-28,1149.44,821.35)" />
-      <rect x="1212" y="772" width="65" height="34" fill="none" />
-      <text x="1245" y="793" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
+    <g id="floor">
+      <path d="M 974.76 504.61 L 1004.77 337.98 L 1103.42 337.98 L 1073.41 504.61 Z" fill="url(#mx-pattern-hatch-1-636263-0)" transform="rotate(330,1039.09,421.3)" />
+      <rect x="405.45" y="278.04" width="83.55" height="141.96" fill="url(#mx-pattern-hatch-1-636263-0)" />
+      <rect x="215" y="279.34" width="187" height="106.24" fill="url(#mx-pattern-hatch-1-636263-0)" />
+      <rect x="1081.41" y="310" width="3.55" height="172.94" fill="#f5f5f5" transform="rotate(-20,1083.18,396.47)" />
+      <rect x="684" y="475.48" width="52" height="59" fill="#706c6e" />
+      <rect x="0" y="-0.52" width="2.3" height="625" fill="#f5f5f5" />
+      <rect x="0" y="-0.52" width="491" height="4.01" fill="#f5f5f5" />
+      <rect x="211" y="-0.52" width="3.55" height="109.52" fill="#f5f5f5" />
+      <rect x="0" y="156.48" width="100" height="2.56" fill="#f5f5f5" />
+      <rect x="199" y="156.48" width="206" height="2.56" fill="#f5f5f5" />
+      <rect x="402" y="156.48" width="3.55" height="277.52" fill="#f5f5f5" />
+      <rect x="212" y="384.48" width="192" height="2.56" fill="#f5f5f5" />
+      <rect x="211" y="233" width="3.55" height="102" fill="#f5f5f5" />
+      <rect x="0" y="420.48" width="116" height="2.56" fill="#f5f5f5" />
+      <rect x="0" y="622.48" width="578" height="2.56" fill="#f5f5f5" />
+      <rect x="403" y="419.48" width="175" height="2.56" fill="#f5f5f5" />
+      <rect x="489" y="157" width="3.55" height="232" fill="#f5f5f5" />
+      <rect x="403" y="275.48" width="87" height="2.56" fill="#f5f5f5" />
+      <rect x="681" y="534.48" width="56" height="2.56" fill="#f5f5f5" />
+      <rect x="736" y="475.48" width="3.55" height="147.52" fill="#f5f5f5" />
+      <rect x="836.02" y="548.78" width="297.06" height="2.56" fill="#f5f5f5" transform="rotate(-30,984.55,550.06)" />
+      <rect x="984.26" y="364.02" width="3.55" height="119.52" fill="#f5f5f5" transform="rotate(-20,986.03,423.78)" />
+      <rect x="829.15" y="374.34" width="242.05" height="2.56" fill="#f5f5f5" transform="rotate(-30,950.17,375.62)" />
+      <rect x="213.4" y="275.42" width="190.6" height="2.56" fill="#f5f5f5" />
+      <rect x="211" y="158.48" width="3.55" height="37.52" fill="#f5f5f5" />
+      <rect x="681" y="420" width="3.55" height="205" fill="#f5f5f5" />
+      <rect x="574.45" y="419.48" width="3.55" height="204.48" fill="#f5f5f5" />
+      <rect x="214" y="332.42" width="135.94" height="2.56" fill="#f5f5f5" />
+      <rect x="212" y="385" width="3.55" height="38" fill="#f5f5f5" />
+      <rect x="402" y="492" width="3.55" height="132" fill="#f5f5f5" />
+      <rect x="97" y="-0.52" width="3.55" height="123.52" fill="#f5f5f5" />
+      <rect x="402" y="-0.52" width="3.55" height="109.52" fill="#f5f5f5" />
+      <rect x="488" y="-0.52" width="3.55" height="109.52" fill="#f5f5f5" />
+      <rect x="211" y="106.48" width="76" height="2.56" fill="#f5f5f5" />
+      <rect x="321" y="106.48" width="85" height="2.56" fill="#f5f5f5" />
+      <rect x="151" y="420.48" width="64" height="2.56" fill="#f5f5f5" />
+      <rect x="447" y="155.92" width="45.55" height="2.56" fill="#f5f5f5" />
+      <rect x="446" y="107" width="45.55" height="2.56" fill="#f5f5f5" />
+      <rect x="681" y="622.48" width="176" height="2.56" fill="#f5f5f5" />
+      <rect x="894.03" y="495.43" width="169.51" height="2.56" fill="#f5f5f5" transform="rotate(-30,978.78,496.71)" />
+      <rect x="803.57" y="477.97" width="136.53" height="3.52" fill="#f5f5f5" transform="rotate(-120,871.83,479.73)" />
+      <rect x="681" y="419.48" width="122" height="2.56" fill="#f5f5f5" />
+      <rect x="446" y="318.48" width="3.55" height="69.52" fill="#f5f5f5" />
+      <rect x="446" y="386.44" width="47" height="2.56" fill="#f5f5f5" />
+      <rect x="1036.04" y="385.58" width="3.55" height="72.52" fill="#f5f5f5" transform="rotate(-20,1037.82,421.84)" />
+      <rect x="2.3" y="159.04" width="52" height="59" fill="#706c6e" />
+      <svg x="7.5" y="165.04" height="800px" width="800px" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <path d="M88.942,484.606h306.723V128.322H88.942V484.606z M365.665,454.606H257.303V158.322h108.361V454.606z M118.942,158.322h108.361v296.285H118.942V158.322z" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="228.41,21.213 207.197,0 157.803,49.393 108.41,0 87.197,21.213 157.803,91.82" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="326.803,45.82 376.197,95.213 397.41,74 326.803,3.393 256.197,74 277.41,95.213" fill="#ffffff" transform="scale(0.09,0.09)" />
+        </g>
+      </svg>
+      <svg x="688.5" y="483.38" height="800px" width="800px" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <path d="M88.942,484.606h306.723V128.322H88.942V484.606z M365.665,454.606H257.303V158.322h108.361V454.606z M118.942,158.322h108.361v296.285H118.942V158.322z" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="228.41,21.213 207.197,0 157.803,49.393 108.41,0 87.197,21.213 157.803,91.82" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="326.803,45.82 376.197,95.213 397.41,74 326.803,3.393 256.197,74 277.41,95.213" fill="#ffffff" transform="scale(0.09,0.09)" />
+        </g>
+      </svg>
+      <svg x="437" y="190.25" height="572" width="264" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130.95011" cy="46.58577" r="46.54521" fill="#ffffff" transform="scale(0.07, 0.07)" />
+        <path d="M 81.781 106.021 C 45.991 106.021 23.062 137.008 23.062 167.603 L 23.062 310.819 C 22.733 338.803 63.028 338.803 63.163 310.819 L 63.163 179.061 L 73.188 179.061 L 73.188 542.829 C 72.566 580.81 126.235 579.721 126.178 542.829 L 126.178 330.869 L 134.771 330.869 L 134.771 542.829 C 135.473 579.721 189.422 580.81 189.193 542.829 L 189.193 179.061 L 199.218 179.061 L 199.218 310.819 C 198.746 339.018 238.832 339.018 239.319 310.819 L 239.319 167.603 C 238.746 137.008 214.958 106.569 179.168 106.021 L 81.781 106.021 Z" fill="#ffffff" transform="scale(0.07, 0.07)" />
+      </svg>
+      <svg x="435.5" y="27.5" height="572" width="264" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130.95011" cy="46.58577" r="46.54521" fill="#ffffff" transform="scale(0.07,0.07)" />
+        <path d="M124.50539,388.15534V549.98933C124.26193,579.39154,80.494976,579.39154,80.108304,549.98933V388.15534H22.821751L84.404788,171.89962H74.379644L38.57554,295.0651C29.524278,322.30474,-7.3109962,311.27714,1.3392857,282.17574L41.43986,148.98509C46.051436,133.68965,65.32836,106.68061,98.726432,106.02037H128.80188H163.17384C195.6095,106.68061,214.96663,133.91881,220.46041,148.98509L260.56101,282.17574C268.69571,311.1339,232.15259,323.02082,223.32473,295.0651L187.52063,171.89962H176.06331L239.07855,388.15534H180.3598V549.98933C180.8181,579.39154,137.22302,579.2483,137.39487,549.98933V388.15534H124.50539z" fill="#ffffff" transform="scale(0.07,0.07)" />
+      </svg>
+      <svg x="24.5" y="223.5" height="44" width="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26,28.36H6v-0.72h20V28.36z M19,26.36h-6c-2.404,0-4.36-1.956-4.36-4.36v-8c0-0.199,0.161-0.36,0.36-0.36h14c0.199,0,0.36,0.161,0.36,0.36v1.64H25c1.302,0,2.36,1.059,2.36,2.36v2c0,1.302-1.059,2.36-2.36,2.36h-1.654C23.162,24.597,21.283,26.36,19,26.36z M9.36,14.36V22c0,2.007,1.633,3.64,3.64,3.64h6c2.007,0,3.64-1.633,3.64-3.64v-7.64C22.64,14.36,9.36,14.36,9.36,14.36z M23.36,21.64H25c0.904,0,1.64-0.735,1.64-1.64v-2c0-0.904-0.735-1.64-1.64-1.64h-1.64V21.64zM20.36,12h-0.72v-1.283c0-0.525,0.124-1.051,0.358-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.234-0.469-0.358-0.995-0.358-1.52V5h0.721v0.283c0,0.414,0.098,0.829,0.282,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.369-0.282,0.784-0.282,1.198L20.36,12L20.36,12z M12.36,12h-0.72v-1.283c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V5h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V12z M16.36,11h-0.72V9.717c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V4h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.477,0.952,0.477,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V11z" fill="#FFFFFF" transform="scale(1.37,1.37)" />
+      </svg>
     </g>
   </g>
 </svg>

@@ -2,6 +2,6 @@
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="151px" height="150px" viewBox="-0.5 -0.5 151 150">
   <g id="B-15-Krikkit">
-    <rect x="16.71" y="16.87" width="117.03" height="115.16" stroke="none" transform="rotate(-21,75.23,74.45)" pointer-events="all"/>
+    <rect x="16.71" y="16.87" width="117.03" height="115.16" transform="rotate(-21,75.23,74.45)" />
   </g>
 </svg>

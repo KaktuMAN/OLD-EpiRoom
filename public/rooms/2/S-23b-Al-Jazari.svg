@@ -2,7 +2,7 @@
 <!DOCTYPE svg>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="111px" height="150px" viewBox="-0.5 -0.5 111 150">
   <g id="S-23b-Al-Jazari">
-    <rect x="98.99" y="-0.27" width="8.01" height="149.29" stroke="none" transform="rotate(-3,103,74.38)" pointer-events="all"/>
-    <rect x="0" y="0" width="103" height="149" stroke="none" pointer-events="all"/>
+    <rect x="98.99" y="-0.27" width="8.01" height="149.29" transform="rotate(-3,103,74.38)" />
+    <rect x="0" y="0" width="103" height="149" />
   </g>
 </svg>

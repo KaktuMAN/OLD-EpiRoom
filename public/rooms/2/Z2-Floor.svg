@@ -1,107 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="2000px" height="1600px" viewBox="-0.5 -0.5 2000 1600">
+<svg xmlns="http://www.w3.org/2000/svg" width="1255px" height="764px">
+  <defs>
+    <pattern patternUnits="userSpaceOnUse" width="11.5" height="11.5" x="0" y="0" patternTransform="rotate(45)" id="mx-pattern-hatch-1-636263-0">
+      <line x1="0" y1="0" x2="0" y2="11.5" stroke="#636263" stroke-width="1.5" />
+    </pattern>
+  </defs>
   <g>
     <g id="background">
-      <rect x="0" y="0" width="2000px" height="1600px" fill-opacity="0" />
+      <rect x="0" y="0" width="1255px" height="764px" fill-opacity="0" />
     </g>
     <g id="rooms">
       <g id="S-21a-Denis">
-        <rect x="222" y="477" width="101" height="35" stroke="none" pointer-events="all" />
-        <rect x="222" y="370" width="187" height="130" stroke="none" pointer-events="all" />
-        <rect x="286" y="502" width="37" height="17" stroke="none" pointer-events="all" />
+        <rect x="2" y="141" width="209" height="153" />
       </g>
       <g id="S-21b-MacAlistair">
-        <rect x="222" y="524" width="187" height="95" stroke="none" pointer-events="all" />
-        <rect x="222" y="610.24" width="196" height="164.77" stroke="none" pointer-events="all" />
-        <rect x="407" y="527" width="20" height="92" stroke="none" pointer-events="all" />
-        <rect x="286" y="519" width="37" height="17" stroke="none" pointer-events="all" />
+        <rect x="2" y="296" width="209" height="262" />
       </g>
       <g id="S-21c-Ritchie">
-        <rect x="559.05" y="606.3" width="48.32" height="62.99" stroke="none" pointer-events="all" />
-        <rect x="432" y="606.3" width="130.99" height="168.7" stroke="none" pointer-events="all" />
-        <rect x="555.12" y="738" width="52.88" height="37.01" stroke="none" pointer-events="all" />
-        <rect x="426" y="527" width="181" height="92" stroke="none" pointer-events="all" />
+        <rect x="214" y="296" width="188.48" height="262" />
       </g>
       <g id="S-22-Ada-Lovelace">
-        <rect x="222" y="838" width="330" height="147" stroke="none" pointer-events="all" />
+        <rect x="2" y="610" width="341" height="150" />
       </g>
       <g id="S-23a-Hedy-Lamarr">
-        <rect x="885" y="904" width="59" height="81" stroke="none" pointer-events="all" />
-        <rect x="720" y="841" width="166" height="144" stroke="none" pointer-events="all" />
+        <rect x="510" y="615" width="172" height="145" />
+        <rect x="680" y="674" width="56" height="86" />
       </g>
       <g id="S-23b-Al-Jazari">
-        <rect x="948" y="834" width="103" height="149" stroke="none" pointer-events="all" />
-        <rect x="1046.99" y="833.73" width="8.01" height="149.29" stroke="none" transform="rotate(-3,1050.99,908.38)" pointer-events="all" />
+        <rect x="739" y="615" width="104" height="145" />
       </g>
       <g id="S-24-Roland-Moreno">
-        <path d="M 1052 647 L 1111 642 L 1108 589 L 1196 564 L 1127 336 L 1113 337 L 1112 317 L 1034 323 L 1056 643 L 1057 650" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke" />
-        <rect x="1084.53" y="321.69" width="26.78" height="29" stroke="none" transform="rotate(-4,1097.92,336.19)" pointer-events="all" />
-        <rect x="1046" y="318" width="52" height="324" stroke="none" transform="rotate(-5,1072,480)" pointer-events="all" />
-        <rect x="1067.71" y="344.04" width="94.04" height="237.93" stroke="none" transform="rotate(-17,1114.73,463)" pointer-events="all" />
+        <path d="M 839 174 L 839 104 L 920 174 Z" transform="translate(0,139)scale(1,-1)translate(0,-139)" />
+        <path d="M 797.17 445.12 L 797.17 132.2 L 881.58 445.12 Z" transform="translate(839.37,0)scale(-1,1)translate(-839.37,0)rotate(15,839.37,288.66)" />
+        <path d="M 839 88 L 903 88 L 903 106 L 839 106 L 839 88 Z" />
+        <rect x="877.08" y="108.17" width="84.91" height="314" transform="rotate(-15,920.03,265.67)" />
       </g>
       <g id="S-25a-Gwen">
-        <path d="M 1189 461 L 1234 609 L 1310 582 L 1319 606 L 1397 577 L 1310 337 L 1216 336 L 1252 445 L 1189 466" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke" />
-        <rect x="1210.09" y="452.33" width="74.04" height="144" stroke="none" transform="rotate(-20,1247.11,524.33)" pointer-events="all" />
-        <rect x="1250.21" y="429.52" width="16" height="17.12" stroke="none" transform="rotate(-20,1258.21,438.08)" pointer-events="all" />
-        <rect x="1222" y="339" width="71" height="27" stroke="none" pointer-events="all" />
-        <rect x="1268.08" y="340.51" width="89.23" height="255.67" stroke="none" transform="rotate(-20,1312.69,468.35)" pointer-events="all" />
+        <rect x="977.94" y="212.35" width="101.38" height="180.72" transform="rotate(345,1028.63,302.71)" />
+        <rect x="1042.75" y="92.63" width="85.05" height="281.47" transform="rotate(340,1085.27,233.37)" />
+        <path d="M 998.87 376.61 L 1118.87 376.61 L 1118.87 390.61 L 998.87 390.61 L 998.87 376.61 Z" transform="rotate(340,1058.87,383.61)" />
       </g>
       <g id="S-25b-Barzey">
-        <path d="M 1293 648 L 1295 656 L 1304 673 L 1367 808 L 1462 755 L 1400 585 L 1322 613 L 1331 638 L 1290 653" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke" />
-        <rect x="1329.04" y="627.65" width="79.23" height="168" stroke="none" transform="rotate(-25,1368.65,711.65)" pointer-events="all" />
-        <rect x="1350.78" y="593.45" width="79.23" height="182" stroke="none" transform="rotate(-20,1390.39,684.45)" pointer-events="all" />
+        <path d="M 1043 379 L 1163 379 L 1163 439 L 1043 439 L 1043 379 Z" transform="rotate(340,1103,409)" />
+        <path d="M 1048.58 579.9 L 1085.77 376.2 L 1235.53 376.2 L 1198.34 579.9 Z" transform="rotate(-30,1142.05,478.05)" />
       </g>
     </g>
-    <g id="floorLines">
-      <path d="M 1045 660 L 1153 650" fill="none" stroke-width="16" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 222 519 L 286 519" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 425 618 L 425 777" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 218 782 L 359 782" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 391 782 L 507 782" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 615 641 L 615 780" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 552 782 L 642 782" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 222 836 L 350 836" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 381 836 L 554 836 L 554 987" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 945 902 L 888 902 L 888 839 L 752 839" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 718 840 L 718 989" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1018 832 L 946 832 L 946 989" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1058 808 L 1065 983" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1186 720 L 1165 732 L 1247 884" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1151 583 L 1115 594 L 1118 648" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1212 566 L 1182 575" fill="none" stroke-width="5" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1314 325 L 1135 324 L 1235 651" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-      <path d="M 1010 255 L 1112 248 L 1111 225 L 1278 213 L 1476 761 L 1057 990 L 639 992 L 215 992 L 215 722 L 215 363 L 416 363 L 416 520 L 704 520 L 707 777 L 1053 765 L 1022 319" fill="none" stroke-width="15" stroke-miterlimit="10" pointer-events="stroke" />
-    </g>
-    <g id="floorRect">
-      <rect x="1204.5" y="702.09" width="70.38" height="172.13" fill="#8f8f8f" stroke="none" transform="rotate(-30,1239.69,788.16)" pointer-events="all" />
-      <rect x="622" y="640" width="78" height="138" fill="#8f8f8f" stroke="none" pointer-events="all" />
-      <text x="661" y="713" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
-      <rect x="1119.99" y="222.76" width="170" height="84" fill="#8f8f8f" stroke="none" transform="rotate(-4,1204.99,264.76)" pointer-events="all" />
-      <text x="1205" y="268" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER...</text>
-      <rect x="222" y="789" width="86.7" height="45" fill="#a20025" stroke="none" pointer-events="all" />
-      <text x="265" y="815" fill="#ffffff" font-family="Helvetica" font-size="12px" text-anchor="middle">AER CORNER</text>
-      <rect x="621" y="834" width="31.49" height="125" stroke="none" pointer-events="all" />
-      <rect x="890" y="837" width="55" height="63" fill="#8f8f8f" stroke="none" pointer-events="all" />
-      <text x="918" y="872" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ASCENSEUR</text>
-      <text x="1243" y="792" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">ESCALIER A&#xa;</text>
-      <rect x="1195.91" y="738.89" width="178" height="42.72" stroke="none" transform="rotate(62,1284.91,760.25)" pointer-events="all" />
-      <rect x="1239.86" y="734.86" width="156.6" height="35" stroke="none" transform="rotate(65,1318.16,752.36)" pointer-events="all" />
-      <rect x="323" y="500" width="86" height="24" stroke="none" pointer-events="all" />
-      <rect x="607" y="526" width="94" height="115.73" stroke="none" pointer-events="all" />
-      <rect x="1011.95" y="251" width="109.97" height="65.42" stroke="none" transform="rotate(-4,1066.93,283.71)" pointer-events="all" />
-      <rect x="1278" y="217" width="14.86" height="84" fill="#8f8f8f" stroke="none" transform="rotate(-20,1285.43,259)" pointer-events="all" />
-      <rect x="1086.02" y="798.87" width="134.5" height="123.13" fill="#8f8f8f" stroke="none" transform="rotate(-29,1153.27,860.43)" pointer-events="all" />
-      <rect x="1041.25" y="921.25" width="79.5" height="32" stroke="none" transform="rotate(90,1081,937.25)" pointer-events="all" />
-      <rect x="1052.53" y="871.06" width="42.13" height="21" stroke="none" transform="rotate(65,1073.6,881.56)" pointer-events="all" />
-      <rect x="1026.13" y="887.7" width="134" height="12" stroke="none" transform="rotate(60,1093.13,893.7)" pointer-events="all" />
-      <rect x="1053.99" y="910.38" width="74" height="30.5" stroke="none" transform="rotate(60,1090.99,925.63)" pointer-events="all" />
-      <rect x="1183.44" y="607.05" width="63.47" height="33.72" stroke="none" transform="rotate(72,1215.18,623.91)" pointer-events="all" />
-      <rect x="1200.39" y="216.23" width="24.97" height="194.21" stroke="none" transform="rotate(86,1212.88,313.34)" pointer-events="all" />
-      <rect x="562.99" y="669.29" width="48.01" height="69.6" stroke="none" pointer-events="all" />
-      <text x="1158" y="864" fill="rgb(240, 240, 240)" font-family="Helvetica" font-size="12px" text-anchor="middle">TOILETTES&#xa;</text>
-      <rect x="1123.38" y="352.73" width="139.42" height="68" stroke="none" transform="rotate(72,1193.09,386.73)" pointer-events="all" />
-      <rect x="1265.28" y="593.69" width="52.26" height="54" stroke="none" transform="rotate(70,1291.41,620.69)" pointer-events="all" />
+    <g id="floor">
+      <path d="M 974.76 642.61 L 1004.77 475.98 L 1103.42 475.98 L 1073.41 642.61 Z" fill="url(#mx-pattern-hatch-1-636263-0)" transform="rotate(330,1039.09,559.3)" />
+      <rect x="912.07" y="11" width="142" height="69.99" fill="url(#mx-pattern-hatch-1-636263-0)" transform="rotate(-8,983.07,45.99)" />
+      <rect x="406" y="416" width="83.55" height="141.96" fill="url(#mx-pattern-hatch-1-636263-0)" />
+      <rect x="1078.22" y="431.47" width="3.55" height="187.51" fill="#f5f5f5" transform="rotate(-20,1080,525.23)" />
+      <rect x="684" y="613" width="52" height="59" fill="#706c6e" />
+      <rect x="0" y="137" width="2.3" height="625" fill="#f5f5f5" />
+      <rect x="0" y="137" width="214" height="4.01" fill="#f5f5f5" />
+      <rect x="211" y="137" width="3.55" height="173.23" fill="#f5f5f5" />
+      <rect x="0" y="294" width="76" height="2.56" fill="#f5f5f5" />
+      <rect x="2" y="561" width="142.33" height="47.24" fill="#a20025" />
+      <text x="73" y="588" fill="#ffffff" font-family="Helvetica" font-size="12px" text-anchor="middle">AER</text>
+      <rect x="105.96" y="297" width="103.04" height="46.87" fill="#a20025" />
+      <text x="157" y="324" fill="#ffffff" font-family="Helvetica" font-size="12px" text-anchor="middle">AER</text>
+      <rect x="105" y="294" width="387" height="2.56" fill="#f5f5f5" />
+      <rect x="402" y="294" width="3.55" height="267" fill="#f5f5f5" />
+      <rect x="342" y="558" width="63" height="2.56" fill="#f5f5f5" />
+      <rect x="212" y="558" width="87" height="2.56" fill="#f5f5f5" />
+      <rect x="211" y="391" width="3.55" height="168" fill="#f5f5f5" />
+      <rect x="0" y="558" width="164" height="2.56" fill="#f5f5f5" />
+      <rect x="1" y="608" width="149" height="2.56" fill="#f5f5f5" />
+      <rect x="179" y="608" width="167" height="2.56" fill="#f5f5f5" />
+      <rect x="343" y="640" width="3.55" height="122" fill="#f5f5f5" />
+      <rect x="0" y="760" width="857" height="2.56" fill="#f5f5f5" />
+      <rect x="413.94" y="679" width="3.55" height="84" fill="#f5f5f5" />
+      <rect x="414" y="611" width="3.55" height="40" fill="#f5f5f5" />
+      <rect x="489" y="557" width="350" height="2.56" fill="#f5f5f5" />
+      <rect x="489" y="294" width="3.55" height="265" fill="#f5f5f5" />
+      <rect x="403" y="413" width="87" height="2.56" fill="#f5f5f5" />
+      <rect x="506.94" y="612" width="3.55" height="149.94" fill="#f5f5f5" />
+      <rect x="531" y="613" width="153" height="2.56" fill="#f5f5f5" />
+      <rect x="681" y="613" width="3.55" height="61" fill="#f5f5f5" />
+      <rect x="681" y="672" width="56" height="2.56" fill="#f5f5f5" />
+      <rect x="736" y="613" width="3.55" height="149" fill="#f5f5f5" />
+      <rect x="843" y="613" width="3.55" height="149" fill="#f5f5f5" />
+      <rect x="825.89" y="648.52" width="448.18" height="2.56" fill="#f5f5f5" transform="rotate(-30,1049.98,649.8)" />
+      <rect x="903" y="35" width="3.55" height="11" fill="#f5f5f5" />
+      <rect x="993" y="500" width="3.55" height="170.64" fill="#f5f5f5" transform="rotate(-20,994.77,585.32)" />
+      <rect x="1032" y="457" width="24.33" height="2.56" fill="#f5f5f5" transform="rotate(-30,1044.16,458.28)" />
+      <rect x="962" y="498" width="24.33" height="2.56" fill="#f5f5f5" transform="rotate(-30,974.16,499.28)" />
+      <rect x="762" y="613" width="83.67" height="2.56" fill="#f5f5f5" />
+      <rect x="954.5" y="216.98" width="78.34" height="2.56" fill="#f5f5f5" transform="rotate(-15,993.67,218.26)" />
+      <rect x="903" y="14" width="3.55" height="22" fill="#f5f5f5" />
+      <rect x="836" y="35" width="70" height="2.56" fill="#f5f5f5" />
+      <rect x="857.75" y="63.25" width="3.55" height="46.5" fill="#f5f5f5" transform="rotate(90,859.53,86.5)" />
+      <rect x="916.99" y="82.83" width="160" height="2.56" fill="#f5f5f5" transform="rotate(-5,996.99,84.11)" />
+      <rect x="947" y="44" width="73.82" height="2.56" fill="#f5f5f5" transform="rotate(-5,983.91,45.28)" />
+      <rect x="902" y="6" width="146" height="2.56" fill="#f5f5f5" transform="rotate(-5,975,7.28)" />
+      <rect x="903" y="71" width="3.55" height="32" fill="#f5f5f5" />
+      <rect x="1010.94" y="111.82" width="3.55" height="99.94" fill="#f5f5f5" transform="rotate(-20,1012.71,161.79)" />
+      <rect x="1028" y="521.83" width="3.55" height="77" fill="#f5f5f5" transform="rotate(-20,1029.78,560.33)" />
+      <rect x="1032" y="374" width="147.21" height="2.56" fill="#f5f5f5" transform="rotate(340,1105.61,375.28)" />
+      <rect x="1143.41" y="-17.11" width="3.55" height="574.01" fill="#f5f5f5" transform="rotate(-20,1145.19,269.89)" />
+      <rect x="993" y="100" width="87.89" height="2.56" fill="#f5f5f5" transform="rotate(340,1036.95,101.28)" />
+      <rect x="909.75" y="93.75" width="3.55" height="17" fill="#f5f5f5" transform="rotate(90,911.53,102.25)" />
+      <rect x="834.97" y="434.74" width="122.07" height="2.56" fill="#f5f5f5" transform="rotate(-15,896.01,436.02)" />
+      <rect x="836" y="37" width="3.55" height="522" fill="#f5f5f5" />
+      <rect x="959.22" y="84.36" width="3.55" height="333.61" fill="#f5f5f5" transform="rotate(-15,960.99,251.17)" />
+      <rect x="449" y="451" width="3.55" height="64" fill="#f5f5f5" />
+      <rect x="843" y="603.78" width="56" height="2.56" fill="#f5f5f5" transform="rotate(-21,871,605.06)" />
+      <rect x="927.73" y="570" width="60.19" height="2.56" fill="#f5f5f5" transform="rotate(-21,957.82,571.28)" />
+      <svg x="899.53" y="627.5" xmlns="http://www.w3.org/2000/svg" width="620" height="572">
+        <circle cx="130.95011" cy="46.58577" r="46.54521" fill="#ffffff" transform="scale(0.09,0.09)" />
+        <path d="M124.50539,388.15534V549.98933C124.26193,579.39154,80.494976,579.39154,80.108304,549.98933V388.15534H22.821751L84.404788,171.89962H74.379644L38.57554,295.0651C29.524278,322.30474,-7.3109962,311.27714,1.3392857,282.17574L41.43986,148.98509C46.051436,133.68965,65.32836,106.68061,98.726432,106.02037H128.80188H163.17384C195.6095,106.68061,214.96663,133.91881,220.46041,148.98509L260.56101,282.17574C268.69571,311.1339,232.15259,323.02082,223.32473,295.0651L187.52063,171.89962H176.06331L239.07855,388.15534H180.3598V549.98933C180.8181,579.39154,137.22302,579.2483,137.39487,549.98933V388.15534H124.50539z" fill="#ffffff" transform="scale(0.09,0.09)" />
+        <circle cx="511.90545" cy="46.58577" r="46.54521" fill="#ffffff" transform="scale(0.09,0.09)" />
+        <path d="M462.49589,106.02037C426.70613,106.02037,403.77713,137.00793,403.77713,167.60313V310.81886C403.44773,338.80318,443.74313,338.80318,443.87777,310.81886V179.06038H453.90289V542.82853C453.28133,580.80938,506.95025,579.72094,506.89297,542.82853V330.86906H515.48597V542.82853C516.18773,579.72094,570.13733,580.80938,569.90817,542.82853V179.06038H579.93333V310.81886C579.46073,339.01802,619.54701,339.01802,620.03389,310.81886V167.60313C619.46109,137.00793,595.67281,106.56889,559.88305,106.02037H462.49589z" fill="#ffffff" transform="scale(0.09,0.09)" />
+        <rect x="297.79132" y="5.7684445" width="52.996765" height="562.84003" fill="#ffffff" transform="scale(0.09,0.09)" />
+      </svg>
+      <svg x="689.5" y="620.07" height="800px" width="800px" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <path d="M88.942,484.606h306.723V128.322H88.942V484.606z M365.665,454.606H257.303V158.322h108.361V454.606z M118.942,158.322h108.361v296.285H118.942V158.322z" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="228.41,21.213 207.197,0 157.803,49.393 108.41,0 87.197,21.213 157.803,91.82" fill="#ffffff" transform="scale(0.09,0.09)" />
+          <polygon points="326.803,45.82 376.197,95.213 397.41,74 326.803,3.393 256.197,74 277.41,95.213" fill="#ffffff" transform="scale(0.09,0.09)" />
+        </g>
+      </svg>
+      <svg x="437.5" y="660.5" height="44" width="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26,28.36H6v-0.72h20V28.36z M19,26.36h-6c-2.404,0-4.36-1.956-4.36-4.36v-8c0-0.199,0.161-0.36,0.36-0.36h14c0.199,0,0.36,0.161,0.36,0.36v1.64H25c1.302,0,2.36,1.059,2.36,2.36v2c0,1.302-1.059,2.36-2.36,2.36h-1.654C23.162,24.597,21.283,26.36,19,26.36z M9.36,14.36V22c0,2.007,1.633,3.64,3.64,3.64h6c2.007,0,3.64-1.633,3.64-3.64v-7.64C22.64,14.36,9.36,14.36,9.36,14.36z M23.36,21.64H25c0.904,0,1.64-0.735,1.64-1.64v-2c0-0.904-0.735-1.64-1.64-1.64h-1.64V21.64zM20.36,12h-0.72v-1.283c0-0.525,0.124-1.051,0.358-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.234-0.469-0.358-0.995-0.358-1.52V5h0.721v0.283c0,0.414,0.098,0.829,0.282,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.369-0.282,0.784-0.282,1.198L20.36,12L20.36,12z M12.36,12h-0.72v-1.283c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V5h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V12z M16.36,11h-0.72V9.717c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V4h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.477,0.952,0.477,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V11z" fill="#FFFFFF" transform="scale(1.37,1.37)" />
+      </svg>
+      <svg x="356.5" y="660.5" height="44" width="44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26,28.36H6v-0.72h20V28.36z M19,26.36h-6c-2.404,0-4.36-1.956-4.36-4.36v-8c0-0.199,0.161-0.36,0.36-0.36h14c0.199,0,0.36,0.161,0.36,0.36v1.64H25c1.302,0,2.36,1.059,2.36,2.36v2c0,1.302-1.059,2.36-2.36,2.36h-1.654C23.162,24.597,21.283,26.36,19,26.36z M9.36,14.36V22c0,2.007,1.633,3.64,3.64,3.64h6c2.007,0,3.64-1.633,3.64-3.64v-7.64C22.64,14.36,9.36,14.36,9.36,14.36z M23.36,21.64H25c0.904,0,1.64-0.735,1.64-1.64v-2c0-0.904-0.735-1.64-1.64-1.64h-1.64V21.64zM20.36,12h-0.72v-1.283c0-0.525,0.124-1.051,0.358-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.234-0.469-0.358-0.995-0.358-1.52V5h0.721v0.283c0,0.414,0.098,0.829,0.282,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.369-0.282,0.784-0.282,1.198L20.36,12L20.36,12z M12.36,12h-0.72v-1.283c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V5h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V12z M16.36,11h-0.72V9.717c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V4h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.477,0.952,0.477,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V11z" fill="#FFFFFF" transform="scale(1.37,1.37)" />
+      </svg>
     </g>
   </g>
 </svg>

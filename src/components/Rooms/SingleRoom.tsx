@@ -9,10 +9,10 @@ interface SingleRoomProps {
   svg_path: string;
 }
 
-const SingleRoom: FC<SingleRoomProps> = (props) => {
-  const { roomData, svg_path } = props;
+const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path}) => {
   const [loaded, setLoaded] = useState(false);
   const [activity, setActivity] = useState(null as unknown as Activity);
+  const floors = ["RDC", "1er Étage", "2e Étage", "3e Étage"];
   useEffect(() => {
     const interval = setInterval(() => {
       if (roomData.loaded) {
@@ -55,7 +55,7 @@ const SingleRoom: FC<SingleRoomProps> = (props) => {
             className={["occupied", "reserved", "free"][roomData.status]}
           />
           <p>
-            {roomData.display_name} (Étage {roomData.floor})
+            {roomData.display_name} ({floors[roomData.floor]})
             {activity ? (
               <>
                 <br/>

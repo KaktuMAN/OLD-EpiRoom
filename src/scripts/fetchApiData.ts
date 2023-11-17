@@ -46,7 +46,7 @@ export default function fetchApiData(roomsComp: Room[]): void {
       } else {
         activity.module_code = activityData.codemodule
         activity.module_title = activityData.titlemodule
-        activity.title = activityData.acti_title || activityData.title
+        activity.title = activityData.acti_title?.replace("Réservation salle MSc - ", "") || activityData.title.replace("Réservation salle MSc - ", "")
         activity.start = new Date(activityData.start)
         activity.end = new Date(activityData.end)
       }

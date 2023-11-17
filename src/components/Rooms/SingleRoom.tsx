@@ -7,9 +7,18 @@ import Image from 'next/image';
 interface SingleRoomProps {
   roomData: Room;
   svg_path: string;
+  maxHeight: number;
 }
 
-const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path}) => {
+function formatTime(time: number): string {
+  if (time / 60 > 1) {
+    return `${Math.floor(time / 60)}h${time % 60}m`
+  } else {
+    return `${time % 60} minute${time % 60 > 1 ? "s" : ""}`
+  }
+}
+
+const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path, maxHeight}) => {
   const [loaded, setLoaded] = useState(false);
   const [activity, setActivity] = useState(null as unknown as Activity);
   const floors = ["RDC", "1er Étage", "2e Étage", "3e Étage"];
@@ -41,9 +50,9 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path}) => {
     <div>
       {!loaded ? (
         <>
-          <Skeleton variant={"rounded"} width={200} height={120}/>
+          <Skeleton variant={"rounded"} width={200} height={maxHeight / 100 * 50}/>
           <br/>
-          <Skeleton variant={"rounded"} width={200} height={25}/>
+          <Skeleton variant={"rounded"} width={200} height={maxHeight / 100 * 20}/>
         </>
       ) : (
         <>
@@ -51,18 +60,28 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path}) => {
             src={svg_path}
             alt={""}
             width={200}
-            height={100}
+            height={maxHeight / 100 * 50}
             className={["occupied", "reserved", "free"][roomData.status]}
           />
-          <p>
-            {roomData.display_name} ({floors[roomData.floor]})
-            {activity ? (
+          <div style={{textAlign: "center"}}>
+            {roomData.display_name} - {floors[roomData.floor]}
+            {roomData.status < 2 ? (
               <>
                 <br/>
-                {activity.title}
+                <div>{activity.title}</div>
+                <br/>
+                {roomData.status == 0 ? (
+                  <>
+                    Encore {formatTime(Math.floor((activity.end.valueOf() - Date.now()) / 1000 / 60))}
+                  </>
+                ) : roomData.status == 1 ? (
+                  <>
+                    Début dans {formatTime(Math.floor((activity.start.valueOf() - Date.now()) / 1000 / 60))}
+                  </>
+                ) : null}
               </>
             ) : null}
-          </p>
+          </div>
         </>
         )}
     </div>

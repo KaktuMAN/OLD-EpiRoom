@@ -26,10 +26,15 @@ const FloorRender: NextPageWithLayout = () => {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
     };
+    const refreshData = setInterval(() => {
+      fetchApiData(rooms);
+    }, 1000 * 60 * 10)
+
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearInterval(refreshData);
     };
   }, []);
   return (
@@ -52,17 +57,17 @@ const FloorRender: NextPageWithLayout = () => {
         <Floor rooms={rooms} floor={floor} width={width / 100 * 68} height={height / 100 * 78}/>
       </div>
       <div className="scroll_container" style={{position: "fixed", bottom: 0, left: 0, width: "100%", height: height / 100 * 21}}>
-        <Box className="scroll slow" style={{}}>
+        <Box className="scroll slow">
           <Stack direction={"row"} spacing={2}>
             {rooms.map((room) => {
               const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
               const key = room.intra_name;
-              return <SingleRoom roomData={room} svg_path={svg_path} key={key}/>
+              return <SingleRoom roomData={room} svg_path={svg_path} maxHeight={height / 100 * 21} key={key}/>
             })}
             {rooms.map((room) => {
               const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
               const key = room.intra_name;
-              return <SingleRoom roomData={room} svg_path={svg_path} key={key} aria-hidden={true}/>
+              return <SingleRoom roomData={room} svg_path={svg_path} maxHeight={height / 100 * 21} key={key} aria-hidden={true}/>
             })}
           </Stack>
         </Box>

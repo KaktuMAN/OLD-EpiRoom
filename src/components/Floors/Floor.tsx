@@ -13,9 +13,8 @@ const Floor: FC<FloorProps> = (props) => {
   const [xScale, setXScale] = useState(1.0);
   const [yScale, setYScale] = useState(1.0);
   const statuses = ["#F0405B", "#EBCA43", "#55FF99"]
-  const random = (Math.random() * 100).toFixed(2)
   useEffect(() => {
-    const background = document.getElementById(`background_${random}`);
+    const background = document.getElementById(`background_${floor}`);
     if (!background) return;
     background.style.display = ""
     setXScale((width / background.getBoundingClientRect().width).toFixed(2) as unknown as number);

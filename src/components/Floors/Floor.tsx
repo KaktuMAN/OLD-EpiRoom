@@ -1,4 +1,5 @@
 import {FC, useEffect, useState} from "react";
+import {Tooltip} from "@mui/material";
 import { Room } from "@customTypes/room";
 
 interface FloorProps {
@@ -27,10 +28,15 @@ const Floor: FC<FloorProps> = (props) => {
         {rooms.map((room) => {
           const key = room.intra_name.split('/').pop();
           if (room.floor !== floor) return null;
-          return (<use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${xScale}, ${yScale})`} key={key}/>)
-        })}
+          return (
+            <>
+              <Tooltip title={room.display_name} arrow style={{backgroundColor: "white", color: "black"}}>
+                <use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${xScale}, ${yScale})`} key={key}/>
+              </Tooltip>
+            </>
+          )})}
         <use href={`../rooms/${floor}/Z${floor}-Floor.svg#floor`} transform={`scale(${xScale}, ${yScale})`}/>
-        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#background`} id={`background_${random}`} style={{display: "none"}}/>
+        <use href={`../rooms/${floor}/Z${floor}-Floor.svg#background`} id={`background_${floor}`} style={{display: "none"}}/>
       </svg>
     </div>
   );

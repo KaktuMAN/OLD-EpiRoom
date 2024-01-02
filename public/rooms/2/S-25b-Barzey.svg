@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="182px" height="233px" viewBox="-0.5 -0.5 182 233">
-  <g id="S-25b-Barzey">
-    <path d="M 7 67 L 9 75 L 18 92 L 81 227 L 176 174 L 114 4 L 36 32 L 45 57 L 4 72" fill="none" stroke-width="9" stroke-miterlimit="10" pointer-events="stroke"/>
-    <rect x="64.78" y="12.45" width="79.23" height="182" transform="rotate(-20,104.39,103.45)" />
-    <rect x="43.04" y="46.65" width="79.23" height="168" transform="rotate(-25,82.65,130.65)" />
-  </g>
-</svg>

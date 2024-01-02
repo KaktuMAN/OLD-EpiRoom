@@ -60,14 +60,14 @@ const FloorRender: NextPageWithLayout = () => {
         <Box className="scroll slow">
           <Stack direction={"row"} spacing={2}>
             {rooms.map((room) => {
-              const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
+              if (room.floor != floor) return;
               const key = room.intra_name;
-              return <SingleRoom roomData={room} svg_path={svg_path} maxHeight={height / 100 * 21} key={key}/>
+              return <SingleRoom roomData={room} maxHeight={height / 100 * 21} key={key}/>
             })}
             {rooms.map((room) => {
-              const svg_path = `../rooms/${room.floor}/${room.intra_name.split('/').pop()}.svg`;
+              if (room.floor != floor) return;
               const key = room.intra_name;
-              return <SingleRoom roomData={room} svg_path={svg_path} maxHeight={height / 100 * 21} key={key} aria-hidden={true}/>
+              return <SingleRoom roomData={room} maxHeight={height / 100 * 21} key={key} aria-hidden={true}/>
             })}
           </Stack>
         </Box>

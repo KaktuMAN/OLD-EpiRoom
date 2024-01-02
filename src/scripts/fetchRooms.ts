@@ -6,7 +6,6 @@ export default function fetchRooms(): Room[] {
 
   rooms.forEach((room) => {
     const [status, setStatus] = useState(2)
-    room.loaded = false
     room.status = status
     room.setStatus = setStatus
   })

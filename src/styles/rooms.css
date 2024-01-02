@@ -1,17 +1,17 @@
-/*
-Le scam réside en ceci :
-https://dirask.com/posts/CSS-change-color-of-SVG-images-from-img-tag-D9aJmD
-https://codepen.io/sosuke/pen/Pjoqqp
- */
-
 .occupied {
-    filter: invert(30%) sepia(58%) saturate(3639%) hue-rotate(334deg) brightness(113%) contrast(88%);
+    background-color: #F0405B;
+    stroke: #F0405B;
+    fill: #F0405B;
 }
 
 .reserved {
-    filter: invert(90%) sepia(45%) saturate(2459%) hue-rotate(323deg) brightness(97%) contrast(90%);
+    background-color: #EBCA43;
+    stroke: #EBCA43;
+    fill: #EBCA43;
 }
 
 .free {
-    filter: invert(60%) sepia(90%) saturate(250%) hue-rotate(84deg) brightness(125%) contrast(121%);
+    background-color: #55FF99;
+    stroke: #55FF99;
+    fill: #55FF99;
 }

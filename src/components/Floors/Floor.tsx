@@ -13,7 +13,6 @@ const Floor: FC<FloorProps> = (props) => {
   const { rooms, floor, width, height } = props;
   const [xScale, setXScale] = useState(1.0);
   const [yScale, setYScale] = useState(1.0);
-  const statuses = ["#F0405B", "#EBCA43", "#55FF99"]
   useEffect(() => {
     const background = document.getElementById(`background_${floor}`);
     if (!background) return;
@@ -31,7 +30,7 @@ const Floor: FC<FloorProps> = (props) => {
           return (
             <>
               <Tooltip title={room.display_name} arrow style={{backgroundColor: "white", color: "black"}}>
-                <use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} fill={statuses[room.status]} stroke={statuses[room.status]} transform={`scale(${xScale}, ${yScale})`} key={key}/>
+                <use href={`../rooms/${floor}/Z${floor}-Floor.svg#${key}`} className={["occupied", "reserved", "free"][room.status]} transform={`scale(${xScale}, ${yScale})`} key={key}/>
               </Tooltip>
             </>
           )})}

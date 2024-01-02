@@ -1,12 +1,10 @@
 import {FC, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
 import { Activity } from "@customTypes/activity";
-import {Skeleton} from "@mui/material";
-import Image from 'next/image';
+import {Paper, Slider} from "@mui/material";
 
 interface SingleRoomProps {
   roomData: Room;
-  svg_path: string;
   maxHeight: number;
 }
 
@@ -18,15 +16,13 @@ function formatTime(time: number): string {
   }
 }
 
-const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path, maxHeight}) => {
-  const [loaded, setLoaded] = useState(false);
+const SingleRoom: FC<SingleRoomProps> = ({roomData, maxHeight}) => {
   const [activity, setActivity] = useState(null as unknown as Activity);
+  const [remainingTime, setRemainingTime] = useState(0);
+  const [activityTime, setActivityTime] = useState(0);
   const floors = ["RDC", "1er Étage", "2e Étage", "3e Étage"];
   useEffect(() => {
     const interval = setInterval(() => {
-      if (roomData.loaded) {
-        setLoaded(true);
-      }
       if (roomData.activities === undefined) {
         return
       }
@@ -34,6 +30,8 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path, maxHeight}) => {
         roomData.setStatus(2);
       } else if (roomData.activities[0].start.valueOf() < Date.now() && roomData.activities[0].end.valueOf() > Date.now()) {
         setActivity(roomData.activities[0]);
+        setActivityTime(Math.floor((roomData.activities[0].end.valueOf() - roomData.activities[0].start.valueOf()) / 1000 / 60));
+        setRemainingTime(Math.floor((roomData.activities[0].end.valueOf() - Date.now()) / 1000 / 60));
         roomData.setStatus(0);
       } else if (roomData.activities[0].start.valueOf() > Date.now()) {
         setActivity(roomData.activities[0]);
@@ -47,43 +45,33 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, svg_path, maxHeight}) => {
     return () => clearInterval(interval);
   });
   return (
-    <div>
-      {!loaded ? (
-        <>
-          <Skeleton variant={"rounded"} width={200} height={maxHeight / 100 * 50}/>
-          <br/>
-          <Skeleton variant={"rounded"} width={200} height={maxHeight / 100 * 20}/>
-        </>
-      ) : (
-        <>
-          <Image
-            src={svg_path}
-            alt={""}
-            width={200}
-            height={maxHeight / 100 * 50}
-            className={["occupied", "reserved", "free"][roomData.status]}
-          />
-          <div style={{textAlign: "center"}}>
-            {roomData.display_name} - {floors[roomData.floor]}
-            {roomData.status < 2 ? (
+    <div style={{height: maxHeight - 25}}>
+      <Paper variant={"outlined"} className={["occupied", "reserved", "free"][roomData.status]} style={{width: "250px", height: "100%"}}>
+      <div style={{textAlign: "center", color: "#000000"}}>
+        {roomData.display_name} - {floors[roomData.floor]}
+        {roomData.status < 2 ? (
+          <>
+            <br/>
+            <div>{activity.title}</div>
+            <br/>
+            {roomData.status == 0 ? (
               <>
-                <br/>
-                <div>{activity.title}</div>
-                <br/>
-                {roomData.status == 0 ? (
-                  <>
-                    Encore {formatTime(Math.floor((activity.end.valueOf() - Date.now()) / 1000 / 60))}
-                  </>
-                ) : roomData.status == 1 ? (
-                  <>
-                    Début dans {formatTime(Math.floor((activity.start.valueOf() - Date.now()) / 1000 / 60))}
-                  </>
-                ) : null}
+                <div style={{whiteSpace: "nowrap", alignContent: "center", height: "30px"}}>
+                  {activity.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                  <Slider min={0} max={100} value={100 - 100 / activityTime * remainingTime} style={{width: "155px", height: "15px", padding: "0", margin: "0 5px"}}/>
+                  {activity.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                </div>
+                Encore {formatTime(Math.floor((activity.end.valueOf() - Date.now()) / 1000 / 60))}
+              </>
+            ) : roomData.status == 1 ? (
+              <>
+                Début dans {formatTime(Math.floor((activity.start.valueOf() - Date.now()) / 1000 / 60))}
               </>
             ) : null}
-          </div>
-        </>
-        )}
+          </>
+        ) : null}
+      </div>
+      </Paper>
     </div>
   );
 };

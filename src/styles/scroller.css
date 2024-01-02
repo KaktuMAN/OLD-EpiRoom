@@ -1,19 +1,25 @@
 @keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 0.5rem));
+  0% {
+    transform: translateX(1%);
+  }
+  50% {
+    transform: translateX(-20%);
   }
 }
 
 .fast {
   animation: scroll 20s linear infinite;
+  animation-direction: alternate;
 }
 
 .medium {
   animation: scroll 40s linear infinite;
+  animation-direction: alternate;
 }
 
 .slow {
   animation: scroll 60s linear infinite;
+  animation-direction: alternate;
 }
 
 .scroll {

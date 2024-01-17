@@ -1,0 +1,22 @@
+{
+  "name": "Lille",
+  "code": "LIL",
+  "floors": [
+    {
+      "floor": 0,
+      "name": "RDC"
+    },
+    {
+      "floor": 1,
+      "name": "1er étage"
+    },
+    {
+      "floor": 2,
+      "name": "2ème étage"
+    },
+    {
+      "floor": 3,
+      "name": "3ème étage"
+    }
+  ]
+}

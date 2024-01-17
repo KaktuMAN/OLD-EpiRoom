@@ -8,26 +8,12 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       main: '#0c52a4',
     },
     secondary: {
       main: '#083871',
-    },
-    background: {
-      default: '#000000'
-    },
-    text: {
-      primary: '#ffffff',
-    },
-  },
-  components: {
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          fontSize: '1rem',
-        },
-      },
     },
   }
 });

@@ -1,3 +1,4 @@
 {
+  "ignorePatterns": ["**/caca.tsx"],
   "extends": "next/core-web-vitals"
 }

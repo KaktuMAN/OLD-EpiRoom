@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import { Room } from "@customTypes/room";
 import {Paper} from "@mui/material";
 
@@ -15,9 +15,10 @@ function formatTime(time: number): string {
 }
 
 const RoomInformations: FC<RoomInformationsProps> = ({room}) => {
+  const [currentActivity, setCurrentActivity] = useState(room.activities[0]);
   return (
     <Paper className={["occupied", "reserved", "free"][room.status]}>
-      {room.display_name}
+      {room.display_name}{room.activities[0] == undefined ? "" : ` - ${room.activities[0].title}`}
     </Paper>
   );
 };

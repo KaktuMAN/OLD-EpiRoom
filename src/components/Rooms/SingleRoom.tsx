@@ -46,7 +46,7 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, maxHeight}) => {
   });
   return (
     <div style={{height: maxHeight - 25}}>
-      <Paper variant={"outlined"} className={["occupied", "reserved", "free"][roomData.status]} style={{width: "250px", height: "100%"}}>
+      <Paper variant={"outlined"} style={{width: "250px", height: "100%", backgroundColor: ["#F0405B", "#EBCA43", "#55FF99"][roomData.status]}}>
       <div style={{textAlign: "center", color: "#000000"}}>
         {roomData.display_name} - {floors[roomData.floor]}
         {roomData.status < 2 ? (

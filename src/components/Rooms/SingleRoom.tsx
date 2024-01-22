@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
 import { Activity } from "@customTypes/activity";
-import {Paper, Slider} from "@mui/material";
+import {Slider} from "@mui/material";
 
 interface SingleRoomProps {
   roomData: Room;
@@ -46,8 +46,7 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, maxHeight}) => {
   });
   return (
     <div style={{height: maxHeight - 25}}>
-      <Paper variant={"outlined"} style={{width: "250px", height: "100%", backgroundColor: ["#F0405B", "#EBCA43", "#55FF99"][roomData.status]}}>
-      <div style={{textAlign: "center", color: "#000000"}}>
+      <div style={{width: "250px", height: "100%", textAlign: "center", color: "#000000"}} className={["occupied", "reserved", "free"][roomData.status]}>
         {roomData.display_name} - {floors[roomData.floor]}
         {roomData.status < 2 ? (
           <>
@@ -71,7 +70,6 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, maxHeight}) => {
           </>
         ) : null}
       </div>
-      </Paper>
     </div>
   );
 };

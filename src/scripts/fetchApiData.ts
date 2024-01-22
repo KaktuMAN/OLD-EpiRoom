@@ -1,6 +1,6 @@
 import { Activity } from "@customTypes/activity";
 import { Room } from "@customTypes/room"
-
+import { Town } from "@customTypes/town"
 /**
  * Store data from API response in room object
  * @param rooms
@@ -19,7 +19,7 @@ function storeDataMultipleRooms(rooms: Room[], activity: Activity, roomsNames: s
   })
 }
 
-export default function fetchApiData(roomsComp: Room[]): void {
+export default function fetchApiData(townData: Town): Promise<void> {
   const apiData = fetch(`https://lille-epirooms.epitest.eu/?date=${new Date().toISOString().slice(0, 10)}`)
     .then((response) => {
       if (response.ok)
@@ -30,7 +30,7 @@ export default function fetchApiData(roomsComp: Room[]): void {
       console.error(`API REQUEST FAILED: ${error}`)
     })
 
-  let newRooms = roomsComp
+  let newRooms = townData.rooms
 
   apiData.then((data: APIResponse[]) => {
     data.forEach((activityData: APIResponse) => {
@@ -83,8 +83,9 @@ export default function fetchApiData(roomsComp: Room[]): void {
         room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
       }
     })
-    roomsComp = newRooms
+    townData.rooms = newRooms
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)
   })
+  return apiData
 }

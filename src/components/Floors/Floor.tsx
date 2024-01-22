@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 import {Tooltip} from "@mui/material";
 import { Room } from "@customTypes/room";
 
@@ -14,10 +14,17 @@ const Floor: FC<FloorProps> = ({ rooms, town,  floor}) => {
       <svg style={{position: "relative", left: 0, top: 0, width: "100%", height: "100%"}}>
         {rooms.map((room: Room) => {
           if (room.floor !== floor) return null;
+          let occupancy = "free";
+          let roomName = room.intra_name.split('/').pop();
+          if (room.status === 0) {
+            occupancy = "occupied";
+          } else if (room.status === 1) {
+            occupancy = "reserved";
+          }
           return (
             <>
               <Tooltip title={room.display_name} arrow style={{backgroundColor: "white", color: "black"}}>
-                <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={["occupied", "reserved", "free"][room.status]} key={null}/>
+                <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#${roomName}`} className={occupancy} key={`floor${floor}${roomName}`}/>
               </Tooltip>
             </>
           )})}

@@ -1,29 +1,16 @@
 import {ReactElement, useEffect, useState} from "react";
 import FullPage from "@components/layout/FullPage";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
-import {Room} from "@customTypes/room";
 import fetchApiData from "@scripts/fetchApiData";
-import {Button, ButtonGroup, Stack} from "@mui/material";
+import {CircularProgress, Button, ButtonGroup, Stack} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
 import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
-
-interface Floor {
-  floor: number,
-  name: string,
-}
-
-interface Town {
-  name: string,
-  code: string,
-  floors: [Floor],
-  rooms: [Room],
-}
+import {Town, TypeFloor} from "@customTypes/town";
 
 interface FloorRenderProps {
   townData: Town
@@ -54,24 +41,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
+function formatTime(time: number): string {
+  return new Date(time).toLocaleString('fr-FR', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', second: '2-digit'});
+}
+
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
-  const [time, setTime] = useState("");
+  const [currentTime, setCurrentTime] = useState(0);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    fetchApiData(townData.rooms);
+    const fetchData = async () => {
+      await fetchApiData(townData);
+      setTimeout(() => setLoaded(true), 250);
+    };
+    fetchData();
     const updateStatus = setInterval(() => {
+      setCurrentTime(Date.now());
       townData.rooms.map((room) => {
         updateRoomsStatus(room);
       })
-      setTime(() => {
-        const date = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: '2-digit', month: 'long' });
-        const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      return `${date} ${time}`;
-      })
     }, 1000)
     const refreshData = setInterval(() => {
-      fetchApiData(townData.rooms);
+      fetchData();
     }, 1000 * 60 * 10)
     return () => {
       clearInterval(updateStatus);
@@ -79,13 +71,13 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
     };
   }, [townData]);
 
-  return (
+  return !loaded ? (<CircularProgress color={"error"}/>) : (
     <div style={{margin: "6px"}}>
       <Head>
-        <title>EpiRooms{townData ? ` - ${townData.name}` : ''}</title>
+        <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
-      {time}
-      {townData.floors.map((floor: Floor) => {
+      {currentTime ? formatTime(currentTime): ""}
+      {townData.floors.map((floor: TypeFloor) => {
         if (floor.floor == currentFloor) return;
         return (<Floor key={`sideFloor${floor.floor}`} rooms={townData.rooms} town={townData.code} floor={floor.floor}/>)
       })}

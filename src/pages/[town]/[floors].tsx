@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import {CircularProgress, Button, ButtonGroup, Stack} from "@mui/material";
+import {Button, ButtonGroup, Stack} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
@@ -48,22 +48,17 @@ function formatTime(time: number): string {
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchApiData(townData);
-      setTimeout(() => setLoaded(true), 250);
-    };
-    fetchData();
+    fetchApiData(townData);
     const updateStatus = setInterval(() => {
-      setCurrentTime(Date.now());
       townData.rooms.map((room) => {
         updateRoomsStatus(room);
       })
     }, 1000)
     const refreshData = setInterval(() => {
-      fetchData();
+      fetchApiData(townData);
     }, 1000 * 60 * 10)
     return () => {
       clearInterval(updateStatus);
@@ -71,12 +66,11 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
     };
   }, [townData]);
 
-  return !loaded ? (<CircularProgress color={"error"}/>) : (
+  return (
     <div style={{margin: "6px"}}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
-      {currentTime ? formatTime(currentTime): ""}
       {townData.floors.map((floor: TypeFloor) => {
         if (floor.floor == currentFloor) return;
         return (<Floor key={`sideFloor${floor.floor}`} rooms={townData.rooms} town={townData.code} floor={floor.floor}/>)

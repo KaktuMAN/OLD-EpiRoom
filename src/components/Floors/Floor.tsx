@@ -1,5 +1,4 @@
-import {FC} from "react";
-import {Tooltip} from "@mui/material";
+import {FC, useEffect} from "react";
 import { Room } from "@customTypes/room";
 
 interface FloorProps {
@@ -9,27 +8,24 @@ interface FloorProps {
 }
 
 const Floor: FC<FloorProps> = ({ rooms, town,  floor}) => {
+  useEffect(() => {
+    const embed = document.getElementById(`embedFloor${floor}`) as HTMLObjectElement;
+    embed.addEventListener("load", function() {
+      const svgDoc = embed.getSVGDocument();
+      if (!svgDoc) return
+      rooms.map((room) => {
+        const roomElement = svgDoc.getElementById(room.name);
+        if (roomElement === null) return
+        roomElement.setAttribute("class", ["occupied", "reserved", "free"][room.status]);
+        roomElement.addEventListener("click", () => {
+          console.log(room)
+        })
+      })
+    });
+  })
   return (
     <div style={{width: "100%", height: "100%"}}>
-      <svg style={{position: "relative", left: 0, top: 0, width: "100%", height: "100%"}}>
-        {rooms.map((room: Room) => {
-          if (room.floor !== floor) return null;
-          let occupancy = "free";
-          let roomName = room.intra_name.split('/').pop();
-          if (room.status === 0) {
-            occupancy = "occupied";
-          } else if (room.status === 1) {
-            occupancy = "reserved";
-          }
-          return (
-            <>
-              <Tooltip title={room.display_name} arrow style={{backgroundColor: "white", color: "black"}}>
-                <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#${roomName}`} className={occupancy} key={`floor${floor}${roomName}`}/>
-              </Tooltip>
-            </>
-          )})}
-        <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#floor`}/>
-      </svg>
+      <object data={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg`} width="300" height="300" id={`embedFloor${floor}`}/>
     </div>
   );
 };

@@ -1,15 +1,21 @@
 import {FC, useEffect, useState} from "react";
-import {Tooltip} from "@mui/material";
 import { Room } from "@customTypes/room";
+import {Town} from "@customTypes/town";
 
 interface FloorProps {
-  rooms: Room[];
-  town: string;
+  townData: Town;
   floor: number;
+  setOpen: (open: boolean) => void;
+  setDialogContent: (content: JSX.Element) => void;
 }
 
-const Floor: FC<FloorProps> = ({ rooms, town,  floor}) => {
+const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogContent}) => {
   const [scale, setScale] = useState([1, 1]);
+  const generateDialog = (room: Room) => {
+    return (
+      <>{room.display_name}</>
+    )
+  }
   useEffect(() => {
     const background = document.getElementById(`background_${floor}`);
     const svg = document.getElementById(`floorRender${floor}`);
@@ -23,18 +29,23 @@ const Floor: FC<FloorProps> = ({ rooms, town,  floor}) => {
   return (
     <div style={{width: "100%", height: "100%"}}>
       <svg id={`floorRender${floor}`}>
-        {rooms.map((room: Room) => {
+        {townData.rooms.map((room: Room) => {
           if (room.floor !== floor) return null;
           return (
             <>
-              <Tooltip title={room.display_name} arrow style={{backgroundColor: "white", color: "black"}}>
-                <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={["occupied", "reserved", "free"][room.status]} transform={`scale(${scale[0]}, ${scale[1]})`}/>
-              </Tooltip>
+              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`}
+                   className={["occupied", "reserved", "free"][room.status]}
+                   transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {
+                setOpen(true);
+                setDialogContent(generateDialog(room))
+              }}/>
             </>
           )
         })}
-        <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#floor`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
-        <use href={`/towns/${town}/svg/${floor}/Z${floor}-Floor.svg#background`} id={`background_${floor}`} style={{display: "none"}}/>
+        <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#floor`}
+             transform={`scale(${scale[0]}, ${scale[1]})`}/>
+        <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#background`} id={`background_${floor}`}
+             style={{display: "none"}}/>
       </svg>
     </div>
   );

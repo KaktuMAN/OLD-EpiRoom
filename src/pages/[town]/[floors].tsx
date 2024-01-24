@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import {Button, ButtonGroup, Stack} from "@mui/material";
+import {Button, ButtonGroup, Dialog, Stack} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
@@ -48,6 +48,8 @@ function formatTime(time: number): string {
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
+  const [open, setOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState(<></>);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
@@ -71,11 +73,14 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
+      <Dialog open={open} onClose={() => {setOpen(false);setDialogContent(<></>)}}>
+        {dialogContent}
+      </Dialog>
       {townData.floors.map((floor: TypeFloor) => {
         if (floor.floor == currentFloor) return;
         return (
           <div key={`sideFloor${floor.floor}`} style={{width: "250px"}}>
-            <Floor rooms={townData.rooms} town={townData.code} floor={floor.floor}/>
+            <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogContent={setDialogContent}/>
           </div>
         )
       })}

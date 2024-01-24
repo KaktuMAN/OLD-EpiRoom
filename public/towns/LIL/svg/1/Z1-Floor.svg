@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1255px" height="764px" viewBox="-0.5 -0.5 1255 764">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1255px" height="764px" viewBox="0 0 1290 764">
   <defs>
     <pattern patternUnits="userSpaceOnUse" width="11.5" height="11.5" x="0" y="0" patternTransform="rotate(45)" id="mx-pattern-hatch-1-636263-0">
       <line x1="0" y1="0" x2="0" y2="11.5" stroke="#636263" stroke-width="1.5"/>

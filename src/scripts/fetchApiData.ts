@@ -1,6 +1,7 @@
 import { Activity } from "@customTypes/activity";
 import { Room } from "@customTypes/room"
 import { Town } from "@customTypes/town"
+
 /**
  * Store data from API response in room object
  * @param rooms
@@ -19,6 +20,10 @@ function storeDataMultipleRooms(rooms: Room[], activity: Activity, roomsNames: s
   })
 }
 
+/**
+ * Fetch data from API and store it in townData object
+ * @param townData
+ */
 export default function fetchApiData(townData: Town) {
   const apiData = fetch(`https://lille-epirooms.epitest.eu/?date=${new Date().toISOString().slice(0, 10)}`)
     .then((response) => {

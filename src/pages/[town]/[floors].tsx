@@ -73,7 +73,11 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       </Head>
       {townData.floors.map((floor: TypeFloor) => {
         if (floor.floor == currentFloor) return;
-        return (<Floor key={`sideFloor${floor.floor}`} rooms={townData.rooms} town={townData.code} floor={floor.floor}/>)
+        return (
+          <div key={`sideFloor${floor.floor}`} style={{width: "250px"}}>
+            <Floor rooms={townData.rooms} town={townData.code} floor={floor.floor}/>
+          </div>
+        )
       })}
       <Stack direction={"row"} spacing={2}>
         <ButtonGroup orientation={"vertical"} variant={"contained"}>

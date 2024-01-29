@@ -4,13 +4,26 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import {Button, ButtonGroup, Dialog, Stack} from "@mui/material";
+import {
+  Avatar,
+  Button,
+  ButtonGroup,
+  Dialog,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Stack
+} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
 import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
 import {Town, TypeFloor} from "@customTypes/town";
+import {Room} from "@customTypes/room";
+import { AccessTime, PlayCircleFilled } from '@mui/icons-material';
 
 interface FloorRenderProps {
   townData: Town
@@ -49,7 +62,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [open, setOpen] = useState(false);
-  const [dialogContent, setDialogContent] = useState(<></>);
+  const [dialogRoom, setDialogRoom] = useState({} as Room);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
@@ -73,14 +86,32 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
-      <Dialog open={open} onClose={() => {setOpen(false);setDialogContent(<></>)}}>
-        {dialogContent}
+      <Dialog open={open} onClose={() => {setOpen(false);setDialogRoom({} as Room)}}>
+        {dialogRoom.status != undefined && (
+          <>
+          <DialogTitle>
+            {dialogRoom.display_name}
+          </DialogTitle>
+          <List sx={{ pt: 0 }}>
+            {dialogRoom.activities.map((activity) => (
+              <ListItem disableGutters key={activity.id}>
+                <ListItemAvatar>
+                  <Avatar sx={{ bgcolor: 'transparent' }}>
+                    {activity.active ? <PlayCircleFilled color={"success"}/> : <AccessTime color={"warning"}/> }
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={activity.title} secondary={`CACA`}/>
+              </ListItem>
+            ))}
+          </List>
+          </>
+        )}
       </Dialog>
       {townData.floors.map((floor: TypeFloor) => {
         if (floor.floor == currentFloor) return;
         return (
           <div key={`sideFloor${floor.floor}`} style={{width: "250px"}}>
-            <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogContent={setDialogContent}/>
+            <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
           </div>
         )
       })}

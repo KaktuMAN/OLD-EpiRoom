@@ -1,6 +1,7 @@
 import { Activity } from "@customTypes/activity";
 import { Room } from "@customTypes/room"
 import { Town } from "@customTypes/town"
+import { v3 } from "uuid"
 
 /**
  * Store data from API response in room object
@@ -42,7 +43,7 @@ export default function fetchApiData(townData: Town) {
       if (!activityData.room || !activityData.room.type || activityData.instance_location != "FR/LIL" ) return;
 
       let room = newRooms.find((room) => room.intra_name === activityData.room.code);
-      let activity: Activity = {title: "", start: new Date(), end: new Date()}
+      let activity: Activity = {title: "", start: new Date(), end: new Date(), id: "", active: false}
 
       if (activityData.id_calendar) {
         activity.title = activityData.title
@@ -55,6 +56,7 @@ export default function fetchApiData(townData: Town) {
         activity.start = new Date(activityData.start)
         activity.end = new Date(activityData.end)
       }
+      activity.id = v3(`${activity.title}${activity.start.getTime()}`, v3.URL)
 
       if (activity.end.getTime() < new Date().getTime()) {
         return;
@@ -86,6 +88,7 @@ export default function fetchApiData(townData: Town) {
       } else if (room) {
         room.activities.push(activity)
         room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
+        room.activities = room.activities.filter((activity, index, self) => index === self.findIndex((t) => (t.id === activity.id)))
       }
     })
     townData.rooms = newRooms

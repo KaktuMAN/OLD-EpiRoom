@@ -6,16 +6,11 @@ interface FloorProps {
   townData: Town;
   floor: number;
   setOpen: (open: boolean) => void;
-  setDialogContent: (content: JSX.Element) => void;
+  setDialogRoom: (room: Room) => void;
 }
 
-const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogContent}) => {
+const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
   const [scale, setScale] = useState([1, 1]);
-  const generateDialog = (room: Room) => {
-    return (
-      <>{room.display_name}</>
-    )
-  }
   useEffect(() => {
     const background = document.getElementById(`background_${floor}`);
     const svg = document.getElementById(`floorRender${floor}`);
@@ -37,7 +32,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogContent}) =
                    className={["occupied", "reserved", "free"][room.status]}
                    transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {
                 setOpen(true);
-                setDialogContent(generateDialog(room))
+                setDialogRoom(room)
               }}/>
             </>
           )

@@ -1,25 +1,19 @@
-.room {
-    --occupied-color: #FF6961;
-    --reserved-color: #f8d66d;
-    --free-color: #8cd47e;
-}
-
 .occupied {
-    background-color: var(--occupied-color);
-    stroke: var(--occupied-color);
-    fill: var(--occupied-color);
+    background-color: #FF6961;
+    stroke: #FF6961;
+    fill: #FF6961;
 }
 
 .reserved {
-    background-color: var(--reserved-color);
-    stroke: var(--reserved-color);
-    fill: var(--reserved-color);
+    background-color: #F8D66D;
+    stroke: #F8D66D;
+    fill: #F8D66D;
 }
 
 .free {
-    background-color: var(--free-color);
-    stroke: var(--free-color);
-    fill: var(--free-color);
+    background-color: #8CD47E;
+    stroke: #8CD47E;
+    fill: #8CD47E;
 }
 
 html, body, body > div:first-child, div#__next, div#__next > div {

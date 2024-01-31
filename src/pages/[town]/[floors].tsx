@@ -52,13 +52,19 @@ function formatTime(time: number): string {
 
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
+  const [width, setWidth] = useState(0);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [open, setOpen] = useState(false);
   const [dialogRoom, setDialogRoom] = useState({} as Room);
+  const mobile = width < 900;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
     fetchApiData(townData);
+    setWidth(window.innerWidth);
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
     const updateStatus = setInterval(() => {
       townData.rooms.map((room) => {
         updateRoomsStatus(room);
@@ -67,7 +73,9 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
     const refreshData = setInterval(() => {
       fetchApiData(townData);
     }, 1000 * 60 * 10)
+    window.addEventListener("resize", handleResize);
     return () => {
+      window.removeEventListener("resize", handleResize);
       clearInterval(updateStatus);
       clearInterval(refreshData);
     };
@@ -103,7 +111,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
         )}
       </Dialog>
       <Grid container spacing={2} sx={{width: "100%", height: "100%"}}>
-        <Grid item container xs={3} direction={"column"}>
+        <Grid item container xs={3} direction={"column"} style={{display: mobile ? "none" : ""}}>
           {townData.floors.map((floor: TypeFloor) => {
             if (floor.floor == currentFloor) return;
             return (
@@ -113,11 +121,11 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             )
           })}
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={9} style={{display: mobile ? "none" : ""}}>
           <Floor townData={townData} floor={currentFloor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
         </Grid>
         <Grid item xs={12}>
-          <Stack direction={"row"} spacing={2}>
+          <Stack direction={mobile ? "column" : "row"} spacing={2}>
             <ButtonGroup orientation={"vertical"} variant={"contained"}>
               {townData.floors.map((floor) => {
                 return (
@@ -127,7 +135,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
                 )
               })}
             </ButtonGroup>
-            <Stack direction="row" spacing={2} className={"scroll_container"}>
+            <Stack direction={mobile ? "column" : "row"} spacing={2} className={mobile ? "" : "scroll_container"}>
               {townData.rooms.map((room) => {
                 if (room.floor != currentFloor) return;
                 return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>

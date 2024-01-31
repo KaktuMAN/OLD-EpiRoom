@@ -57,7 +57,7 @@ const SingleRoom: FC<SingleRoomProps> = ({roomData, maxHeight}) => {
               <>
                 <div style={{whiteSpace: "nowrap", alignContent: "center", height: "30px"}}>
                   {activity.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                  <Slider min={0} max={100} value={100 - 100 / activityTime * remainingTime} style={{width: "155px", height: "15px", padding: "0", margin: "0 5px"}}/>
+                  <Slider min={0} max={100} value={100 - 100 / activityTime * remainingTime} style={{width: "155px", height: "15px", padding: "0", margin: "-80 5px"}}/>
                   {activity.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </div>
                 Encore {formatTime(Math.floor((activity.end.valueOf() - Date.now()) / 1000 / 60))}

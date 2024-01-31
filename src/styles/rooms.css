@@ -1,19 +1,25 @@
+.room {
+    --occupied-color: #FF6961;
+    --reserved-color: #f8d66d;
+    --free-color: #8cd47e;
+}
+
 .occupied {
-    background-color: #FF0000;
-    stroke: #FF0000;
-    fill: #FF0000;
+    background-color: var(--occupied-color);
+    stroke: var(--occupied-color);
+    fill: var(--occupied-color);
 }
 
 .reserved {
-    background-color: #FEE72E;
-    stroke: #FEE72E;
-    fill: #FEE72E;
+    background-color: var(--reserved-color);
+    stroke: var(--reserved-color);
+    fill: var(--reserved-color);
 }
 
 .free {
-    background-color: #00DD3B;
-    stroke: #00DD3B;
-    fill: #00DD3B;
+    background-color: var(--free-color);
+    stroke: var(--free-color);
+    fill: var(--free-color);
 }
 
 html, body, body > div:first-child, div#__next, div#__next > div {

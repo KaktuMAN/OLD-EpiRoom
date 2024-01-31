@@ -12,7 +12,7 @@ import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
 import {Town, TypeFloor} from "@customTypes/town";
 import {Room} from "@customTypes/room";
-import { AccessTime, BackHand } from '@mui/icons-material';
+import { AccessTime, Dangerous } from '@mui/icons-material';
 
 interface FloorRenderProps {
   townData: Town
@@ -78,7 +78,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
-      <Dialog open={open} onClose={() => {setOpen(false);setDialogRoom({} as Room)}}>
+      <Dialog open={open} onClose={() => {setOpen(false); setDialogRoom({} as Room)}}>
         {dialogRoom.status != undefined && (
           <>
           <DialogTitle>
@@ -89,7 +89,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
               <ListItem key={activity.id}>
                 <ListItemAvatar>
                   <Avatar sx={{ bgcolor: 'transparent', transform: 'scale(1.4)'}}>
-                    {activity.active ? <BackHand color={"error"}/> : <AccessTime color={"warning"}/> }
+                    {activity.active ? <Dangerous color={"error"}/> : <AccessTime color={"warning"}/> }
                   </Avatar>
                 </ListItemAvatar>
                 {activity.active ?
@@ -98,7 +98,6 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
                 }
               </ListItem>
             ))}
-
           </List>
           </>
         )}
@@ -131,7 +130,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             <Stack direction="row" spacing={2} className={"scroll_container"}>
               {townData.rooms.map((room) => {
                 if (room.floor != currentFloor) return;
-                return <RoomInformations room={room} key={room.intra_name}/>
+                return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
               })}
             </Stack>
           </Stack>

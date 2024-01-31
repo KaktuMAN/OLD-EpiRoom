@@ -29,8 +29,8 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
           return (
             <>
               <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`}
-                   className={["occupied", "reserved", "free"][room.status]}
-                   transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {
+                className={`room ${["occupied", "reserved", "free"][room.status]}`}
+                transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {
                 setOpen(true);
                 setDialogRoom(room)
               }}/>

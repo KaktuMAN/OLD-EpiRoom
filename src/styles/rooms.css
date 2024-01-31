@@ -1,17 +1,17 @@
 .occupied {
-    background-color: #FF6961;
+    background: #FF6961;
     stroke: #FF6961;
     fill: #FF6961;
 }
 
 .reserved {
-    background-color: #F8D66D;
+    background: #F8D66D;
     stroke: #F8D66D;
     fill: #F8D66D;
 }
 
 .free {
-    background-color: #8CD47E;
+    background: #8CD47E;
     stroke: #8CD47E;
     fill: #8CD47E;
 }

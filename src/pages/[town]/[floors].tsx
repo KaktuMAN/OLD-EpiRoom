@@ -4,18 +4,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import {
-  Avatar,
-  Button,
-  ButtonGroup,
-  Dialog,
-  DialogTitle,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Stack
-} from "@mui/material";
+import {Avatar, Button, ButtonGroup, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText, Stack, Grid} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
@@ -23,7 +12,7 @@ import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
 import {Town, TypeFloor} from "@customTypes/town";
 import {Room} from "@customTypes/room";
-import { AccessTime, PlayCircleFilled } from '@mui/icons-material';
+import { AccessTime, BackHand } from '@mui/icons-material';
 
 interface FloorRenderProps {
   townData: Town
@@ -55,7 +44,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 function formatTime(time: number): string {
-  return new Date(time).toLocaleString('fr-FR', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', second: '2-digit'});
+  const date = new Date(time);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours < 10 ? "0" + hours : hours}h${minutes < 10 ? "0" + minutes : minutes}`
 }
 
 export default function FloorRender ({ townData }: FloorRenderProps) {
@@ -82,7 +74,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   }, [townData]);
 
   return (
-    <div style={{margin: "6px"}}>
+    <>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
@@ -92,47 +84,60 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           <DialogTitle>
             {dialogRoom.display_name}
           </DialogTitle>
-          <List sx={{ pt: 0 }}>
+          <List sx={{ pt: 0}}>
             {dialogRoom.activities.map((activity) => (
-              <ListItem disableGutters key={activity.id}>
+              <ListItem key={activity.id}>
                 <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: 'transparent' }}>
-                    {activity.active ? <PlayCircleFilled color={"success"}/> : <AccessTime color={"warning"}/> }
+                  <Avatar sx={{ bgcolor: 'transparent', transform: 'scale(1.4)'}}>
+                    {activity.active ? <BackHand color={"error"}/> : <AccessTime color={"warning"}/> }
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={activity.title} secondary={`CACA`}/>
+                {activity.active ?
+                  <ListItemText primary={activity.title} secondary={`Termine à ${formatTime(activity.end.getTime())}`}/> :
+                  <ListItemText primary={activity.title} secondary={`Démarre à ${formatTime(activity.start.getTime())}`}/>
+                }
               </ListItem>
             ))}
+
           </List>
           </>
         )}
       </Dialog>
-      {townData.floors.map((floor: TypeFloor) => {
-        if (floor.floor == currentFloor) return;
-        return (
-          <div key={`sideFloor${floor.floor}`} style={{width: "250px"}}>
-            <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
-          </div>
-        )
-      })}
-      <Stack direction={"row"} spacing={2}>
-        <ButtonGroup orientation={"vertical"} variant={"contained"}>
-          {townData.floors.map((floor) => {
+      <Grid container spacing={2} sx={{width: "100%", height: "100%"}}>
+        <Grid item container xs={3} direction={"column"}>
+          {townData.floors.map((floor: TypeFloor) => {
+            if (floor.floor == currentFloor) return;
             return (
-              <Button key={null} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
-                {floor.name}
-              </Button>
+              <Grid key={`sideFloor${floor.floor}`} item>
+                <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+              </Grid>
             )
           })}
-        </ButtonGroup>
-        <Stack direction="row" spacing={2} className={"scroll_container"}>
-          {townData.rooms.map((room) => {
-            if (room.floor != currentFloor) return;
-            return <RoomInformations room={room} key={room.intra_name}/>
-          })}
-        </Stack>
-      </Stack>
-    </div>
+        </Grid>
+        <Grid item xs={9}>
+          <Floor townData={townData} floor={currentFloor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+        </Grid>
+        <Grid item xs={12}>
+          <Stack direction={"row"} spacing={2}>
+            <ButtonGroup orientation={"vertical"} variant={"contained"}>
+              {townData.floors.map((floor) => {
+                return (
+                  <Button key={null} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
+                    {floor.name}
+                  </Button>
+                )
+              })}
+            </ButtonGroup>
+            <Stack direction="row" spacing={2} className={"scroll_container"}>
+              {townData.rooms.map((room) => {
+                if (room.floor != currentFloor) return;
+                return <RoomInformations room={room} key={room.intra_name}/>
+              })}
+            </Stack>
+          </Stack>
+        </Grid>
+      </Grid>
+    </>
   )
 }
 

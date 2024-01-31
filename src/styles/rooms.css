@@ -1,17 +1,21 @@
 .occupied {
-    background-color: #F0405B;
-    stroke: #F0405B;
-    fill: #F0405B;
+    background-color: #FF0000;
+    stroke: #FF0000;
+    fill: #FF0000;
 }
 
 .reserved {
-    background-color: #EBCA43;
-    stroke: #EBCA43;
-    fill: #EBCA43;
+    background-color: #FEE72E;
+    stroke: #FEE72E;
+    fill: #FEE72E;
 }
 
 .free {
-    background-color: #55FF99;
-    stroke: #55FF99;
-    fill: #55FF99;
+    background-color: #00DD3B;
+    stroke: #00DD3B;
+    fill: #00DD3B;
+}
+
+html, body, body > div:first-child, div#__next, div#__next > div {
+    height: 100%;
 }

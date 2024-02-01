@@ -29,19 +29,14 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
     };
   }, [floor]);
   return (
-    <div style={{width: "100%", height: "100%"}}>
+    <>
       <svg id={`floorRender${floor}`}>
         {townData.rooms.map((room: Room) => {
           if (room.floor !== floor) return null;
           return (
-            <>
-              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`}
-                className={["occupied", "reserved", "free"][room.status]}
-                transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {
-                setOpen(true);
-                setDialogRoom(room)
-              }}/>
-            </>
+            <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`}
+              className={["occupied", "reserved", "free"][room.status]} key={`${room.intra_name}`}
+              transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {setOpen(true); setDialogRoom(room)}}/>
           )
         })}
         <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#floor`}
@@ -49,7 +44,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
         <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#background`} id={`background_${floor}`}
              style={{display: "none"}}/>
       </svg>
-    </div>
+    </>
   );
 };
 

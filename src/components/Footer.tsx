@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const Footer: FC = (props) => {
+const Footer: FC = ({}) => {
   return (
     <></>
   );

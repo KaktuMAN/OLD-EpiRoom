@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ReactElement, ReactNode} from "react";
 import "@styles/scroller.css"
 import "@styles/rooms.css"
+import Head from "next/head";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -19,11 +20,16 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <Head>
+        <link rel="manifest" href="/manifest.json"/>
+      </Head>
+      <ThemeProvider theme={theme}>
       <CssBaseline />
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
-  )
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </>
+)
 }
 
 export default MyApp

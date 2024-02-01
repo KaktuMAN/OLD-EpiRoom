@@ -52,16 +52,16 @@ function formatTime(time: number): string {
 
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(601);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [open, setOpen] = useState(false);
   const [dialogRoom, setDialogRoom] = useState({} as Room);
-  const mobile = width < 900;
+  const mobile = width < 600;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
-    fetchApiData(townData);
     setWidth(window.innerWidth);
+    fetchApiData(townData);
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -82,7 +82,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   }, [townData]);
 
   return (
-    <>
+    <main style={{width: "100%", height: "100%"}}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
@@ -121,7 +121,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             )
           })}
         </Grid>
-        <Grid item xs={9} style={{display: mobile ? "none" : ""}}>
+        <Grid item xs={9} style={{display: mobile ? "none" : ""}} sx={{height: "80%"}}>
           <Floor townData={townData} floor={currentFloor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
         </Grid>
         <Grid item xs={12}>
@@ -144,7 +144,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           </Stack>
         </Grid>
       </Grid>
-    </>
+    </main>
   )
 }
 

@@ -28,7 +28,7 @@ const RoomInformations: FC<RoomInformationsProps> = ({room, setOpen, setDialogRo
               {formatTime(room.activities[0].start.getTime())} - {formatTime(room.activities[0].end.getTime())}
             </Typography>
             <Typography sx={{ mb: 1.5 }}>
-              {room.activities[0].title}
+              {room.activities[0].title.slice(0, 20) + (room.activities[0].title.length > 20 ? "..." : "")}
             </Typography>
           </>
         ) : null}

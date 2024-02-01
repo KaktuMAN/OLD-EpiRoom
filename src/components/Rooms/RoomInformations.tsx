@@ -17,7 +17,7 @@ function formatTime(time: number): string {
 
 const RoomInformations: FC<RoomInformationsProps> = ({room, setOpen, setDialogRoom}) => {
   return (
-    <Card className={["occupied", "reserved", "free"][room.status]} sx={{ minWidth: 200, color: "black"}} onClick={() => {setOpen(true); setDialogRoom(room)}}>
+    <Card className={["occupied", "reserved", "free"][room.status]} sx={{ minWidth: 200, color: "black", backgroundColor: ""}} onClick={() => {setOpen(true); setDialogRoom(room)}}>
       <CardContent>
         <Typography variant="h5" component="div" sx={{textAlign: "center"}}>
           {room.display_name}

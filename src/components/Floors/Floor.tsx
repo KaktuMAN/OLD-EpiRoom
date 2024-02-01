@@ -23,6 +23,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
       setScale([svgWidth / width, svgHeight / height]);
     }
     updateScale();
+    setTimeout(updateScale, 1000);
     window.addEventListener("resize", updateScale);
     return () => {
       window.removeEventListener("resize", updateScale);

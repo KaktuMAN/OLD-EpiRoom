@@ -1,0 +1,17 @@
+{
+  "name": "EpiRoom",
+  "short_name": "EP",
+  "icons": [
+    {
+      "src": "/public/images/png/EPITECH_BLUE.png",
+      "sizes": "2133x516",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/LIL/0",
+  "display": "standalone",
+  "orientation": "portrait"
+}

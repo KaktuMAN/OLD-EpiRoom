@@ -1,19 +1,19 @@
 .occupied {
     stroke: #FF6961;
     fill: #FF6961;
-    background-color: #FF6961;
+    background-color: #FF6961 !important;
 }
 
 .reserved {
     stroke: #F8D66D;
     fill: #F8D66D;
-    background-color: #F8D66D;
+    background-color: #F8D66D !important;
 }
 
 .free {
     stroke: #8CD47E;
     fill: #8CD47E;
-    background-color: #8CD47E;
+    background-color: #8CD47E !important;
 }
 
 html, body, body > div:first-child, div#__next, div#__next > div {

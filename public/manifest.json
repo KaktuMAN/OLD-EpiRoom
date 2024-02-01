@@ -14,5 +14,23 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Rez De Chaussée",
+      "url": "/LIL/0"
+    },
+    {
+      "name": "1er étage",
+      "url": "/LIL/1"
+    },
+    {
+      "name": "2ème étage",
+      "url": "/LIL/2"
+    },
+    {
+      "name": "3ème étage",
+      "url": "/LIL/3"
+    }
   ]
 }

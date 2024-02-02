@@ -1,6 +1,7 @@
 {
   "name": "Lille",
   "code": "LIL",
+  "mainFloor": 0,
   "floors": [
     {
       "floor": 0,

@@ -8,6 +8,7 @@ export interface TypeFloor {
 export interface Town {
   name: string,
   code: string,
+  mainFloor: number,
   floors: [TypeFloor],
   rooms: [Room],
 }

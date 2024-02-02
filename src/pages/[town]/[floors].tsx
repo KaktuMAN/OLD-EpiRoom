@@ -110,8 +110,27 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           </>
         )}
       </Dialog>
+      {mobile ? (
+      <Stack direction={"column"} spacing={2}>
+        <ButtonGroup orientation={"vertical"} variant={"contained"}>
+          {townData.floors.map((floor) => {
+            return (
+              <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
+                {floor.name}
+              </Button>
+            )
+          })}
+        </ButtonGroup>
+        <Stack direction={"column"} spacing={2}>
+          {townData.rooms.map((room) => {
+            if (room.floor != currentFloor) return;
+            return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+          })}
+        </Stack>
+      </Stack>
+      ) : (
       <Grid container spacing={2} sx={{width: "100%", height: "100%"}}>
-        <Grid item xs={3} style={{display: mobile ? "none" : ""}}>
+        <Grid item xs={3}>
           {townData.floors.map((floor: TypeFloor) => {
             if (floor.floor == currentFloor) return;
             return (
@@ -121,21 +140,21 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             )
           })}
         </Grid>
-        <Grid item xs={9} style={{display: mobile ? "none" : ""}} sx={{height: "80%"}}>
+        <Grid item xs={9} sx={{height: "80%"}}>
           <Floor townData={townData} floor={currentFloor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
         </Grid>
         <Grid item xs={12}>
-          <Stack direction={mobile ? "column" : "row"} spacing={2}>
+          <Stack direction={"row"} spacing={2}>
             <ButtonGroup orientation={"vertical"} variant={"contained"}>
               {townData.floors.map((floor) => {
                 return (
-                  <Button key={null} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
+                  <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
                     {floor.name}
                   </Button>
                 )
               })}
             </ButtonGroup>
-            <Stack direction={mobile ? "column" : "row"} spacing={2} className={mobile ? "" : "scroll_container"}>
+            <Stack direction={"row"} spacing={2} className={"scroll_container"}>
               {townData.rooms.map((room) => {
                 if (room.floor != currentFloor) return;
                 return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
@@ -144,6 +163,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           </Stack>
         </Grid>
       </Grid>
+      )}
     </main>
   )
 }

@@ -20,10 +20,11 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
       background.style.display = "block";
       const {width, height} = background.getBoundingClientRect();
       background.style.display = "none";
-      setScale([svgWidth / width, svgHeight / height]);
+      if (isNaN(svgWidth / width) || isNaN(svgHeight / height)) setTimeout(updateScale, 250);
+      else setScale([svgWidth / width, svgHeight / height]);
     }
     updateScale();
-    setTimeout(updateScale, 1000);
+    setTimeout(updateScale, 250);
     window.addEventListener("resize", updateScale);
     return () => {
       window.removeEventListener("resize", updateScale);

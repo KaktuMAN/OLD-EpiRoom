@@ -24,8 +24,9 @@ function storeDataMultipleRooms(rooms: Room[], activity: Activity, roomsNames: s
 /**
  * Fetch data from API and store it in townData object
  * @param townData
+ * @param setLoading
  */
-export default function fetchApiData(townData: Town) {
+export default function fetchApiData(townData: Town, setLoading: (loading: boolean) => void): void {
   const apiData = fetch(`https://lille-epirooms.epitest.eu/?date=${new Date().toISOString().slice(0, 10)}`)
     .then((response) => {
       if (response.ok)
@@ -92,7 +93,9 @@ export default function fetchApiData(townData: Town) {
       }
     })
     townData.rooms = newRooms
+    setLoading(false)
   }).catch((error) => {
     console.error(`API FETCH FAILED: ${error}`)
+    setLoading(false)
   })
 }

@@ -16,6 +16,12 @@
     background-color: #8CD47E !important;
 }
 
+.mobile {
+    overflow: auto;
+    padding-bottom: 2%;
+}
+
 html, body, body > div:first-child, div#__next, div#__next > div {
     height: 100%;
+    overflow: hidden;
 }

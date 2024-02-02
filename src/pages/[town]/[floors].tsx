@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import {Avatar, Button, ButtonGroup, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText, Stack, Grid} from "@mui/material";
+import { Avatar, Button, ButtonGroup, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText, Stack, Grid, CircularProgress } from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
@@ -56,12 +56,13 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [open, setOpen] = useState(false);
   const [dialogRoom, setDialogRoom] = useState({} as Room);
+  const [loading, setLoading] = useState(true);
   const mobile = width < 750;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
     setWidth(window.innerWidth);
-    fetchApiData(townData);
+    fetchApiData(townData, setLoading);
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -71,7 +72,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       })
     }, 1000)
     const refreshData = setInterval(() => {
-      fetchApiData(townData);
+      fetchApiData(townData, setLoading);
     }, 1000 * 60 * 10)
     window.addEventListener("resize", handleResize);
     return () => {
@@ -81,8 +82,10 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
     };
   }, [townData]);
 
+  if (loading)
+    return (<CircularProgress sx={{position: "absolute", top: "50%", left: "50%"}}/>)
   return (
-    <main style={{width: "100%", height: "100%"}}>
+    <main style={{width: "100%", height: "100%"}} className={mobile ? "mobile" : ""}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>

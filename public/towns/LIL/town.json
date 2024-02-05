@@ -9,15 +9,15 @@
     },
     {
       "floor": 1,
-      "name": "1er étage"
+      "name": "1er"
     },
     {
       "floor": 2,
-      "name": "2ème étage"
+      "name": "2ème"
     },
     {
       "floor": 3,
-      "name": "3ème étage"
+      "name": "3ème"
     }
   ],
   "rooms":[

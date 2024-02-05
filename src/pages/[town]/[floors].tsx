@@ -83,7 +83,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   }, [townData]);
 
   if (loading)
-    return (<CircularProgress sx={{position: "absolute", top: "50%", left: "50%"}}/>)
+    return (<CircularProgress sx={{display: 'flex', justifyContent: 'center'}}/>)
   return (
     <main style={{width: "100%", height: "100%"}} className={mobile ? "mobile" : ""}>
       <Head>
@@ -137,7 +137,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           {townData.floors.map((floor: TypeFloor) => {
             if (floor.floor == currentFloor) return;
             return (
-              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}}>
+              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
                 <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
               </div>
             )

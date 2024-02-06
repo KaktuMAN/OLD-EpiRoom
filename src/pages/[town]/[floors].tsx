@@ -160,6 +160,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             <Stack direction={"row"} spacing={2} className={"scroll_container"}>
               {townData.rooms.map((room) => {
                 if (room.floor != currentFloor) return;
+                if (room.no_status === true) return;
                 return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
               })}
             </Stack>

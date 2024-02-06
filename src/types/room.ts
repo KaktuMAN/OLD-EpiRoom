@@ -7,6 +7,7 @@ export interface Room {
   display_name: string,
   seats: number,
   floor: number,
+  no_status?: boolean,
   activities: Activity[],
   loaded: boolean,
   status: number,

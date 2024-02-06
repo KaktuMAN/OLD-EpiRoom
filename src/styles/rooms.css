@@ -16,6 +16,16 @@
     background-color: #8CD47E !important;
 }
 
+.nostatus {
+    stroke: #2C2C2C;
+    fill: #2C2C2C;
+    background-color: #2C2C2C !important;
+}
+
+.nostatus_text {
+    fill: #CACACA;
+}
+
 .mobile {
     overflow: auto;
     padding-bottom: 2%;

@@ -35,6 +35,7 @@
       "display_name":"Elliot Alderson",
       "seats": 4,
       "floor": 0,
+      "no_status": true,
       "activities": []
     },
     {
@@ -75,6 +76,7 @@
       "display_name":"Le Continental",
       "seats": 5,
       "floor": 1,
+      "no_status": true,
       "activities": []
     },
     {

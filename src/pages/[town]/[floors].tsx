@@ -50,6 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     if (floorParam === floor.floor)
       floorFound = true
   })
+  townData.rooms.map((room) => room.activities = [])
   if (!floorFound)
     return {notFound: true}
   return {

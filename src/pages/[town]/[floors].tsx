@@ -4,7 +4,21 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
-import { Avatar, Button, ButtonGroup, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText, Stack, Grid, CircularProgress } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  ButtonGroup,
+  Dialog,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Stack,
+  Grid,
+  CircularProgress,
+  Box
+} from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
 import * as path from "path";
@@ -83,7 +97,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   }, [townData]);
 
   if (loading)
-    return (<CircularProgress sx={{display: 'flex', justifyContent: 'center'}}/>)
+    return (<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box>) // Align the spinner in the middle of the page
   return (
     <main style={{width: "100%", height: "100%"}} className={mobile ? "mobile" : ""}>
       <Head>
@@ -127,6 +141,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
         <Stack direction={"column"} spacing={2}>
           {townData.rooms.map((room) => {
             if (room.floor != currentFloor) return;
+            if (room.no_status === true) return;
             return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
           })}
         </Stack>

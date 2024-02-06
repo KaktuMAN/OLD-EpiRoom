@@ -45,6 +45,37 @@
       <g id="O-12-Arrakis">
         <rect x="4" y="376" width="95" height="182.48"/>
       </g>
+      <g id="S-11-Microtech-Text">
+        <text x="105" y="225" font-family="Helvetica" font-size="16px" text-anchor="middle">Microtech</text>
+      </g>
+      <g id="S-12-Pandora-Text">
+        <text x="205" y="690" font-family="Helvetica" font-size="16px" text-anchor="middle">Pandora</text>
+      </g>
+      <g id="S-14-Poudlard-Text">
+        <text x="1045" y="260" font-family="Helvetica" font-size="16px" text-anchor="middle">Poudlard</text>
+      </g>
+      <g id="B-11-Gallifrey-Text">
+        <text x="495" y="690" font-family="Helvetica" font-size="16px" text-anchor="middle">Gallifrey</text>
+      </g>
+      <g id="B-12-Le-Continental-Text">
+        <text x="630" y="678" font-family="Helvetica" font-size="16px" text-anchor="middle">Le</text>
+        <text x="630" y="702" font-family="Helvetica" font-size="16px" text-anchor="middle">Continental</text>
+      </g>
+      <g id="B-13-Kaer-Morhen-Text">
+        <text x="765" y="700" font-family="Helvetica" font-size="16px" text-anchor="middle">Kaer Morhen</text>
+      </g>
+      <g id="B-14-La-Matrice-Text">
+        <text x="1160" y="545" font-family="Helvetica" font-size="16px" text-anchor="middle">La Matrice</text>
+      </g>
+      <g id="B-15-Krikkit-Text">
+        <text x="1145" y="440" font-family="Helvetica" font-size="16px" text-anchor="middle">Krikkit</text>
+      </g>
+      <g id="O-11-Kanojedo-Text">
+        <text x="310" y="360" font-family="Helvetica" font-size="16px" text-anchor="middle">Kanojedo</text>
+      </g>
+      <g id="O-12-Arrakis-Text">
+        <text x="50" y="470" font-family="Helvetica" font-size="16px" text-anchor="middle">Arrakis</text>
+      </g>
     </g>
     <g id="floor">
       <rect x="685" y="614" width="52" height="58.48" fill="#706c6e"/>
@@ -137,17 +168,6 @@
       <svg x="873.73" y="259.04" height="44" width="44" xmlns="http://www.w3.org/2000/svg">
         <path d="M26,28.36H6v-0.72h20V28.36z M19,26.36h-6c-2.404,0-4.36-1.956-4.36-4.36v-8c0-0.199,0.161-0.36,0.36-0.36h14c0.199,0,0.36,0.161,0.36,0.36v1.64H25c1.302,0,2.36,1.059,2.36,2.36v2c0,1.302-1.059,2.36-2.36,2.36h-1.654C23.162,24.597,21.283,26.36,19,26.36z M9.36,14.36V22c0,2.007,1.633,3.64,3.64,3.64h6c2.007,0,3.64-1.633,3.64-3.64v-7.64C22.64,14.36,9.36,14.36,9.36,14.36z M23.36,21.64H25c0.904,0,1.64-0.735,1.64-1.64v-2c0-0.904-0.735-1.64-1.64-1.64h-1.64V21.64zM20.36,12h-0.72v-1.283c0-0.525,0.124-1.051,0.358-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.234-0.469-0.358-0.995-0.358-1.52V5h0.721v0.283c0,0.414,0.098,0.829,0.282,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.369-0.282,0.784-0.282,1.198L20.36,12L20.36,12z M12.36,12h-0.72v-1.283c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V5h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.476,0.952,0.476,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V12z M16.36,11h-0.72V9.717c0-0.525,0.124-1.05,0.359-1.52c0.375-0.75,0.375-1.645,0-2.395c-0.235-0.47-0.359-0.995-0.359-1.52V4h0.72v0.283c0,0.414,0.098,0.828,0.283,1.198c0.477,0.952,0.477,2.087,0,3.039c-0.185,0.37-0.283,0.784-0.283,1.198V11z" fill="#FFFFFF" transform="scale(1.37,1.37)"/>
       </svg>
-      <text x="105" y="225" font-family="Helvetica" font-size="16px" text-anchor="middle">Microtech</text>
-      <text x="310" y="360" font-family="Helvetica" font-size="16px" text-anchor="middle">Kanojedo</text>
-      <text x="50" y="470" font-family="Helvetica" font-size="16px" text-anchor="middle">Arrakis</text>
-      <text x="205" y="690" font-family="Helvetica" font-size="16px" text-anchor="middle">Pandora</text>
-      <text x="495" y="690" font-family="Helvetica" font-size="16px" text-anchor="middle">Gallifrey</text>
-      <text x="630" y="678" font-family="Helvetica" font-size="16px" text-anchor="middle">Le</text>
-      <text x="630" y="702" font-family="Helvetica" font-size="16px" text-anchor="middle">Continental</text>
-      <text x="765" y="700" font-family="Helvetica" font-size="16px" text-anchor="middle">Kaer Morhen</text>
-      <text x="1160" y="545" font-family="Helvetica" font-size="16px" text-anchor="middle">La Matrice</text>
-      <text x="1145" y="440" font-family="Helvetica" font-size="16px" text-anchor="middle">Krikkit</text>
-      <text x="1045" y="260" font-family="Helvetica" font-size="16px" text-anchor="middle">Poudlard</text>
     </g>
   </g>
 </svg>

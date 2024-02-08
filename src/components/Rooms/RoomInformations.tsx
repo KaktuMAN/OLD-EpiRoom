@@ -1,28 +1,22 @@
-import {FC} from "react";
+import {FC, ReactElement} from "react";
 import { Room } from "@customTypes/room";
-import {Card, CardContent, Typography} from "@mui/material";
+import { Card, CardContent, Typography} from "@mui/material";
+import {formatTime, generateRoomContent} from "@scripts/dialogGenerator";
 
 interface RoomInformationsProps {
   room: Room;
-  setOpen: (open: boolean) => void;
-  setDialogRoom: (room: Room) => void;
+  setDialogOpen: (open: boolean) => void;
+  setDialogContent: (content: ReactElement) => void;
 }
 
-function formatTime(time: number): string {
-  const date = new Date(time);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  return `${hours < 10 ? "0" + hours : hours}h${minutes < 10 ? "0" + minutes : minutes}`
-}
-
-const RoomInformations: FC<RoomInformationsProps> = ({room, setOpen, setDialogRoom}) => {
+const RoomInformations: FC<RoomInformationsProps> = ({room, setDialogOpen, setDialogContent}) => {
   return (
-    <Card className={["occupied", "reserved", "free"][room.status]} sx={{ minWidth: 200, color: "black"}} onClick={() => {setOpen(true); setDialogRoom(room)}}>
+    <Card className={["occupied", "reserved", "free"][room.status]} sx={{ minWidth: 200, color: "black"}} onClick={() => {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}>
       <CardContent>
         <Typography variant="h5" component="div" sx={{textAlign: "center"}}>
           {room.display_name}
         </Typography>
-        {room.activities[0] != undefined && room.status != 2 ? (
+        {room.activities[0] != undefined ? (
           <>
             <Typography sx={{textAlign: "center"}}>
               {formatTime(room.activities[0].start.getTime())} - {formatTime(room.activities[0].end.getTime())}

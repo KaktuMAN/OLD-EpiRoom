@@ -5,19 +5,17 @@ import Head from "next/head";
 import Floor from "@components/Floors/Floor";
 import fetchApiData from "@scripts/fetchApiData";
 import {
-  Avatar,
   Button,
   ButtonGroup,
   Dialog,
-  DialogTitle,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
   Stack,
   Grid,
   CircularProgress,
-  Box, Alert, Snackbar
+  Box,
+  Alert,
+  Snackbar,
+  Fab,
+  Typography
 } from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
@@ -25,8 +23,8 @@ import * as path from "path";
 import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
 import {Town, TypeFloor} from "@customTypes/town";
-import {Room} from "@customTypes/room";
-import { AccessTime, Dangerous } from '@mui/icons-material';
+import { QuestionMark } from '@mui/icons-material';
+import {generateHelpContent} from "@scripts/dialogGenerator";
 
 interface FloorRenderProps {
   townData: Town
@@ -58,21 +56,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-function formatTime(time: number): string {
-  const date = new Date(time);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  return `${hours < 10 ? "0" + hours : hours}h${minutes < 10 ? "0" + minutes : minutes}`
-}
-
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const [width, setWidth] = useState(750);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
-  const [open, setOpen] = useState(false);
-  const [dialogRoom, setDialogRoom] = useState({} as Room);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState(<></>);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
+  const [time, setTime] = useState(new Date());
   const mobile = width < 750;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
@@ -83,6 +75,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       setWidth(window.innerWidth);
     };
     const updateStatus = setInterval(() => {
+      setTime(new Date());
       townData.rooms.map((room) => {
         updateRoomsStatus(room);
       })
@@ -99,7 +92,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   }, [townData, error]);
 
   if (loading)
-    return (<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box>) // Align the spinner in the middle of the page
+    return (<><Head><title>EpiRooms</title></Head><Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box></>)
   return (
     <main style={{width: "100%", height: "100%"}} className={mobile ? "mobile" : ""}>
       <Head>
@@ -110,29 +103,8 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           Impossible de communiquer avec l&apos;intranet, les données affichées peuvent être obsolètes.
         </Alert>
       </Snackbar>
-      <Dialog open={open} onClose={() => {setOpen(false); setDialogRoom({} as Room)}}>
-        {dialogRoom.status != undefined && (
-          <>
-          <DialogTitle>
-            {dialogRoom.display_name}
-          </DialogTitle>
-          <List sx={{ pt: 0}}>
-            {dialogRoom.activities.map((activity) => (
-              <ListItem key={activity.id}>
-                <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: 'transparent', transform: 'scale(1.4)'}}>
-                    {activity.active ? <Dangerous color={"error"}/> : <AccessTime color={"warning"}/> }
-                  </Avatar>
-                </ListItemAvatar>
-                {activity.active ?
-                  <ListItemText primary={activity.title} secondary={`Termine à ${formatTime(activity.end.getTime())}`}/> :
-                  <ListItemText primary={activity.title} secondary={`Démarre à ${formatTime(activity.start.getTime())}`}/>
-                }
-              </ListItem>
-            ))}
-          </List>
-          </>
-        )}
+      <Dialog open={dialogOpen} onClose={() => {setDialogOpen(false); setDialogContent(<></>)}}>
+        {dialogContent}
       </Dialog>
       {mobile ? (
       <Stack direction={"column"} spacing={2}>
@@ -149,7 +121,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           {townData.rooms.map((room) => {
             if (room.floor != currentFloor) return;
             if (room.no_status === true) return;
-            return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+            return <RoomInformations room={room} key={room.intra_name} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent}/>
           })}
         </Stack>
       </Stack>
@@ -160,15 +132,15 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             if (floor.floor == currentFloor) return;
             return (
               <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
-                <Floor townData={townData} floor={floor.floor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+                <Floor townData={townData} floor={floor.floor} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent} sideDisplay={true}/>
               </div>
             )
           })}
         </Grid>
         <Grid item xs={9} sx={{height: "80%"}}>
-          <Floor townData={townData} floor={currentFloor} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+          <Floor townData={townData} floor={currentFloor} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent} sideDisplay={false}/>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={11}>
           <Stack direction={"row"} spacing={2}>
             <ButtonGroup orientation={"vertical"} variant={"contained"}>
               {townData.floors.map((floor) => {
@@ -183,10 +155,21 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
               {townData.rooms.map((room) => {
                 if (room.floor != currentFloor) return;
                 if (room.no_status === true) return;
-                return <RoomInformations room={room} key={room.intra_name} setOpen={setOpen} setDialogRoom={setDialogRoom}/>
+                return <RoomInformations room={room} key={room.intra_name} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent}/>
               })}
             </Stack>
           </Stack>
+        </Grid>
+        <Grid item xs={1} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <Typography variant={"h5"}>
+            {time.toLocaleString("fr-FR", {hour: "numeric", minute: "numeric", second: "numeric"})}
+          </Typography>
+          <Typography variant={"h6"}>
+            {time.toLocaleString("fr-FR", {weekday: "long", day: "numeric", month: "long"})}
+          </Typography>
+          <Fab disabled color="primary" size={"medium"} onClick={() => {setDialogOpen(true); setDialogContent(generateHelpContent(townData));}}>
+            <QuestionMark/>
+          </Fab>
         </Grid>
       </Grid>
       )}

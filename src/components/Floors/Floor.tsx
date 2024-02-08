@@ -1,15 +1,17 @@
-import {FC, useEffect, useState} from "react";
+import {FC, ReactElement, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
 import {Town} from "@customTypes/town";
+import {generateRoomContent} from "@scripts/dialogGenerator";
 
 interface FloorProps {
   townData: Town;
   floor: number;
-  setOpen: (open: boolean) => void;
-  setDialogRoom: (room: Room) => void;
+  setDialogOpen: (open: boolean) => void;
+  setDialogContent: (content: ReactElement) => void;
+  sideDisplay: boolean;
 }
 
-const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
+const Floor: FC<FloorProps> = ({ townData,  floor, setDialogOpen, setDialogContent, sideDisplay}) => {
   const [scale, setScale] = useState([1, 1]);
   useEffect(() => {
     const updateScale = () => {
@@ -20,11 +22,11 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
       background.style.display = "block";
       const {width, height} = background.getBoundingClientRect();
       background.style.display = "none";
-      if (isNaN(svgWidth / width) || isNaN(svgHeight / height)) setTimeout(updateScale, 250);
+      if (isNaN(svgWidth / width) || isNaN(svgHeight / height)) setTimeout(updateScale, 100);
       else setScale([svgWidth / width, svgHeight / height]);
     }
     updateScale();
-    setTimeout(updateScale, 250);
+    setTimeout(updateScale, 100);
     window.addEventListener("resize", updateScale);
     return () => {
       window.removeEventListener("resize", updateScale);
@@ -37,7 +39,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setOpen, setDialogRoom}) => {
           if (room.floor !== floor) return null;
           return (
             <>
-              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {setOpen(true); setDialogRoom(room)}}/>
+              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {if (room.no_status !== true && !sideDisplay) {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}}/>
               <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}-Text`} className={room.no_status === true ? "nostatus_text" : ""} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
             </>
           )

@@ -25,8 +25,9 @@ function storeDataMultipleRooms(rooms: Room[], activity: Activity, roomsNames: s
  * Fetch data from API and store it in townData object
  * @param townData
  * @param setLoading
+ * @param setError
  */
-export default function fetchApiData(townData: Town, setLoading: (loading: boolean) => void): void {
+export default function fetchApiData(townData: Town, setLoading: (loading: boolean) => void, setError: (error: boolean) => void): void {
   const apiData = fetch(`https://lille-epirooms.epitest.eu/?date=${new Date().toISOString().slice(0, 10)}`)
     .then((response) => {
       if (response.ok)
@@ -35,11 +36,15 @@ export default function fetchApiData(townData: Town, setLoading: (loading: boole
         throw new Error("Unexcepted return status requesting epirooms data.");
     }).catch((error) => {
       console.error(`API REQUEST FAILED: ${error}`)
+      setError(true)
+      setLoading(false)
     })
 
   let newRooms = townData.rooms
 
   apiData.then((data: APIResponse[]) => {
+    if (!data) return;
+    setError(false)
     data.forEach((activityData: APIResponse) => {
       if (!activityData.room || !activityData.room.type || activityData.instance_location != "FR/LIL" ) return;
 
@@ -86,16 +91,13 @@ export default function fetchApiData(townData: Town, setLoading: (loading: boole
       if (!room) {
         console.warn(`Room ${activityData.room.code} not found in rooms list.`);
         return;
-      } else if (room) {
+      } else if (room && room.no_status !== true) {
         room.activities.push(activity)
         room.activities.sort((a, b) => a.start.getTime() - b.start.getTime())
         room.activities = room.activities.filter((activity, index, self) => index === self.findIndex((t) => (t.id === activity.id)))
       }
     })
     townData.rooms = newRooms
-    setLoading(false)
-  }).catch((error) => {
-    console.error(`API FETCH FAILED: ${error}`)
     setLoading(false)
   })
 }

@@ -17,7 +17,7 @@ import {
   Stack,
   Grid,
   CircularProgress,
-  Box
+  Box, Alert, Snackbar
 } from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
 import { GetServerSideProps } from 'next';
@@ -72,12 +72,13 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   const [open, setOpen] = useState(false);
   const [dialogRoom, setDialogRoom] = useState({} as Room);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(true);
   const mobile = width < 750;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
   useEffect(() => {
     setWidth(window.innerWidth);
-    fetchApiData(townData, setLoading);
+    fetchApiData(townData, setLoading, setError);
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
@@ -87,15 +88,15 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       })
     }, 1000)
     const refreshData = setInterval(() => {
-      fetchApiData(townData, setLoading);
-    }, 1000 * 60 * 10)
+      fetchApiData(townData, setLoading, setError);
+    }, error ? 30000 : 600000)
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
       clearInterval(updateStatus);
       clearInterval(refreshData);
     };
-  }, [townData]);
+  }, [townData, error]);
 
   if (loading)
     return (<Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box>) // Align the spinner in the middle of the page
@@ -104,6 +105,11 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
+      <Snackbar open={error} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert variant="filled" severity="error" sx={{ width: '100%' }}>
+          Impossible de communiquer avec l&apos;intranet, les données affichées peuvent être obsolètes.
+        </Alert>
+      </Snackbar>
       <Dialog open={open} onClose={() => {setOpen(false); setDialogRoom({} as Room)}}>
         {dialogRoom.status != undefined && (
           <>

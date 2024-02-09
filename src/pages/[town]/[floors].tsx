@@ -58,6 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
+  const tvSettings = !!router.query.tv;
   const [width, setWidth] = useState(750);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -94,7 +95,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   if (loading)
     return (<><Head><title>EpiRooms</title></Head><Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box></>)
   return (
-    <main style={{width: "100%", height: "99%"}} className={mobile ? "mobile" : ""}>
+    <main style={{width: "100%", height: tvSettings ? "95%" : "100%"}} className={mobile ? "mobile" : ""}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
@@ -131,7 +132,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           {townData.floors.map((floor: TypeFloor) => {
             if (floor.floor == currentFloor) return;
             return (
-              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
+              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}`)}}>
                 <Floor townData={townData} floor={floor.floor} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent} sideDisplay={true}/>
               </div>
             )
@@ -145,7 +146,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             <ButtonGroup orientation={"vertical"} variant={"contained"}>
               {townData.floors.map((floor) => {
                 return (
-                  <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}`)}}>
+                  <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}`)}}>
                     {floor.name}
                   </Button>
                 )
@@ -164,7 +165,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           <Typography variant={"h5"}>
             {time.toLocaleString("fr-FR", {hour: "numeric", minute: "numeric", second: "numeric"})}
           </Typography>
-          <Typography sx={{marginBottom: 1}}>
+          <Typography sx={{marginBottom: 1, fontSize: tvSettings ? "15px": ""}}>
             {time.toLocaleString("fr-FR", {weekday: "long", day: "numeric", month: "long"})}
           </Typography>
           <Fab disabled color="primary" size={"medium"} onClick={() => {setDialogOpen(true); setDialogContent(generateHelpContent(townData));}}>

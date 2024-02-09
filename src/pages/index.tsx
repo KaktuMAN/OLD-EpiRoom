@@ -7,6 +7,7 @@ import path from "path";
 import * as fs from "fs";
 import {Town} from "@customTypes/town";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 
 
@@ -28,6 +29,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export default function TownSlector ({ towns }: {towns: Town[]}) {
+  const router = useRouter();
+  const tvSettings = !!router.query.tv;
   return (
     <main style={{width: "100%", height: "100%"}}>
       <Head>
@@ -39,7 +42,7 @@ export default function TownSlector ({ towns }: {towns: Town[]}) {
       <Grid container spacing={2} justifyContent={"center"}>
         {towns.map((town) => (
           <Grid item key={town.code}>
-            <Link href={`/${town.code}/${town.mainFloor}`}>
+            <Link href={`/${town.code}/${town.mainFloor}${tvSettings ? "?tv=true" : ""}`}>
               <Card sx={{ minWidth: 250}}>
                 <CardMedia component={"img"} alt={`${town.name} Image`} height={150} image={`/towns/${town.code}/image.png`}/>
                 <h1 style={{textAlign: "center"}}>

@@ -94,7 +94,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   if (loading)
     return (<><Head><title>EpiRooms</title></Head><Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box></>)
   return (
-    <main style={{width: "100%", height: "100%"}} className={mobile ? "mobile" : ""}>
+    <main style={{width: "100%", height: "99%"}} className={mobile ? "mobile" : ""}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
@@ -164,7 +164,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           <Typography variant={"h5"}>
             {time.toLocaleString("fr-FR", {hour: "numeric", minute: "numeric", second: "numeric"})}
           </Typography>
-          <Typography variant={"h6"}>
+          <Typography sx={{marginBottom: 1}}>
             {time.toLocaleString("fr-FR", {weekday: "long", day: "numeric", month: "long"})}
           </Typography>
           <Fab disabled color="primary" size={"medium"} onClick={() => {setDialogOpen(true); setDialogContent(generateHelpContent(townData));}}>

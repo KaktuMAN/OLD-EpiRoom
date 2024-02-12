@@ -22,7 +22,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setDialogOpen, setDialogConte
       background.style.display = "block";
       const {width, height} = background.getBoundingClientRect();
       background.style.display = "none";
-      if (isNaN(svgWidth / width) || isNaN(svgHeight / height)) setTimeout(updateScale, 100);
+      if (isNaN(svgWidth / width) || isNaN(svgHeight / height) || svgHeight / height === 1 || svgWidth / width === 1) setTimeout(updateScale, 100);
       else setScale([svgWidth / width, svgHeight / height]);
     }
     updateScale();

@@ -1,7 +1,6 @@
 import {Room} from "@customTypes/room";
 import {Avatar, DialogTitle, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import {AccessTime, Dangerous} from "@mui/icons-material";
-import {Town} from "@customTypes/town";
 
 function formatTime(time: number): string {
   const date = new Date(time);
@@ -34,15 +33,4 @@ function generateRoomContent(room: Room) {
   );
 }
 
-function generateHelpContent(townData: Town) {
-  return (
-    <>
-      <DialogTitle>
-        Aide EpiRoom - {townData.name} ({townData.code})
-      </DialogTitle>
-    </>
-  );
-
-}
-
-export {formatTime, generateRoomContent, generateHelpContent}
+export {formatTime, generateRoomContent}

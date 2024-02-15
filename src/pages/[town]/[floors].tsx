@@ -14,6 +14,7 @@ import {
   Box,
   Alert,
   Snackbar,
+  Fab,
   Typography
 } from "@mui/material";
 import RoomInformations from "@components/Rooms/RoomInformations";
@@ -22,7 +23,8 @@ import * as path from "path";
 import * as fs from "fs";
 import updateRoomsStatus from "@scripts/updateRoomsStatus";
 import {Town, TypeFloor} from "@customTypes/town";
-import { useQRCode } from 'next-qrcode';
+import { QuestionMark } from '@mui/icons-material';
+import {generateHelpContent} from "@scripts/dialogGenerator";
 
 interface FloorRenderProps {
   townData: Town
@@ -56,7 +58,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
-  const QrCode = useQRCode().Canvas;
   const tvSettings = !!router.query.tv;
   const [width, setWidth] = useState(750);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
@@ -167,7 +168,9 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           <Typography sx={{marginBottom: 1, fontSize: tvSettings ? "15px": ""}}>
             {time.toLocaleString("fr-FR", {weekday: "long", day: "numeric", month: "long"})}
           </Typography>
-          <QrCode text={window.location.href} options={{margin: 1}}/>
+          <Fab disabled color="primary" size={"medium"} onClick={() => {setDialogOpen(true); setDialogContent(generateHelpContent(townData));}}>
+            <QuestionMark/>
+          </Fab>
         </Grid>
       </Grid>
       )}

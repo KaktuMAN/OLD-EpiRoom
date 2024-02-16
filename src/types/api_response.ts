@@ -15,5 +15,5 @@ interface APIResponse {
   location?: string,
   calendar_type?: string,
   id_calendar?: string,
-  room: APIRoom,
+  room?: APIRoom,
 }

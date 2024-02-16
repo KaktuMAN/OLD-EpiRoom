@@ -5,10 +5,16 @@ export interface TypeFloor {
   name: string,
 }
 
+export interface MultipleRooms {
+  room: string,
+  linkedRooms: string[]
+}
+
 export interface Town {
   name: string,
   code: string,
   mainFloor: number,
+  multipleRooms: MultipleRooms[],
   floors: [TypeFloor],
   rooms: [Room],
 }

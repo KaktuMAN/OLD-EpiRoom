@@ -38,14 +38,14 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setDialogOpen, setDialogConte
           if (room.floor !== floor) return null;
           return (
             <>
-              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {if (room.no_status !== true && !sideDisplay) {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}}/>
-              <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}-Text`} className={room.no_status === true ? "nostatus_text" : ""} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
+              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {if (room.no_status !== true && !sideDisplay) {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}}/>
+              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}-Text`} className={room.no_status === true ? "nostatus_text" : ""} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
             </>
           )
         })}
-        <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#floor`}
+        <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#floor`}
              transform={`scale(${scale[0]}, ${scale[1]})`}/>
-        <use href={`/towns/${townData.code}/svg/${floor}/Z${floor}-Floor.svg#background`} id={`background_${floor}`}
+        <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#background`} id={`background_${floor}`}
              style={{display: "none"}}/>
       </svg>
     </>

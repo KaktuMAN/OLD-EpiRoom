@@ -2,6 +2,37 @@
   "name": "Lille",
   "code": "LIL",
   "mainFloor": 0,
+  "multipleRooms": [
+    {
+      "room": "FR/LIL/Hopital-Militaire/S-21abc-Denis-MacAlistair-Ritchie",
+      "linkedRooms": [
+        "FR/LIL/Hopital-Militaire/S-21a-Denis",
+        "FR/LIL/Hopital-Militaire/S-21b-MacAlistair",
+        "FR/LIL/Hopital-Militaire/S-21c-Ritchie"
+      ]
+    },
+    {
+      "room": "",
+      "linkedRooms": [
+        "FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr",
+        "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari"
+      ]
+    },
+    {
+      "room": "FR/LIL/Hopital-Militaire/S-25ab-Gwen-Barzey",
+      "linkedRooms": [
+        "FR/LIL/Hopital-Militaire/S-25a-Gwen",
+        "FR/LIL/Hopital-Militaire/S-25b-Barzey"
+      ]
+    },
+    {
+      "room": "FR/LIL/Hopital-Militaire/S-33ab-Deep-Blue-Brain",
+      "linkedRooms": [
+        "FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
+        "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"
+      ]
+    }
+  ],
   "floors": [
     {
       "floor": 0,

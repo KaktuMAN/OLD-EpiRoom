@@ -93,7 +93,8 @@
       "name":"B.11 - Gallifrey",
       "display_name":"Gallifrey",
       "seats": 5,
-      "floor": 1
+      "floor": 1,
+      "no_status": true
     },
     {
       "intra_name":"FR/LIL/Hopital-Militaire/B-12-Le-Continental",
@@ -108,7 +109,8 @@
       "name":"B.13 - Kaer Morhen",
       "display_name":"Kaer Morhen",
       "seats": 7,
-      "floor": 1
+      "floor": 1,
+      "no_status": true
     },
     {
       "intra_name":"FR/LIL/Hopital-Militaire/B-14-La-Matrice",

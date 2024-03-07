@@ -1,6 +1,8 @@
 CREATE TYPE room_type AS ENUM ('classroom', 'office', 'open_space', 'other');
 CREATE TYPE user_type AS ENUM ('student', 'teacher', 'admin');
 CREATE TYPE registration_type AS ENUM ('student', 'teacher');
+CREATE TYPE presence_type AS ENUM ('null', 'absent', 'present', 'rdv');
+CREATE TYPE role_type AS ENUM ('master', 'member');
 CREATE TABLE IF NOT EXISTS floors (
     id serial primary key,
     campus_code varchar(3) not null,
@@ -9,8 +11,8 @@ CREATE TABLE IF NOT EXISTS floors (
 );
 CREATE TABLE IF NOT EXISTS campus (
     code varchar(3) not null primary key,
-    name varchar(50) not null,
-    main_floor serial not null,
+    name varchar(50),
+    main_floor serial,
     foreign key (main_floor) references floors(id)
 );
 CREATE TABLE IF NOT EXISTS rooms (
@@ -37,9 +39,11 @@ CREATE TABLE IF NOT EXISTS activity (
 );
 CREATE TABLE IF NOT EXISTS event (
     id serial primary key,
+    activity_id integer not null,
     room_id integer,
     start_time timestamp not null,
     end_time timestamp not null,
+    foreign key (activity_id) references activity(id),
     foreign key (room_id) references rooms(id)
 );
 CREATE TABLE IF NOT EXISTS modules (
@@ -51,6 +55,20 @@ CREATE TABLE IF NOT EXISTS modules (
     foreign key (campus_code) references campus(code),
     UNIQUE (code, year, semester, campus_code)
 );
+CREATE TABLE IF NOT EXISTS "group" (
+    id integer primary key,
+    module_id integer not null,
+    name varchar(128) not null,
+    foreign key (module_id) references modules(id)
+);
+CREATE TABLE IF NOT EXISTS relation_user_group (
+    login varchar(128) not null,
+    group_id integer not null,
+    role role_type not null,
+    foreign key (login) references users(login),
+    foreign key (group_id) references "group"(id),
+    UNIQUE (login, group_id)
+);
 CREATE TABLE IF NOT EXISTS relation_user_event (
     id serial primary key,
     login varchar(128) not null,
@@ -58,10 +76,13 @@ CREATE TABLE IF NOT EXISTS relation_user_event (
     registration_type registration_type not null,
     registration_time timestamp not null,
     unsubscribe_time timestamp,
-    present boolean,
+    status presence_type,
+    group_id integer,
     foreign key (login) references users(login),
     foreign key (event_id) references event(id),
-    UNIQUE (login, event_id)
+    foreign key (group_id) references "group"(id),
+    UNIQUE (login, event_id),
+    CONSTRAINT check_status_rdv CHECK (status = 'rdv' OR group_id IS NULL)
 );
 CREATE TABLE IF NOT EXISTS relation_campus_floor (
     campus_code varchar(3) not null,
@@ -69,13 +90,6 @@ CREATE TABLE IF NOT EXISTS relation_campus_floor (
     foreign key (campus_code) references campus(code),
     foreign key (floor_id) references floors(id),
     UNIQUE (campus_code, floor_id)
-);
-CREATE TABLE IF NOT EXISTS relation_activity_event (
-    activity_id integer not null,
-    event_id integer not null,
-    foreign key (activity_id) references activity(id),
-    foreign key (event_id) references event(id),
-    UNIQUE (activity_id, event_id)
 );
 CREATE TABLE IF NOT EXISTS relation_module_activity (
     module_id integer not null,
@@ -98,10 +112,16 @@ CREATE TABLE IF NOT EXISTS relation_user_campus (
     foreign key (campus_code) references campus(code),
     UNIQUE (login, campus_code)
 );
-create view presence("login", "null", "absent", "present") as
+CREATE VIEW presence("login", "null", "absent", "present") as
 	SELECT "login",
-   sum(CASE WHEN present IS NULL THEN 1 ELSE 0 END) AS "null",
-   sum(CASE WHEN present = false THEN 1 ELSE 0 END) AS "absent",
-   sum(CASE WHEN present = true THEN 1 ELSE 0 END) AS "present"
-FROM relation_user_event
+       sum(CASE WHEN status = 'null' THEN 1 ELSE 0 END) AS "null",
+       sum(CASE WHEN status = 'absent' THEN 1 ELSE 0 END) AS "absent",
+       sum(CASE WHEN status = 'rdv' or status = 'present' THEN 1 ELSE 0 END) AS "present"
+    FROM relation_user_event
 GROUP BY "login";
+CREATE VIEW activities("eventID", "activityTitle", "subscribedStudents", "presentStudents") AS
+    SELECT event.id, activity.title, count(relation_user_event.login) as subscribed_students, sum(CASE WHEN relation_user_event.status = 'rdv' or relation_user_event.status = 'present' THEN 1 ELSE 0 END) as present_students
+    FROM event
+    JOIN activity ON event.activity_id = activity.id
+    LEFT JOIN relation_user_event ON event.id = relation_user_event.event_id
+GROUP BY event.id, activity.title;

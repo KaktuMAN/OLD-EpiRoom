@@ -3,20 +3,39 @@ version: '3.9'
 services:
   postgres:
     image: postgres:16
+    container_name: pg-epiroom
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - .env
+    networks:
+      - api_db
     restart: unless-stopped
-  epiroom:
+  api:
+    container_name: api-epiroom
     depends_on:
       - postgres
+    build: ./api
+    ports:
+      - "${API_PORT}:8080"
+    env_file:
+      - .env
+    networks:
+      - api_db
+    restart: unless-stopped
+  epiroom:
+    container_name: epiroom-epiroom
+    depends_on:
+      - postgres
+      - api
     build: ./epiroom
     ports:
-      - "80:3000"
+      - "${EPIROOM_PORT}:3000"
     restart: unless-stopped
 volumes:
   postgres_data:
+networks:
+  api_db:

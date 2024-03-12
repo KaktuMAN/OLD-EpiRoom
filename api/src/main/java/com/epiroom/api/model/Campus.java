@@ -1,8 +1,12 @@
 package com.epiroom.api.model;
 
+import com.epiroom.api.openapi.campus.PostNewCampus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 @Table(name = "campus")
@@ -13,14 +17,23 @@ public class Campus {
     private String code;
 
     @Column(name = "name")
-    @NotNull
     @Size(max = 50)
     private String name;
 
     @Column(name = "main_floor")
-    private int mainFloor;
+    private Integer mainFloorId;
+
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "campusCode", cascade = CascadeType.ALL)
+    private List<Floor> floors;
 
     public Campus() {
+    }
+
+    public Campus(PostNewCampus campus) {
+        this.code = campus.getCode().toUpperCase();
+        this.name = campus.getName();
+        this.mainFloorId = null;
     }
 
     public String getCode() {
@@ -31,7 +44,19 @@ public class Campus {
         return name;
     }
 
-    public int getMainFloor() {
-        return mainFloor;
+    public Integer getMainFloorId() {
+        return mainFloorId;
+    }
+
+    public List<Floor> getFloors() {
+        return floors;
+    }
+
+    public void setMainFloorId(Integer mainFloorId) {
+        this.mainFloorId = mainFloorId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

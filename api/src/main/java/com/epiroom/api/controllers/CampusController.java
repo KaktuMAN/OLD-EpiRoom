@@ -1,9 +1,9 @@
 package com.epiroom.api.controllers;
 
 import com.epiroom.api.model.Campus;
-import com.epiroom.api.model.Room;
-import com.epiroom.api.openapi.campus.PatchExistingCampus;
-import com.epiroom.api.openapi.campus.PostNewCampus;
+import com.epiroom.api.model.dto.campus.FullCampus;
+import com.epiroom.api.model.dto.campus.SimpleCampus;
+import com.epiroom.api.model.dto.floor.CampusFloor;
 import com.epiroom.api.repository.CampusRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -32,26 +32,29 @@ public class CampusController {
     @Operation(summary = "Get all campuses")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Campus.class)))
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = SimpleCampus.class)))
             })
     })
-    public ResponseEntity<List<Campus>> getCampuses() {
-        return ResponseEntity.ok(campusRepository.findAll());
+    public ResponseEntity<List<SimpleCampus>> getCampuses() {
+        List<Campus> campuses = campusRepository.findAll();
+        return ResponseEntity.ok(campuses.stream().map(SimpleCampus::new).toList());
     }
 
-    @PutMapping("/")
-    @Operation(summary = "Add a new campus", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(implementation = PostNewCampus.class))))
+    @PostMapping("/")
+    @Operation(summary = "Add a new campus", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(implementation = SimpleCampus.class))))
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Campus added", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Campus.class))
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = SimpleCampus.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid campus", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Campus already campus", content = @Content)
     })
-    public ResponseEntity<Campus> addCampus(@RequestBody PostNewCampus campus) {
+    public ResponseEntity<SimpleCampus> addCampus(@RequestBody SimpleCampus campus) {
         Campus existingCampus = campusRepository.findByCode(campus.getCode());
         if (existingCampus != null)
             return ResponseEntity.badRequest().build();
-        return ResponseEntity.ok(campusRepository.save(new Campus(campus)));
+        Campus newCampus = new Campus(campus);
+        campusRepository.save(newCampus);
+        return ResponseEntity.ok(new SimpleCampus(newCampus));
     }
 
     @GetMapping("/{code}")
@@ -60,50 +63,31 @@ public class CampusController {
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Campus.class))
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = FullCampus.class))
             }),
             @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
     })
-    public ResponseEntity<Campus> getCampusByCode(@PathVariable String code) {
+    public ResponseEntity<FullCampus> getCampusByCode(@PathVariable String code) {
         Campus campus = campusRepository.findByCode(code);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(campus);
+        return ResponseEntity.ok(new FullCampus(campus));
     }
 
-    @DeleteMapping("/{code}")
-    @Operation(summary = "Delete a campus by code", parameters = {
+    @GetMapping("/{code}/floors")
+    @Operation(summary = "Get all floors from a campus", parameters = {
             @Parameter(name = "code", description = "Campus code", required = true)
     })
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Campus deleted", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
-    })
-    public ResponseEntity<Campus> deleteCampusByCode(@PathVariable String code) {
-        Campus campus = campusRepository.findByCode(code);
-        if (campus == null)
-            return ResponseEntity.notFound().build();
-        campusRepository.delete(campus);
-        return ResponseEntity.ok(campus);
-    }
-
-    @PatchMapping("/{code}")
-    @Operation(summary = "Update a campus by code", parameters = {
-            @Parameter(name = "code", description = "Campus code", required = true)
-    }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(implementation = PatchExistingCampus.class))))
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Campus updated", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = Campus.class))
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CampusFloor.class)))
             }),
             @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
     })
-    public ResponseEntity<Campus> updateCampusByCode(@PathVariable String code, @RequestBody PatchExistingCampus campus) {
-        Campus existingCampus = campusRepository.findByCode(code);
-        if (existingCampus == null)
+    public ResponseEntity<List<CampusFloor>> getCampusFloors(@PathVariable String code) {
+        Campus campus = campusRepository.findByCode(code);
+        if (campus == null)
             return ResponseEntity.notFound().build();
-        existingCampus.setName(campus.getName());
-        existingCampus.setMainFloorId(campus.getMainFloorId());
-        campusRepository.save(existingCampus);
-        return ResponseEntity.ok(existingCampus);
+        return ResponseEntity.ok(campus.getFloors().stream().map(CampusFloor::new).toList());
     }
 }

@@ -1,7 +1,6 @@
 package com.epiroom.api.model;
 
-import com.epiroom.api.openapi.campus.PostNewCampus;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.epiroom.api.model.dto.campus.SimpleCampus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,14 +22,13 @@ public class Campus {
     @Column(name = "main_floor")
     private Integer mainFloorId;
 
-    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "campusCode", cascade = CascadeType.ALL)
     private List<Floor> floors;
 
     public Campus() {
     }
 
-    public Campus(PostNewCampus campus) {
+    public Campus(SimpleCampus campus) {
         this.code = campus.getCode().toUpperCase();
         this.name = campus.getName();
         this.mainFloorId = null;

@@ -142,4 +142,24 @@ public class CampusController {
         campusRepository.save(campus);
         return ResponseEntity.ok(new CampusFloor(mainFloor));
     }
+
+    @GetMapping("/{code}/floors/main")
+    @Operation(summary = "Get the main floor of a campus", parameters = {
+            @Parameter(name = "code", description = "Campus code", required = true)
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CampusFloor.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
+    })
+    public ResponseEntity<CampusFloor> getMainFloor(@PathVariable String code) {
+        Campus campus = campusRepository.findByCode(code);
+        if (campus == null)
+            return ResponseEntity.notFound().build();
+        Floor mainFloor = campus.getFloors().stream().filter(Floor::isMainFloor).findFirst().orElse(null);
+        if (mainFloor == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(new CampusFloor(mainFloor));
+    }
 }

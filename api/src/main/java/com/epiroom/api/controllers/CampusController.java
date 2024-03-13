@@ -118,4 +118,28 @@ public class CampusController {
         Floor newFloor = floorRepository.save(new Floor(campus, floor.getFloor(), floor.getName()));
         return ResponseEntity.ok(new CampusFloor(newFloor));
     }
+
+    @PatchMapping("/{code}/floors/main")
+    @Operation(summary = "Set the main floor of a campus", parameters = {
+            @Parameter(name = "code", description = "Campus code", required = true),
+            @Parameter(name = "floor", description = "Floor number", required = true)
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Main floor set", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CampusFloor.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Floor not found", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
+    })
+    public ResponseEntity<CampusFloor> setMainFloor(@PathVariable String code, @RequestParam int floor) {
+        Campus campus = campusRepository.findByCode(code);
+        if (campus == null)
+            return ResponseEntity.notFound().build();
+        Floor mainFloor = floorRepository.findByCampusCodeAndFloor(campus.getCode(), floor);
+        if (mainFloor == null)
+            return ResponseEntity.badRequest().build();
+        campus.setMainFloorId(mainFloor.getId());
+        campusRepository.save(campus);
+        return ResponseEntity.ok(new CampusFloor(mainFloor));
+    }
 }

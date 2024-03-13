@@ -23,14 +23,16 @@ public class CampusFloor {
         this.floor = floor.getFloor();
         this.campusCode = floor.getCampusCode();
         this.name = floor.getName();
-        this.isMainFloor = false;
+        this.isMainFloor = floor.isMainFloor();
     }
 
     public CampusFloor(Campus campus, SimpleFloor floor) {
         this.floor = floor.getFloor();
         this.campusCode = campus.getCode();
         this.name = floor.getName();
-        this.isMainFloor = campus.getMainFloorId() == floor.getFloor();
+        int mainFloorId = campus.getMainFloorId();
+        Floor mainFloor = campus.getFloors().stream().filter(f -> f.getFloor() == mainFloorId).findFirst().orElse(null);
+        this.isMainFloor = mainFloor != null && mainFloor.getFloor() == floor.getFloor();
     }
 
     public int getFloor() {

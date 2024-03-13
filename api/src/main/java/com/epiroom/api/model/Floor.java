@@ -20,7 +20,7 @@ public class Floor {
     private String name;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
 
@@ -51,5 +51,9 @@ public class Floor {
 
     public Campus getCampus() {
         return campus;
+    }
+
+    public boolean isMainFloor() {
+        return campus.getMainFloorId() == id;
     }
 }

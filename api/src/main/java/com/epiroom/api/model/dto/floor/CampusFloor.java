@@ -1,5 +1,6 @@
 package com.epiroom.api.model.dto.floor;
 
+import com.epiroom.api.model.Campus;
 import com.epiroom.api.model.Floor;
 
 public class CampusFloor {
@@ -22,7 +23,14 @@ public class CampusFloor {
         this.floor = floor.getFloor();
         this.campusCode = floor.getCampusCode();
         this.name = floor.getName();
-        this.isMainFloor = floor.getCampus().getMainFloorId() == floor.getId();
+        this.isMainFloor = false;
+    }
+
+    public CampusFloor(Campus campus, SimpleFloor floor) {
+        this.floor = floor.getFloor();
+        this.campusCode = campus.getCode();
+        this.name = floor.getName();
+        this.isMainFloor = campus.getMainFloorId() == floor.getFloor();
     }
 
     public int getFloor() {

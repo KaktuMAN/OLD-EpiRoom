@@ -1,10 +1,13 @@
 package com.epiroom.api.controllers;
 
 import com.epiroom.api.model.Campus;
+import com.epiroom.api.model.Floor;
 import com.epiroom.api.model.dto.campus.FullCampus;
 import com.epiroom.api.model.dto.campus.SimpleCampus;
 import com.epiroom.api.model.dto.floor.CampusFloor;
+import com.epiroom.api.model.dto.floor.SimpleFloor;
 import com.epiroom.api.repository.CampusRepository;
+import com.epiroom.api.repository.FloorRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -23,9 +26,11 @@ import java.util.List;
 @RequestMapping("/campus")
 public class CampusController {
     private final CampusRepository campusRepository;
+    private final FloorRepository floorRepository;
 
-    public CampusController(CampusRepository campusRepository) {
+    public CampusController(CampusRepository campusRepository, FloorRepository floorRepository) {
         this.campusRepository = campusRepository;
+        this.floorRepository = floorRepository;
     }
 
     @GetMapping("/")
@@ -89,5 +94,28 @@ public class CampusController {
         if (campus == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(campus.getFloors().stream().map(CampusFloor::new).toList());
+    }
+
+    @PostMapping("/{code}/floors")
+    @Operation(summary = "Add a new floor to a campus", parameters = {
+            @Parameter(name = "code", description = "Campus code", required = true)
+    }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(implementation = SimpleFloor.class))))
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Floor added", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CampusFloor.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Floor already exists", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CampusFloor.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
+    })
+    public ResponseEntity<CampusFloor> addFloorToCampus(@PathVariable String code, @RequestBody SimpleFloor floor) {
+        Campus campus = campusRepository.findByCode(code);
+        if (campus == null)
+            return ResponseEntity.notFound().build();
+        if (floorRepository.existsByCampusCodeAndFloor(campus.getCode(), floor.getFloor()))
+            return ResponseEntity.badRequest().body(new CampusFloor(campus, floor));
+        Floor newFloor = floorRepository.save(new Floor(campus, floor.getFloor(), floor.getName()));
+        return ResponseEntity.ok(new CampusFloor(newFloor));
     }
 }

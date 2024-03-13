@@ -31,6 +31,7 @@ public class Floor {
         this.campusCode = campus.getCode();
         this.floor = floor;
         this.name = name;
+        this.campus = campus;
     }
 
     public int getId() {

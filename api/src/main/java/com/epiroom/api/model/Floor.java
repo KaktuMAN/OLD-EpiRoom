@@ -3,6 +3,8 @@ package com.epiroom.api.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "floors")
 public class Floor {
@@ -23,6 +25,11 @@ public class Floor {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "floor_id", insertable = false, updatable = false)
+    private List<Room> rooms;
 
     public Floor() {
     }
@@ -52,6 +59,10 @@ public class Floor {
 
     public Campus getCampus() {
         return campus;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
     }
 
     public boolean isMainFloor() {

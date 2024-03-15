@@ -1,6 +1,8 @@
 package com.epiroom.api.controllers;
 
 
+import com.epiroom.api.model.Activity;
+import com.epiroom.api.model.dto.activity.FullActivity;
 import com.epiroom.api.repository.ActivityRepository;
 import com.epiroom.api.model.dto.activity.PaginatedActivity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,10 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Activity", description = "Activity API")
 @RestController
@@ -41,5 +40,22 @@ public class ActivityController {
         if (page < 1 || size < 1 || size > 100)
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(new PaginatedActivity(page, activityRepository.findAllBy(PageRequest.of(page - 1, size))));
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get an activity by id", parameters = {
+            @Parameter(name = "id", description = "The activity id", required = true)
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Activity found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = FullActivity.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Activity not found")
+    })
+    public ResponseEntity<FullActivity> getActivity(@PathVariable Integer id) {
+        Activity activity = activityRepository.findById(id);
+        if (activity == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(new FullActivity(activity));
     }
 }

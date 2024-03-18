@@ -12,12 +12,15 @@ public class FullEvent {
 
     private final Date end;
 
+    private final String activityTitle;
+
     private final SimpleRoom room;
 
-    public FullEvent(int eventId, Date start, Date end, SimpleRoom room) {
+    public FullEvent(int eventId, Date start, Date end, String activityTitle, SimpleRoom room) {
         this.eventId = eventId;
         this.start = start;
         this.end = end;
+        this.activityTitle = activityTitle;
         this.room = room;
     }
 
@@ -25,7 +28,8 @@ public class FullEvent {
         this.eventId = event.getId();
         this.start = event.getStart();
         this.end = event.getEnd();
-        this.room = new SimpleRoom(event.getRoom());
+        this.activityTitle = event.getActivity().getTitle();
+        this.room = event.getRoomId() == null ? null : new SimpleRoom(event.getRoom());
     }
 
     public int getEventId() {
@@ -38,6 +42,10 @@ public class FullEvent {
 
     public Date getEnd() {
         return end;
+    }
+
+    public String getActivityTitle() {
+        return activityTitle;
     }
 
     public SimpleRoom getRoom() {

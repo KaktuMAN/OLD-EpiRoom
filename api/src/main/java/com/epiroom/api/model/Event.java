@@ -24,6 +24,9 @@ public class Event {
     @Column(name = "end_time")
     private Date end;
 
+    @Column(name = "campus_code")
+    private String campusCode;
+
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", insertable = false, updatable = false)
@@ -33,6 +36,11 @@ public class Event {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
     private Room room;
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "campus_code", insertable = false, updatable = false)
+    private Campus campus;
 
     public Event() {
     }
@@ -57,11 +65,19 @@ public class Event {
         return end;
     }
 
+    public String getCampusCode() {
+        return campusCode;
+    }
+
     public Activity getActivity() {
         return activity;
     }
 
     public Room getRoom() {
         return room;
+    }
+
+    public Campus getCampus() {
+        return campus;
     }
 }

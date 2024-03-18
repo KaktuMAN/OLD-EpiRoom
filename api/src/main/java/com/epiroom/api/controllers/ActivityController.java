@@ -2,10 +2,14 @@ package com.epiroom.api.controllers;
 
 
 import com.epiroom.api.model.Activity;
+import com.epiroom.api.model.Campus;
+import com.epiroom.api.model.Event;
 import com.epiroom.api.model.dto.activity.FullActivity;
 import com.epiroom.api.model.dto.event.FullEvent;
 import com.epiroom.api.repository.ActivityRepository;
 import com.epiroom.api.model.dto.activity.PaginatedActivity;
+import com.epiroom.api.repository.CampusRepository;
+import com.epiroom.api.repository.EventRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -18,6 +22,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Tag(name = "Activity", description = "Activity API")
@@ -25,9 +33,13 @@ import java.util.List;
 @RequestMapping("/activity")
 public class ActivityController {
     private final ActivityRepository activityRepository;
+    private final EventRepository eventRepository;
+    private final CampusRepository campusRepository;
 
-    public ActivityController(ActivityRepository activityRepository) {
+    public ActivityController(ActivityRepository activityRepository, EventRepository eventRepository, CampusRepository campusRepository) {
         this.activityRepository = activityRepository;
+        this.eventRepository = eventRepository;
+        this.campusRepository = campusRepository;
     }
     @GetMapping("/")
     @Operation(summary = "Get 100 activities", parameters = {
@@ -44,6 +56,27 @@ public class ActivityController {
         if (page < 1 || size < 1 || size > 100)
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(new PaginatedActivity(page, activityRepository.findAllBy(PageRequest.of(page - 1, size))));
+    }
+
+    @GetMapping("/today")
+    @Operation(summary = "Get activities of today", parameters = {
+            @Parameter(name = "campusCode", description = "The campus code", required = true),
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Activities found", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FullEvent.class))
+                    )
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid campus code")
+    })
+    public ResponseEntity<List<FullEvent>> getTodayActivities(@RequestParam String campusCode) {
+        Date start = Date.from(LocalDateTime.of(LocalDate.now(), LocalTime.MIN).toInstant(java.time.ZoneOffset.UTC));
+        Date end = Date.from(LocalDateTime.of(LocalDate.now(), LocalTime.MAX).toInstant(java.time.ZoneOffset.UTC));
+        Campus campus = campusRepository.findByCode(campusCode);
+        if (campus == null)
+            return ResponseEntity.badRequest().build();
+        List<Event> events = eventRepository.findAllByStartAfterAndEndBeforeAndCampusCode(start, end, campusCode);
+        return ResponseEntity.ok(events.stream().map(FullEvent::new).toList());
     }
 
     @GetMapping("/{id}")

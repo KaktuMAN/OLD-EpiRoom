@@ -29,8 +29,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.addFilterBefore(new AuthFilter(userRepository), AnonymousAuthenticationFilter.class);
         http
-            .requiresChannel(channel ->
-                channel.anyRequest().requiresSecure())
             .authorizeHttpRequests((auth) -> auth
                 .requestMatchers(HttpMethod.POST, "/campus/").hasAuthority("campus:create")
                 .requestMatchers(HttpMethod.POST, "/campus/**/floors").hasAuthority("floor:create")

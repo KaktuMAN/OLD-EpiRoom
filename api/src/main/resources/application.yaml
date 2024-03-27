@@ -21,6 +21,7 @@ spring:
             user-name-attribute: email
         registration:
           azure-dev:
+            redirect-uri: ${BASE_API_URL}/login/oauth2/code/azure-dev
             provider: azure
             client-id: "6185fec0-da26-4222-a3ef-5d5259c0c56f"
             client-secret: ${AZURE_SECRET}

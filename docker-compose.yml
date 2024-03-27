@@ -11,6 +11,8 @@ services:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - .env
+    environment:
+      POSTGRES_DB: "epiroom"
     networks:
       - api_db
     restart: unless-stopped

@@ -23,6 +23,10 @@ public class User {
     public User() {
     }
 
+    public User(String mail) {
+        this.mail = mail;
+    }
+
     public String getMail() {
         return mail;
     }

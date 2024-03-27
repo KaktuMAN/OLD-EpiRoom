@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://postgres:5432/epiroom
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/901cb4ca-b862-4029-9306-e5cd0f6d9f86/v2.0
+            user-name-attribute: email
+        registration:
+          azure-dev:
+            provider: azure
+            client-id: "6185fec0-da26-4222-a3ef-5d5259c0c56f"
+            client-secret: ${AZURE_SECRET}
+            scope:
+            - openid
+            - email

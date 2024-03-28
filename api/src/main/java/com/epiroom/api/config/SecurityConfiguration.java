@@ -33,7 +33,6 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/campus/").hasAuthority("campus:create")
                 .requestMatchers(HttpMethod.POST, "/campus/**/floors").hasAuthority("floor:create")
                 .requestMatchers(HttpMethod.PATCH, "/campus/**/floors/main").hasAuthority("floor:create")
-                .requestMatchers(HttpMethod.GET, "/campus/").hasAuthority("floor:create")
                 .anyRequest().permitAll()
             )
             .oauth2Login(customizer -> {

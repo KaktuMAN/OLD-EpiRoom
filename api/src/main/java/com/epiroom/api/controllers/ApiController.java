@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -17,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @Tag(name = "Api", description = "API")
 @RestController
@@ -40,7 +41,10 @@ public class ApiController {
     public ResponseEntity<ApiKey> generateApiKey() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByMail(authentication.getName());
-        String apiKey = RandomStringUtils.random(32, true, true);
+        String apiKey = UUID.randomUUID().toString();
+        while (userRepository.findByApiKey(apiKey) != null) {
+            apiKey = UUID.randomUUID().toString();
+        }
         user.setApiKey(apiKey);
         userRepository.save(user);
         return ResponseEntity.ok(new ApiKey(user));

@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Tag(name = "Activity", description = "Activity API")
@@ -67,7 +69,7 @@ public class ActivityController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FullEvent.class))
                     )
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid campus code")
+            @ApiResponse(responseCode = "400", description = "Invalid campus code", content = @Content)
     })
     public ResponseEntity<List<FullEvent>> getTodayActivities(@RequestParam String campusCode) {
         Date start = Date.from(LocalDateTime.of(LocalDate.now(), LocalTime.MIN).toInstant(java.time.ZoneOffset.UTC));
@@ -76,6 +78,20 @@ public class ActivityController {
         if (campus == null)
             return ResponseEntity.badRequest().build();
         List<Event> events = eventRepository.findAllByStartAfterAndEndBeforeAndCampusCode(start, end, campusCode);
+        List<Event> newEvents = new ArrayList<>();
+        Iterator<Event> iterator = events.iterator();
+        while (iterator.hasNext()) {
+            Event event = iterator.next();
+            if (event.getRoom() != null && event.getRoom().getLinkedRooms() != null) {
+                event.getRoom().getLinkedRooms().forEach(room -> {
+                    Event linkedEvent = new Event(event);
+                    linkedEvent.setRoom(room);
+                    newEvents.add(linkedEvent);
+                });
+                iterator.remove();
+            }
+        }
+        events.addAll(newEvents);
         return ResponseEntity.ok(events.stream().map(FullEvent::new).toList());
     }
 

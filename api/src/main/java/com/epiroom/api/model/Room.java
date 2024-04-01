@@ -2,6 +2,7 @@ package com.epiroom.api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "rooms")
@@ -31,6 +32,15 @@ public class Room {
 
     @Column(name = "display_status")
     private boolean display_status;
+
+    @JsonBackReference
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "linked_rooms",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "linked_room_id")
+    )
+    private List<Room> linkedRooms;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
@@ -83,5 +93,9 @@ public class Room {
 
     public boolean getDisplayStatus() {
         return display_status;
+    }
+
+    public List<Room> getLinkedRooms() {
+        return linkedRooms;
     }
 }

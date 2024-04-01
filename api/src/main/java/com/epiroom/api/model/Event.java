@@ -55,6 +55,19 @@ public class Event {
     public Event() {
     }
 
+    public Event(Event event) {
+        this.id = event.getId();
+        this.activityId = event.getActivityId();
+        this.roomId = event.getRoomId();
+        this.start = event.getStart();
+        this.end = event.getEnd();
+        this.campusCode = event.getCampusCode();
+        this.activity = event.getActivity();
+        this.room = event.getRoom();
+        this.campus = event.getCampus();
+        this.users = event.getUsers();
+    }
+
     public int getId() {
         return id;
     }
@@ -97,5 +110,9 @@ public class Event {
 
     public User getUser(String mail) {
         return users.stream().filter(user -> user.getMail().equals(mail)).findFirst().orElse(null);
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

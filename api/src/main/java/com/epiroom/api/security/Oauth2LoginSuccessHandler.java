@@ -10,9 +10,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +28,15 @@ public class Oauth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        String email = authentication.getName();
+        OidcUser oidcUser = (OidcUser) authentication.getPrincipal();
+        String email = oidcUser.getEmail();
+        String name = oidcUser.getFullName();
         User user = userRepository.findByMail(email);
         if (user == null) {
-            user = new User(email);
+            user = new User(email, name);
+            userRepository.save(user);
+        } else {
+            user.setLastLogin(new Date());
             userRepository.save(user);
         }
         List<SimpleGrantedAuthority> authorities = user.getPermissions().stream()

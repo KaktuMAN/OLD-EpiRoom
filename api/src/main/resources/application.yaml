@@ -16,7 +16,6 @@ spring:
         provider:
           azure:
             issuer-uri: https://login.microsoftonline.com/901cb4ca-b862-4029-9306-e5cd0f6d9f86/v2.0
-            user-name-attribute: email
         registration:
           azure-dev:
             redirect-uri: ${BASE_API_URL}/login/oauth2/code/azure-dev
@@ -26,6 +25,7 @@ spring:
             scope:
             - openid
             - email
+            - profile
 springdoc:
   swagger-ui:
     tryItOutEnabled: true

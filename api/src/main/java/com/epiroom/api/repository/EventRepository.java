@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findAllByStartAfterAndEndBeforeAndCampusCode(Date start, Date end, String campusCode);
-    List<Event> findAllByStartAfterAndEndBeforeAndUsers_Mail(Date start, Date end, String mail);
 }

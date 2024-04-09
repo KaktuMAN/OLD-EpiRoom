@@ -22,6 +22,12 @@ public class Campus {
     @Column(name = "main_floor")
     private Integer mainFloorId;
 
+    @Column(name = "auto_login")
+    private String autoLogin;
+
+    @Column(name = "jenkins_token")
+    private String jenkinsToken;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "campusCode", cascade = CascadeType.ALL)
     private List<Floor> floors;
 
@@ -32,6 +38,8 @@ public class Campus {
         this.code = campus.getCode().toUpperCase();
         this.name = campus.getName();
         this.mainFloorId = null;
+        this.jenkinsToken = null;
+        this.autoLogin = null;
     }
 
     public String getCode() {

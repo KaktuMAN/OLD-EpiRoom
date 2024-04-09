@@ -43,15 +43,6 @@ public class Event {
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
 
-    @JsonManagedReference
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "event_registrations",
-            joinColumns = @JoinColumn(name = "event_id"),
-            inverseJoinColumns = @JoinColumn(name = "login")
-    )
-    private List<User> users;
-
     public Event() {
     }
 
@@ -65,7 +56,6 @@ public class Event {
         this.activity = event.getActivity();
         this.room = event.getRoom();
         this.campus = event.getCampus();
-        this.users = event.getUsers();
     }
 
     public int getId() {
@@ -102,14 +92,6 @@ public class Event {
 
     public Campus getCampus() {
         return campus;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public User getUser(String mail) {
-        return users.stream().filter(user -> user.getMail().equals(mail)).findFirst().orElse(null);
     }
 
     public void setRoom(Room room) {

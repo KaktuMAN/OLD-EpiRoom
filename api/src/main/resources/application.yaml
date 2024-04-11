@@ -4,7 +4,7 @@ spring:
       ddl-auto: none
     open-in-view: false
   datasource:
-    url: jdbc:postgresql://postgres:5432/epiroom
+    url: jdbc:${POSTGRES_URL}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
   mvc:
@@ -29,3 +29,5 @@ spring:
 springdoc:
   swagger-ui:
     tryItOutEnabled: true
+environment:
+  api-base-url : ${API_BASE_URL}

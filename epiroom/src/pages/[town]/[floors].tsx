@@ -95,7 +95,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   if (loading)
     return (<><Head><title>EpiRooms</title></Head><Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh'}}><CircularProgress/></Box></>)
   return (
-    <main style={{width: "100%", height: tvSettings ? "95%" : "100%"}} className={mobile ? "mobile" : ""}>
+    <main style={{width: "100%", height: tvSettings ? "95%" : "100%", margin: "6px"}} className={mobile ? "mobile" : ""}>
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>

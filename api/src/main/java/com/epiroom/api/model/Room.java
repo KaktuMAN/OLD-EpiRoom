@@ -1,5 +1,6 @@
 package com.epiroom.api.model;
 
+import com.epiroom.api.model.dto.room.FullRoom;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
@@ -13,10 +14,13 @@ public class Room {
 
     @Column(name = "floor_id")
     private int floorId;
+
     @Column(name = "campus_code")
     private String campusCode;
+
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private RoomType type;
 
     @Column(name = "name")
     private String name;
@@ -52,7 +56,32 @@ public class Room {
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
 
+    public enum RoomType {CLASSROOM, OFFICE, OPENSPACE, OTHER}
+
     public Room() {
+    }
+
+    public Room(FullRoom fullRoom) {
+        this.floorId = fullRoom.getFloor();
+        this.campusCode = fullRoom.getCampusCode();
+        this.type = fullRoom.getType();
+        this.name = fullRoom.getName();
+        this.code = fullRoom.getCode();
+        this.displayName = fullRoom.getDisplayName();
+        this.seats = fullRoom.getSeats();
+        this.display_status = fullRoom.getDisplayStatus();
+        this.linkedRooms = null;
+    }
+
+    public void update(FullRoom fullRoom) {
+        this.floorId = fullRoom.getFloor();
+        this.campusCode = fullRoom.getCampusCode();
+        this.type = fullRoom.getType();
+        this.name = fullRoom.getName();
+        this.code = fullRoom.getCode();
+        this.displayName = fullRoom.getDisplayName();
+        this.seats = fullRoom.getSeats();
+        this.display_status = fullRoom.getDisplayStatus();
     }
 
     public int getId() {
@@ -71,7 +100,7 @@ public class Room {
         return campus;
     }
 
-    public String getType() {
+    public RoomType getType() {
         return type;
     }
 
@@ -97,5 +126,9 @@ public class Room {
 
     public List<Room> getLinkedRooms() {
         return linkedRooms;
+    }
+
+    public Floor getFloor() {
+        return floor;
     }
 }

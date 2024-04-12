@@ -2,6 +2,7 @@ package com.epiroom.api.controllers;
 
 import com.epiroom.api.model.Campus;
 import com.epiroom.api.model.Floor;
+import com.epiroom.api.model.Room;
 import com.epiroom.api.model.dto.campus.FullCampus;
 import com.epiroom.api.model.dto.campus.SimpleCampus;
 import com.epiroom.api.model.dto.floor.CampusFloor;
@@ -9,6 +10,7 @@ import com.epiroom.api.model.dto.floor.SimpleFloor;
 import com.epiroom.api.model.dto.room.FullRoom;
 import com.epiroom.api.repository.CampusRepository;
 import com.epiroom.api.repository.FloorRepository;
+import com.epiroom.api.repository.RoomRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -22,16 +24,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000, https://epiroom.pechart.fr")
 @Tag(name = "Campus", description = "Campus API")
 @RestController
 @RequestMapping("/campus")
 public class CampusController {
     private final CampusRepository campusRepository;
     private final FloorRepository floorRepository;
+    private final RoomRepository roomRepository;
 
-    public CampusController(CampusRepository campusRepository, FloorRepository floorRepository) {
+    public CampusController(CampusRepository campusRepository, FloorRepository floorRepository, RoomRepository roomRepository) {
         this.campusRepository = campusRepository;
         this.floorRepository = floorRepository;
+        this.roomRepository = roomRepository;
     }
 
     @GetMapping("/")
@@ -183,5 +188,32 @@ public class CampusController {
         if (campusFloor == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(campusFloor.getRooms().stream().map(FullRoom::new).toList());
+    }
+
+    @PutMapping("/{campusCode}/floors/{floor}/rooms")
+    @Operation(summary = "Update a room of a campus floor", parameters = {
+            @Parameter(name = "campusCode", description = "Campus code", required = true),
+            @Parameter(name = "floor", description = "Floor number", required = true)
+    }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json", schema = @Schema(implementation = FullRoom.class))))
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Room updated", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = FullRoom.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Campus / Floor not found", content = @Content)
+    })
+    public ResponseEntity<FullRoom> updateRoom(@PathVariable String campusCode, @PathVariable int floor, @RequestBody FullRoom room) {
+        Campus campus = campusRepository.findByCode(campusCode);
+        if (campus == null)
+            return ResponseEntity.notFound().build();
+        Floor campusFloor = floorRepository.findByCampusCodeAndFloor(campusCode, floor);
+        if (campusFloor == null)
+            return ResponseEntity.notFound().build();
+        Room previousRoom = roomRepository.findByCampusAndFloorAndCode(campus, campusFloor, room.getCode());
+        if (previousRoom == null)
+            previousRoom = new Room(room);
+        else
+            previousRoom.update(room);
+        roomRepository.save(previousRoom);
+        return ResponseEntity.ok(new FullRoom(previousRoom));
     }
 }

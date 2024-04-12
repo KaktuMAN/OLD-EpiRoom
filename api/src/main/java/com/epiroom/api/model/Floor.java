@@ -66,6 +66,9 @@ public class Floor {
     }
 
     public boolean isMainFloor() {
+        if (campus.getMainFloorId() == null) {
+            return false;
+        }
         return campus.getMainFloorId() == id;
     }
 }

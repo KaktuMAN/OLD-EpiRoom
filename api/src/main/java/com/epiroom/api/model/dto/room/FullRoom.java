@@ -5,7 +5,7 @@ import com.epiroom.api.model.Room;
 public class FullRoom {
     private final int floor;
     private final String campusCode;
-    private final String type;
+    private final Room.RoomType type;
     private final String name;
     private final String code;
     private final String displayName;
@@ -15,7 +15,7 @@ public class FullRoom {
     public FullRoom() {
         this.floor = 0;
         this.campusCode = "";
-        this.type = "";
+        this.type = Room.RoomType.OTHER;
         this.name = "";
         this.code = "";
         this.displayName = "";
@@ -24,7 +24,7 @@ public class FullRoom {
     }
 
     public FullRoom(Room room) {
-        this.floor = room.getFloorId();
+        this.floor = room.getFloor().getFloor();
         this.campusCode = room.getCampusCode();
         this.type = room.getType();
         this.name = room.getName();
@@ -42,7 +42,7 @@ public class FullRoom {
         return campusCode;
     }
 
-    public String getType() {
+    public Room.RoomType getType() {
         return type;
     }
 

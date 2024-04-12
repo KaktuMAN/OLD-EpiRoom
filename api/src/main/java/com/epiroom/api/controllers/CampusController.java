@@ -190,10 +190,9 @@ public class CampusController {
         return ResponseEntity.ok(campusFloor.getRooms().stream().map(FullRoom::new).toList());
     }
 
-    @PutMapping("/{campusCode}/floors/{floor}/rooms")
+    @PutMapping("/{campusCode}/rooms")
     @Operation(summary = "Update a room of a campus floor", parameters = {
-            @Parameter(name = "campusCode", description = "Campus code", required = true),
-            @Parameter(name = "floor", description = "Floor number", required = true)
+            @Parameter(name = "campusCode", description = "Campus code", required = true)
     }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json", schema = @Schema(implementation = FullRoom.class))))
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Room updated", content = {
@@ -201,11 +200,11 @@ public class CampusController {
             }),
             @ApiResponse(responseCode = "404", description = "Campus / Floor not found", content = @Content)
     })
-    public ResponseEntity<FullRoom> updateRoom(@PathVariable String campusCode, @PathVariable int floor, @RequestBody FullRoom room) {
+    public ResponseEntity<FullRoom> updateRoom(@PathVariable String campusCode, @RequestBody FullRoom room) {
         Campus campus = campusRepository.findByCode(campusCode);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        Floor campusFloor = floorRepository.findByCampusCodeAndFloor(campusCode, floor);
+        Floor campusFloor = floorRepository.findByCampusCodeAndFloor(campusCode, room.getFloor());
         if (campusFloor == null)
             return ResponseEntity.notFound().build();
         Room previousRoom = roomRepository.findByCampusAndFloorAndCode(campus, campusFloor, room.getCode());

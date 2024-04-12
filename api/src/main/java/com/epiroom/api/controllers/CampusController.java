@@ -149,26 +149,6 @@ public class CampusController {
         return ResponseEntity.ok(new CampusFloor(mainFloor));
     }
 
-    @GetMapping("/{campusCode}/floors/main")
-    @Operation(summary = "Get the main floor of a campus", parameters = {
-            @Parameter(name = "campusCode", description = "Campus code", required = true)
-    })
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = CampusFloor.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
-    })
-    public ResponseEntity<CampusFloor> getMainFloor(@PathVariable String campusCode) {
-        Campus campus = campusRepository.findByCode(campusCode);
-        if (campus == null)
-            return ResponseEntity.notFound().build();
-        Floor mainFloor = campus.getFloors().stream().filter(Floor::isMainFloor).findFirst().orElse(null);
-        if (mainFloor == null)
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(new CampusFloor(mainFloor));
-    }
-
     @GetMapping("/{campusCode}/floors/{floor}/rooms")
     @Operation(summary = "Get all rooms of a campus floor", parameters = {
             @Parameter(name = "campusCode", description = "Campus code", required = true),

@@ -58,7 +58,7 @@ public class Room {
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
 
-    public enum RoomType {CLASSROOM, OFFICE, OPENSPACE, OTHER}
+    public enum RoomType {CLASSROOM, OFFICE, OPENSPACE, MULTIROOM, OTHER}
 
     public Room() {
     }
@@ -132,5 +132,9 @@ public class Room {
 
     public Floor getFloor() {
         return floor;
+    }
+
+    public int getFloorCode() {
+        return floor.getFloor();
     }
 }

@@ -22,6 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000, https://epiroom.pechart.fr")
@@ -149,10 +150,9 @@ public class CampusController {
         return ResponseEntity.ok(new CampusFloor(mainFloor));
     }
 
-    @GetMapping("/{campusCode}/floors/{floor}/rooms")
+    @GetMapping("/{campusCode}/rooms")
     @Operation(summary = "Get all rooms of a campus floor", parameters = {
             @Parameter(name = "campusCode", description = "Campus code", required = true),
-            @Parameter(name = "floor", description = "Floor number", required = true)
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
@@ -160,14 +160,13 @@ public class CampusController {
             }),
             @ApiResponse(responseCode = "404", description = "Campus / Floor not found", content = @Content)
     })
-    public ResponseEntity<List<FullRoom>> getCampusFloorRooms(@PathVariable String campusCode, @PathVariable int floor) {
+    public ResponseEntity<List<FullRoom>> getCampusFloorRooms(@PathVariable String campusCode) {
         Campus campus = campusRepository.findByCode(campusCode);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        Floor campusFloor = floorRepository.findByCampusCodeAndFloor(campusCode, floor);
-        if (campusFloor == null)
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(campusFloor.getRooms().stream().map(FullRoom::new).toList());
+        List<Room> rooms = roomRepository.findAllByCampusCode(campusCode);
+        rooms.sort(Comparator.comparingInt(Room::getFloorCode));
+        return ResponseEntity.ok(rooms.stream().map(FullRoom::new).toList());
     }
 
     @PutMapping("/{campusCode}/rooms")

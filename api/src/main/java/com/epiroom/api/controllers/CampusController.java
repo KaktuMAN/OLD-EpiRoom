@@ -175,24 +175,22 @@ public class CampusController {
             @Parameter(name = "campusCode", description = "Campus code", required = true)
     }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json", schema = @Schema(implementation = FullRoom.class))))
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Room updated", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = FullRoom.class))
-            }),
+            @ApiResponse(responseCode = "200", description = "Room updated", content = @Content),
             @ApiResponse(responseCode = "404", description = "Campus / Floor not found", content = @Content)
     })
-    public ResponseEntity<FullRoom> updateRoom(@PathVariable String campusCode, @RequestBody FullRoom room) {
+    public ResponseEntity<Void> updateRoom(@PathVariable String campusCode, @RequestBody FullRoom room) {
         Campus campus = campusRepository.findByCode(campusCode);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        Floor campusFloor = floorRepository.findByCampusCodeAndFloor(campusCode, room.getFloor());
-        if (campusFloor == null)
+        Floor floor = floorRepository.findByCampusCodeAndFloor(campusCode, room.getFloor());
+        if (floor == null)
             return ResponseEntity.notFound().build();
-        Room previousRoom = roomRepository.findByCampusAndFloorAndCode(campus, campusFloor, room.getCode());
+        Room previousRoom = roomRepository.findByCampusAndCode(campus, room.getCode());
         if (previousRoom == null)
-            previousRoom = new Room(room);
+            previousRoom = new Room(room, floor);
         else
-            previousRoom.update(room);
+            previousRoom.update(room, floor);
         roomRepository.save(previousRoom);
-        return ResponseEntity.ok(new FullRoom(previousRoom));
+        return ResponseEntity.ok().build();
     }
 }

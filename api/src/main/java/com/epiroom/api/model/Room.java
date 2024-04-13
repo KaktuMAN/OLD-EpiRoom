@@ -9,7 +9,9 @@ import java.util.List;
 @Table(name = "rooms")
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="rooms_id_seq", sequenceName="rooms_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="rooms_id_seq")
+    @Column(name = "id", updatable=false)
     private int id;
 
     @Column(name = "floor_id")
@@ -61,8 +63,8 @@ public class Room {
     public Room() {
     }
 
-    public Room(FullRoom fullRoom) {
-        this.floorId = fullRoom.getFloor();
+    public Room(FullRoom fullRoom, Floor floor) {
+        this.floorId = floor.getId();
         this.campusCode = fullRoom.getCampusCode();
         this.type = fullRoom.getType();
         this.name = fullRoom.getName();
@@ -73,8 +75,8 @@ public class Room {
         this.linkedRooms = null;
     }
 
-    public void update(FullRoom fullRoom) {
-        this.floorId = fullRoom.getFloor();
+    public void update(FullRoom fullRoom, Floor floor) {
+        this.floorId = floor.getId();
         this.campusCode = fullRoom.getCampusCode();
         this.type = fullRoom.getType();
         this.name = fullRoom.getName();

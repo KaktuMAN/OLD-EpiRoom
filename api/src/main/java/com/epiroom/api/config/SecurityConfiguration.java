@@ -7,7 +7,6 @@ import com.epiroom.api.security.Oauth2FailureHandler;
 import com.epiroom.api.security.Oauth2LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,12 +28,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.addFilterBefore(new AuthFilter(userRepository), AnonymousAuthenticationFilter.class);
         http
-            .authorizeHttpRequests((auth) -> auth
-                .requestMatchers(HttpMethod.POST, "/campus/").hasAuthority("campus:create")
-                .requestMatchers(HttpMethod.POST, "/campus/**/floors").hasAuthority("floor:create")
-                .requestMatchers(HttpMethod.PATCH, "/campus/**/floors/main").hasAuthority("floor:create")
-                .anyRequest().permitAll()
-            )
             .oauth2Login(customizer -> {
                 customizer.successHandler(new Oauth2LoginSuccessHandler(userRepository));
             })

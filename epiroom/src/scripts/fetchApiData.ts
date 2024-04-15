@@ -1,7 +1,6 @@
 import { Activity } from "@customTypes/activity";
 import { Room } from "@customTypes/room"
 import { Town } from "@customTypes/town"
-import { v3 } from "uuid"
 
 /**
  * Store data from API response in room object
@@ -43,7 +42,10 @@ export default function fetchApiData(townData: Town, setLoading: (loading: boole
   let newRooms = townData.rooms
 
   apiData.then((data: APIResponse[]) => {
-    if (!data) return;
+    if (!data || !data.length || !data[0].start) {
+      setLoading(false);
+      return setError(true);
+    }
     setError(false)
     data.forEach((activityData: APIResponse) => {
       if (!activityData.room && !activityData.location) return;
@@ -64,7 +66,6 @@ export default function fetchApiData(townData: Town, setLoading: (loading: boole
         activity.start = new Date(activityData.start)
         activity.end = new Date(activityData.end)
       }
-      activity.id = v3(`${activity.title}${activity.start.getTime()}`, v3.URL)
 
       if (activity.end.getTime() < new Date().getTime()) return;
 

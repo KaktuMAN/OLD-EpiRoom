@@ -1,6 +1,5 @@
 package com.epiroom.api.model;
 
-import com.epiroom.api.model.dto.campus.SimpleCampus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -32,14 +31,6 @@ public class Campus {
     private List<Floor> floors;
 
     public Campus() {
-    }
-
-    public Campus(SimpleCampus campus) {
-        this.code = campus.getCode().toUpperCase();
-        this.name = campus.getName();
-        this.mainFloorId = null;
-        this.jenkinsToken = null;
-        this.autoLogin = null;
     }
 
     public String getCode() {

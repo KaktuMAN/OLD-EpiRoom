@@ -1,6 +1,5 @@
 package com.epiroom.api.model;
 
-import com.epiroom.api.model.dto.room.FullRoom;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
@@ -61,29 +60,6 @@ public class Room {
     public enum RoomType {CLASSROOM, OFFICE, OPENSPACE, MULTIROOM, OTHER}
 
     public Room() {
-    }
-
-    public Room(FullRoom fullRoom, Floor floor) {
-        this.floorId = floor.getId();
-        this.campusCode = fullRoom.getCampusCode();
-        this.type = fullRoom.getType();
-        this.name = fullRoom.getName();
-        this.code = fullRoom.getCode();
-        this.displayName = fullRoom.getDisplayName();
-        this.seats = fullRoom.getSeats();
-        this.display_status = fullRoom.getDisplayStatus();
-        this.linkedRooms = null;
-    }
-
-    public void update(FullRoom fullRoom, Floor floor) {
-        this.floorId = floor.getId();
-        this.campusCode = fullRoom.getCampusCode();
-        this.type = fullRoom.getType();
-        this.name = fullRoom.getName();
-        this.code = fullRoom.getCode();
-        this.displayName = fullRoom.getDisplayName();
-        this.seats = fullRoom.getSeats();
-        this.display_status = fullRoom.getDisplayStatus();
     }
 
     public int getId() {

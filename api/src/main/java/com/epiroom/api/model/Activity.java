@@ -1,53 +1,36 @@
 package com.epiroom.api.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 @Entity
-@Table(name = "activity")
+@Table(name = "activities")
 public class Activity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="activities_id_seq", sequenceName="activities_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="activities_id_seq")
+    @Column(name = "id", updatable=false)
     private int id;
 
     @Column(name = "title")
+    @NotNull
     private String title;
 
     @Column(name = "module_id")
+    @NotNull
     private Integer moduleId;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "module_id", insertable = false, updatable = false)
     private Module module;
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", insertable = false, updatable = false)
     private List<Event> events;
-
-    public Activity() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Integer getModuleId() {
-        return moduleId;
-    }
-
-    public Module getModule() {
-        return module;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
 }

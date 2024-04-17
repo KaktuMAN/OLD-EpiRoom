@@ -3,9 +3,13 @@ package com.epiroom.api.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "campus")
 public class Campus {
@@ -15,45 +19,23 @@ public class Campus {
     private String code;
 
     @Column(name = "name")
-    @Size(max = 50)
+    @NotNull
     private String name;
 
     @Column(name = "main_floor")
     private Integer mainFloorId;
 
     @Column(name = "auto_login")
+    @Size(min = 45, max = 45)
     private String autoLogin;
 
     @Column(name = "jenkins_token")
+    @Size(min = 36, max = 36)
     private String jenkinsToken;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "campusCode", cascade = CascadeType.ALL)
     private List<Floor> floors;
 
-    public Campus() {
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getMainFloorId() {
-        return mainFloorId;
-    }
-
-    public List<Floor> getFloors() {
-        return floors;
-    }
-
-    public void setMainFloorId(Integer mainFloorId) {
-        this.mainFloorId = mainFloorId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "campusCode", cascade = CascadeType.ALL)
+    private List<Room> rooms;
 }

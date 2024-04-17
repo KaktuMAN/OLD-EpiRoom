@@ -1,30 +1,20 @@
 package com.epiroom.api.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "permissions")
 public class Permission {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="permissions_id_seq", sequenceName="permissions_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="permissions_id_seq")
+    @Column(name = "id", updatable=false)
     private int id;
 
     @Column(name = "permission", nullable = false)
     private String permission;
-
-    public Permission() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getPermission() {
-        return permission;
-    }
 }

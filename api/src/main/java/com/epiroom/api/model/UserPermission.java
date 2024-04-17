@@ -1,18 +1,25 @@
 package com.epiroom.api.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "user_permissions")
 public class UserPermission {
     @Id
-    @Column(name = "mail", nullable = false)
+    @Column(name = "mail")
+    @NotNull
     private String mail;
 
     @Id
-    @Column(name = "permission_id", nullable = false)
+    @Column(name = "permission_id")
+    @NotNull
     private int permissionId;
 
     @ManyToOne
@@ -23,14 +30,7 @@ public class UserPermission {
     @JoinColumn(name = "permission_id", referencedColumnName = "id")
     private Permission permission;
 
-    public UserPermission() {
-    }
-
-    public Permission getPermission() {
-        return permission;
-    }
-
-    @Override
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

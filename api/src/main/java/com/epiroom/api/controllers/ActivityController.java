@@ -44,6 +44,21 @@ public class ActivityController {
         return ResponseEntity.status(501).build();
     }
 
+    @PostMapping("/{campusCode}/bulk")
+    @PreAuthorize("hasAuthority('activities:write') OR hasAuthority('activities:*')")
+    @Operation(summary = "Create multiple activities", parameters = {
+            @Parameter(name = "campusCode", description = "The campus code", required = true),
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Activities created"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "409", description = "Activity already exists")
+    })
+    public ResponseEntity<Void> createActivities(@PathVariable String campusCode) {
+        return ResponseEntity.status(501).build();
+    }
+
     @PutMapping("/{campusCode}/{activityId}")
     @PreAuthorize("hasAuthority('activities:write') OR hasAuthority('activities:*')")
     @Operation(summary = "Update an activity", parameters = {

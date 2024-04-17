@@ -56,6 +56,21 @@ public class EventController {
         return ResponseEntity.status(501).build();
     }
 
+    @PostMapping("/{campusCode}/bulk")
+    @PreAuthorize("hasAuthority('events:write') OR hasAuthority('events:*')")
+    @Operation(summary = "Create multiple events", parameters = {
+            @Parameter(name = "campusCode", description = "The campus code", required = true),
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Events created"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "404", description = "Campus not found")
+    })
+    public ResponseEntity<Void> createEvents(@PathVariable String campusCode) {
+        return ResponseEntity.status(501).build();
+    }
+
     @PutMapping("/{campusCode}/{eventId}")
     @PreAuthorize("hasAuthority('events:write') OR hasAuthority('events:*')")
     @Operation(summary = "Update an event", parameters = {

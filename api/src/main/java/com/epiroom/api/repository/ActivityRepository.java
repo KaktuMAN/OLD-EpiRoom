@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
     List<Activity> findAllByAndCampusCode(Pageable pageable, String campusCode);
+    Activity findByIdAndCampusCode(int id, String campusCode);
 }

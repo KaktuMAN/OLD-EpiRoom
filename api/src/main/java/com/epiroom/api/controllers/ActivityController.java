@@ -33,6 +33,24 @@ public class ActivityController {
         this.activityRepository = activityRepository;
     }
 
+    @GetMapping("/{campusCode}/{activityId}")
+    @Operation(summary = "Get activity details", parameters = {
+            @Parameter(name = "campusCode", description = "The campus code", required = true),
+            @Parameter(name = "activityId", description = "The activity id", required = true),
+    })
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Activity found", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = FullActivity.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Campus or Activity not found", content = @Content)
+    })
+    public ResponseEntity<FullActivity> getActivity(@PathVariable String campusCode, @PathVariable int activityId) {
+        Activity activity = activityRepository.findByIdAndCampusCode(activityId, campusCode);
+        if (activity == null || !activity.getCampusCode().equals(campusCode))
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(new FullActivity(activity));
+    }
+
     @GetMapping("/{campusCode}")
     @Operation(summary = "Get all events of a campus (Paginated)", parameters = {
             @Parameter(name = "campusCode", description = "The campus code", required = true),

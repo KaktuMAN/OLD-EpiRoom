@@ -7,6 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
-    List<Activity> findAllBy(Pageable pageable);
-    Activity findById(int id);
+    List<Activity> findAllByAndCampusCode(Pageable pageable, String campusCode);
 }

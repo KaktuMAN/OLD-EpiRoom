@@ -26,6 +26,10 @@ public class Activity {
     @NotNull
     private Integer moduleId;
 
+    @Column(name = "campus_code")
+    @NotNull
+    private String campusCode;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "module_id", insertable = false, updatable = false)
     private Module module;
@@ -33,4 +37,8 @@ public class Activity {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", insertable = false, updatable = false)
     private List<Event> events;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "campus_code", insertable = false, updatable = false)
+    private Campus campus;
 }

@@ -67,7 +67,9 @@ CREATE TABLE IF NOT EXISTS activities (
     id SERIAL primary key,
     title TEXT not null,
     module_id integer not null,
-    foreign key (module_id) references modules(id)
+    campus_code varchar(3) not null,
+    foreign key (module_id) references modules(id),
+    foreign key (campus_code) references campus(code)
 );
 CREATE TABLE IF NOT EXISTS events (
     id SERIAL primary key,

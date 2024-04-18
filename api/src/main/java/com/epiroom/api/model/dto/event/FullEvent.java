@@ -9,14 +9,14 @@ import lombok.Getter;
 @AllArgsConstructor
 public class FullEvent {
     private final int id;
-    private final String activityName;
+    private final int activityId;
     private final long startTimestamp;
     private final long endTimestamp;
     private final SimpleRoom room;
 
     public FullEvent(Event event) {
         this.id = event.getId();
-        this.activityName = event.getActivity().getTitle();
+        this.activityId = event.getActivity().getId();
         this.startTimestamp = event.getStart().getTime();
         this.endTimestamp = event.getEnd().getTime();
         this.room = new SimpleRoom(event.getRoom());

@@ -49,22 +49,28 @@ public class EventController {
     @Operation(summary = "Get all events of a campus (Paginated)", parameters = {
             @Parameter(name = "campusCode", description = "The campus code", required = true),
             @Parameter(name = "page", description = "The page number"),
-            @Parameter(name = "entries", description = "The number of entries per page")
+            @Parameter(name = "entries", description = "The number of entries per page"),
+            @Parameter(name = "startDate", description = "The start date (Timestamp)"),
+            @Parameter(name = "endDate", description = "The end date (Timestamp)")
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Events found", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = PaginatedEvent.class))
             }),
-            @ApiResponse(responseCode = "400", description = "Invalid page or entries (page < 1, entries < 1 or entries > 100)", content = @Content),
+            @ApiResponse(responseCode = "400", description = "Invalid page, entries or dates (page < 1, entries < 1 or entries > 100)", content = @Content),
             @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
     })
-    public ResponseEntity<PaginatedEvent> getEventsByCampusCode(@PathVariable String campusCode, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "50") int entries) {
-        if (page < 1 || entries < 1 || entries > 100)
+    public ResponseEntity<PaginatedEvent> getEventsByCampusCode(@PathVariable String campusCode, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "50") int entries, @RequestParam(required = false) Long startDate, @RequestParam(required = false) Long endDate) {
+        if (page < 1 || entries < 1 || entries > 100 || startDate != null && endDate != null && startDate > endDate)
             return ResponseEntity.badRequest().build();
         Campus campus = campusRepository.findByCode(campusCode);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        List<Event> events = eventRepository.findAllByAndCampusCode(PageRequest.of(page - 1, entries), campusCode);
+        List<Event> events;
+        if (startDate != null && endDate != null)
+            events = eventRepository.findAllByAndCampusCodeAndStartDateGreaterThanEqualAndEndDateLessThanEqual(PageRequest.of(page - 1, entries), campusCode, startDate, endDate);
+        else
+            events = eventRepository.findAllByAndCampusCode(PageRequest.of(page - 1, entries), campusCode);
         return ResponseEntity.ok(new PaginatedEvent(page, events.size(), events.stream().map(FullEvent::new).toList()));
     }
 

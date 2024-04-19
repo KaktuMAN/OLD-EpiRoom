@@ -68,9 +68,9 @@ public class EventController {
             return ResponseEntity.notFound().build();
         List<Event> events;
         if (startDate != null && endDate != null)
-            events = eventRepository.findAllByAndCampusCodeAndStartDateGreaterThanEqualAndEndDateLessThanEqual(PageRequest.of(page - 1, entries), campusCode, startDate, endDate);
+            events = eventRepository.findAllByCampusCodeAndStartDateGreaterThanEqualAndEndDateLessThanEqual(PageRequest.of(page - 1, entries), campusCode, startDate, endDate);
         else
-            events = eventRepository.findAllByAndCampusCode(PageRequest.of(page - 1, entries), campusCode);
+            events = eventRepository.findAllByCampusCode(PageRequest.of(page - 1, entries), campusCode);
         return ResponseEntity.ok(new PaginatedEvent(page, events.size(), events.stream().map(FullEvent::new).toList()));
     }
 

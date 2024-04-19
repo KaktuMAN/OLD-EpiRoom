@@ -17,6 +17,10 @@ public class ActivityEvent {
         this.id = event.getId();
         this.startTimestamp = event.getStart().getTime();
         this.endTimestamp = event.getEnd().getTime();
-        this.room = new SimpleRoom(event.getRoom());
+        if (event.getRoom() == null) {
+            this.room = null;
+        } else {
+            this.room = new SimpleRoom(event.getRoom());
+        }
     }
 }

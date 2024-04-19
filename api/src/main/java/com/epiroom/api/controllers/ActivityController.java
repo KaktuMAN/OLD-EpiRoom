@@ -2,10 +2,12 @@ package com.epiroom.api.controllers;
 
 import com.epiroom.api.model.Activity;
 import com.epiroom.api.model.Campus;
+import com.epiroom.api.model.Event;
 import com.epiroom.api.model.dto.activity.FullActivity;
 import com.epiroom.api.model.dto.activity.PaginatedActivity;
 import com.epiroom.api.repository.ActivityRepository;
 import com.epiroom.api.repository.CampusRepository;
+import com.epiroom.api.repository.EventRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -27,10 +30,12 @@ import java.util.List;
 public class ActivityController {
     CampusRepository campusRepository;
     ActivityRepository activityRepository;
+    EventRepository eventRepository;
 
-    public ActivityController(CampusRepository campusRepository, ActivityRepository activityRepository) {
+    public ActivityController(CampusRepository campusRepository, ActivityRepository activityRepository, EventRepository eventRepository) {
         this.campusRepository = campusRepository;
         this.activityRepository = activityRepository;
+        this.eventRepository = eventRepository;
     }
 
     @GetMapping("/{campusCode}/{activityId}")
@@ -55,7 +60,9 @@ public class ActivityController {
     @Operation(summary = "Get all events of a campus (Paginated)", parameters = {
             @Parameter(name = "campusCode", description = "The campus code", required = true),
             @Parameter(name = "page", description = "The page number"),
-            @Parameter(name = "entries", description = "The number of entries per page")
+            @Parameter(name = "entries", description = "The number of entries per page"),
+            @Parameter(name = "start", description = "The start date (Timestamp)"),
+            @Parameter(name = "end", description = "The end date (Timestamp)")
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Events found", content = {
@@ -64,13 +71,22 @@ public class ActivityController {
             @ApiResponse(responseCode = "400", description = "Invalid page or entries (page < 1, entries < 1 or entries > 100)", content = @Content),
             @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
     })
-    public ResponseEntity<PaginatedActivity> getEventsByCampusCode(@PathVariable String campusCode, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "50") int entries) {
+    public ResponseEntity<PaginatedActivity> getEventsByCampusCode(@PathVariable String campusCode, @RequestParam(required = false, defaultValue = "1") int page, @RequestParam(required = false, defaultValue = "50") int entries, @RequestParam(required = false) Long start, @RequestParam(required = false) Long end) {
         if (page < 1 || entries < 1 || entries > 100)
             return ResponseEntity.badRequest().build();
         Campus campus = campusRepository.findByCode(campusCode);
         if (campus == null)
             return ResponseEntity.notFound().build();
-        List<Activity> activities = activityRepository.findAllByAndCampusCode(PageRequest.of(page - 1, entries), campusCode);
+        List<Activity> activities;
+        if (start != null && end != null) {
+            activities = eventRepository.findAllByStartGreaterThanEqualAndEndLessThanEqualAndCampusCode(new Date(start), new Date(end), campusCode).stream().map(Event::getActivity).toList();
+            activities = activities.stream().distinct().toList();
+            if (activities.size() < (page - 1) * entries)
+                activities = List.of();
+            else
+                activities = activities.subList((page - 1) * entries, Math.min(activities.size(), page * entries));
+        } else
+            activities = activityRepository.findAllByCampusCode(PageRequest.of(page - 1, entries), campusCode);
         return ResponseEntity.ok(new PaginatedActivity(page, activities.size(), activities.stream().map(FullActivity::new).toList()));
     }
 

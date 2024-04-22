@@ -36,15 +36,6 @@ CREATE TABLE IF NOT EXISTS linked_rooms (
     foreign key (linked_room_id) references rooms(id),
     UNIQUE (room_id, linked_room_id)
 );
-CREATE TABLE IF NOT EXISTS modules (
-    id SERIAL primary key,
-    code varchar(9) not null,
-    year integer not null,
-    semester integer not null,
-    campus_code varchar(3) not null,
-    foreign key (campus_code) references campus(code),
-    UNIQUE (code, year, semester, campus_code)
-);
 CREATE TABLE IF NOT EXISTS users (
     mail TEXT not null primary key,
     name TEXT not null,
@@ -64,15 +55,14 @@ CREATE TABLE IF NOT EXISTS user_permissions (
     UNIQUE (mail, permission_id)
 );
 CREATE TABLE IF NOT EXISTS activities (
-    id SERIAL primary key,
+    id int primary key,
     title TEXT not null,
-    module_id integer not null,
+    module_code varchar(9) not null,
     campus_code varchar(3) not null,
-    foreign key (module_id) references modules(id),
     foreign key (campus_code) references campus(code)
 );
 CREATE TABLE IF NOT EXISTS events (
-    id SERIAL primary key,
+    id int primary key,
     activity_id integer not null,
     room_id integer,
     start_time timestamp not null,

@@ -2,37 +2,6 @@
   "name": "Lille",
   "code": "LIL",
   "mainFloor": 0,
-  "multipleRooms": [
-    {
-      "room": "FR/LIL/Hopital-Militaire/S-21abc-Denis-MacAlistair-Ritchie",
-      "linkedRooms": [
-        "FR/LIL/Hopital-Militaire/S-21a-Denis",
-        "FR/LIL/Hopital-Militaire/S-21b-MacAlistair",
-        "FR/LIL/Hopital-Militaire/S-21c-Ritchie"
-      ]
-    },
-    {
-      "room": "",
-      "linkedRooms": [
-        "FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr",
-        "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari"
-      ]
-    },
-    {
-      "room": "FR/LIL/Hopital-Militaire/S-25ab-Gwen-Barzey",
-      "linkedRooms": [
-        "FR/LIL/Hopital-Militaire/S-25a-Gwen",
-        "FR/LIL/Hopital-Militaire/S-25b-Barzey"
-      ]
-    },
-    {
-      "room": "FR/LIL/Hopital-Militaire/S-33ab-Deep-Blue-Brain",
-      "linkedRooms": [
-        "FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
-        "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"
-      ]
-    }
-  ],
   "floors": [
     {
       "floor": 0,
@@ -53,14 +22,14 @@
   ],
   "rooms":[
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-01-Bulma",
+      "intra_name":"B-01-Bulma",
       "name":"B.01 - Bulma",
       "display_name":"Bulma",
       "seats": 3,
       "floor": 0
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-02-Elliot-Alderson",
+      "intra_name":"B-02-Elliot-Alderson",
       "name":"B.02 - Elliot Alderson",
       "display_name":"Elliot Alderson",
       "seats": 4,
@@ -68,28 +37,28 @@
       "no_status": true
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-01-Stark",
+      "intra_name":"S-01-Stark",
       "name":"S.01 - Stark",
       "display_name":"Stark",
       "seats": 24,
       "floor": 0
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-02-Pru-Ha",
+      "intra_name":"S-02-Pru-Ha",
       "name":"S.02 - Pru'Ha",
       "display_name":"Pru'Ha",
       "seats": 72,
       "floor": 0
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-03-Mei-Hatsume",
+      "intra_name":"S-03-Mei-Hatsume",
       "name":"S.03 - Mei Hatsume",
       "display_name":"Mei Hatsume",
       "seats": 16,
       "floor": 0
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-11-Gallifrey",
+      "intra_name":"B-11-Gallifrey",
       "name":"B.11 - Gallifrey",
       "display_name":"Gallifrey",
       "seats": 5,
@@ -97,7 +66,7 @@
       "no_status": true
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-12-Le-Continental",
+      "intra_name":"B-12-Le-Continental",
       "name":"B.12 - Le Continental",
       "display_name":"Le Continental",
       "seats": 5,
@@ -105,7 +74,7 @@
       "no_status": true
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-13-Kaer-Morhen",
+      "intra_name":"B-13-Kaer-Morhen",
       "name":"B.13 - Kaer Morhen",
       "display_name":"Kaer Morhen",
       "seats": 7,
@@ -113,119 +82,119 @@
       "no_status": true
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-14-La-Matrice",
+      "intra_name":"B-14-La-Matrice",
       "name":"B.14 - La Matrice",
       "display_name":"La Matrice",
       "seats": 3,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/B-15-Krikkit",
+      "intra_name":"B-15-Krikkit",
       "name":"B.15 - Krikkit",
       "display_name":"Krikkit",
       "seats": 4,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/O-11-Kanojedo",
+      "intra_name":"O-11-Kanojedo",
       "name":"O.11 - Kanojedo",
       "display_name":"Kanojedo",
       "seats": 12,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/O-12-Arrakis",
+      "intra_name":"O-12-Arrakis",
       "name":"O.12 - Arrakis",
       "display_name":"Arrakis",
       "seats": 10,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-11-Microtech",
+      "intra_name":"S-11-Microtech",
       "name":"S.11 - Microtech",
       "display_name":"Microtech",
       "seats": 24,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-12-Pandora",
+      "intra_name":"S-12-Pandora",
       "name":"S.12 - Pandora",
       "display_name":"Pandora",
       "seats": 48,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-14-Poudlard",
+      "intra_name":"S-14-Poudlard",
       "name":"S.14 - Poudlard",
       "display_name":"Poudlard",
       "seats": 28,
       "floor": 1
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-21a-Denis",
+      "intra_name":"S-21a-Denis",
       "name":"S.21a - Denis",
       "display_name":"Denis",
       "seats": 40,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-21b-MacAlistair",
+      "intra_name":"S-21b-MacAlistair",
       "name":"S.21b - MacAlistair",
       "display_name":"MacAlistair",
       "seats": 40,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-21c-Ritchie",
+      "intra_name":"S-21c-Ritchie",
       "name":"S.21c - Ritchie",
       "display_name":"Ritchie",
       "seats": 24,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-22-Ada-Lovelace",
+      "intra_name":"S-22-Ada-Lovelace",
       "name":"S.22 - Ada Lovelace",
       "display_name":"Ada Lovelace",
       "seats": 40,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr",
+      "intra_name":"S-23a-Hedy-Lamarr",
       "name":"S.23a - Hedy Lamarr",
       "display_name":"Hedy Lamarr",
       "seats": 28,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-23b-Al-Jazari",
+      "intra_name":"S-23b-Al-Jazari",
       "name":"S.23b - Al Jazari",
       "display_name":"Al Jazari",
       "seats": 12,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-24-Roland-Moreno",
+      "intra_name":"S-24-Roland-Moreno",
       "name":"S.24 - Roland Moreno",
       "display_name":"Roland Moreno",
       "seats": 40,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-25a-Gwen",
+      "intra_name":"S-25a-Gwen",
       "name":"S.25a - Gwen",
       "display_name":"Gwen",
       "seats": 20,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-25b-Barzey",
+      "intra_name":"S-25b-Barzey",
       "name":"S.25b - Barzey",
       "display_name":"Barzey",
       "seats": 15,
       "floor": 2
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
+      "intra_name":"S-33a-Deep-Blue",
       "name":"S.33a - Deep Blue",
       "display_name":"Deep Blue",
       "seats": 10,
@@ -233,7 +202,7 @@
       "no_status": true
     },
     {
-      "intra_name":"FR/LIL/Hopital-Militaire/S-33b-Blue-Brain",
+      "intra_name":"S-33b-Blue-Brain",
       "name":"S.33b - Blue Brain",
       "display_name":"Blue Brain",
       "seats": 10,

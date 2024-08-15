@@ -1,5 +1,6 @@
 package com.epiroom.api.model;
 
+import com.epiroom.api.model.dto.activity.ActivityInputDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -13,26 +14,20 @@ import java.util.List;
 @Table(name = "activities")
 public class Activity {
     @Id
-    @SequenceGenerator(name="activities_id_seq", sequenceName="activities_id_seq", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="activities_id_seq")
-    @Column(name = "id", updatable=false)
+    @Column(name = "id", updatable = false)
     private int id;
 
     @Column(name = "title")
     @NotNull
     private String title;
 
-    @Column(name = "module_id")
+    @Column(name = "module_code")
     @NotNull
-    private Integer moduleId;
+    private String moduleCode;
 
     @Column(name = "campus_code")
     @NotNull
     private String campusCode;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "module_id", insertable = false, updatable = false)
-    private Module module;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", insertable = false, updatable = false)
@@ -41,4 +36,11 @@ public class Activity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
+
+    public Activity(ActivityInputDTO activityInputDTO, String campusCode) {
+        this.id = activityInputDTO.getId();
+        this.title = activityInputDTO.getTitle();
+        this.moduleCode = activityInputDTO.getModuleCode();
+        this.campusCode = campusCode;
+    }
 }

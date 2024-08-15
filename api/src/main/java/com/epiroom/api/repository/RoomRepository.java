@@ -10,4 +10,5 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     Room findByCampusAndCode(Campus campus, String code);
     List<Room> findAllByCampusCode(String campusCode);
     List<Room> findAllByCampusCodeAndCodeIn(String campusCode, List<String> codes);
+    Room findById(int id);
 }

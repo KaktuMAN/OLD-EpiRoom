@@ -1,19 +1,15 @@
-interface APIRoom {
-  code: string,
-  type?: string,
-  seats: number,
+interface SimpleRoom {
+  name: String,
+  floor: Number,
+  code: String,
+  campusCode: String,
 }
 
-interface APIResponse {
-  start: string,
-  end: string,
-  codemodule?: string,
-  title: string,
-  acti_title?: string,
-  titlemodule?: string,
-  instance_location?: string,
-  location?: string,
-  calendar_type?: string,
-  id_calendar?: string,
-  room?: APIRoom,
+interface FullEvent {
+  id: number,
+  activityId: number,
+  activityTitle: string,
+  startTimestamp: number,
+  endTimestamp: number,
+  room: SimpleRoom
 }

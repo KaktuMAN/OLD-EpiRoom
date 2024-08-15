@@ -10,6 +10,7 @@ import lombok.Getter;
 public class FullEvent {
     private final int id;
     private final int activityId;
+    private final String activityTitle;
     private final long startTimestamp;
     private final long endTimestamp;
     private final SimpleRoom room;
@@ -17,6 +18,7 @@ public class FullEvent {
     public FullEvent(Event event) {
         this.id = event.getId();
         this.activityId = event.getActivity().getId();
+        this.activityTitle = event.getActivity().getTitle();
         this.startTimestamp = event.getStart().getTime();
         this.endTimestamp = event.getEnd().getTime();
         this.room = new SimpleRoom(event.getRoom());

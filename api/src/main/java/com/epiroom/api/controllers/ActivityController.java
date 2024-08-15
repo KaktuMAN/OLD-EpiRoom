@@ -3,6 +3,7 @@ package com.epiroom.api.controllers;
 import com.epiroom.api.model.Activity;
 import com.epiroom.api.model.Campus;
 import com.epiroom.api.model.Event;
+import com.epiroom.api.model.dto.activity.ActivityInputDTO;
 import com.epiroom.api.model.dto.activity.FullActivity;
 import com.epiroom.api.model.dto.activity.PaginatedActivity;
 import com.epiroom.api.repository.ActivityRepository;
@@ -94,30 +95,23 @@ public class ActivityController {
     @PreAuthorize("hasAuthority('activities:write') OR hasAuthority('activities:*')")
     @Operation(summary = "Create an activity", parameters = {
             @Parameter(name = "campusCode", description = "The campus code", required = true),
-    })
+    }, requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "The activity to create", required = true, content = @Content(schema = @Schema(implementation = ActivityInputDTO.class))))
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Activity created"),
-            @ApiResponse(responseCode = "401", description = "Unauthorized"),
-            @ApiResponse(responseCode = "403", description = "Forbidden"),
-            @ApiResponse(responseCode = "409", description = "Activity already exists")
+            @ApiResponse(responseCode = "201", description = "Activity created", content = @Content(schema = @Schema(implementation = FullActivity.class))),
+            @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content),
+            @ApiResponse(responseCode = "409", description = "Activity already exists", content = @Content(schema = @Schema(implementation = FullActivity.class)))
     })
-    public ResponseEntity<Void> createActivity(@PathVariable String campusCode) {
-        return ResponseEntity.status(501).build();
-    }
-
-    @PostMapping("/{campusCode}/bulk")
-    @PreAuthorize("hasAuthority('activities:write') OR hasAuthority('activities:*')")
-    @Operation(summary = "Create multiple activities", parameters = {
-            @Parameter(name = "campusCode", description = "The campus code", required = true),
-    })
-    @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Activities created"),
-            @ApiResponse(responseCode = "401", description = "Unauthorized"),
-            @ApiResponse(responseCode = "403", description = "Forbidden"),
-            @ApiResponse(responseCode = "409", description = "Activity already exists")
-    })
-    public ResponseEntity<Void> createActivities(@PathVariable String campusCode) {
-        return ResponseEntity.status(501).build();
+    public ResponseEntity<FullActivity> createActivity(@PathVariable String campusCode, @RequestBody ActivityInputDTO activityInputDTO) {
+        if (activityRepository.existsById(activityInputDTO.getId()))
+            return ResponseEntity.status(409).body(new FullActivity(activityRepository.findByIdAndCampusCode(activityInputDTO.getId(), campusCode)));
+        Campus campus = campusRepository.findByCode(campusCode);
+        if (campus == null)
+            return ResponseEntity.notFound().build();
+        Activity activity = new Activity(activityInputDTO, campusCode);
+        activityRepository.save(activity);
+        return ResponseEntity.status(201).body(new FullActivity(activity));
     }
 
     @PutMapping("/{campusCode}/{activityId}")

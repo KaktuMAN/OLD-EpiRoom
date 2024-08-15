@@ -1,9 +1,11 @@
 package com.epiroom.api.model;
 
+import com.epiroom.api.model.dto.event.EventInputDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -13,8 +15,6 @@ import java.util.Date;
 @Table(name = "events")
 public class Event {
     @Id
-    @SequenceGenerator(name="events_id_seq", sequenceName="events_id_seq", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="events_id_seq")
     @Column(name = "id", updatable=false)
     private int id;
 
@@ -41,6 +41,7 @@ public class Event {
     @JoinColumn(name = "activity_id", insertable = false, updatable = false)
     private Activity activity;
 
+    @Setter
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
     private Room room;
@@ -48,4 +49,30 @@ public class Event {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;
+
+    public Event(EventInputDTO eventInputDTO, Campus campus, Activity activity, Room room) {
+        this.id = eventInputDTO.getId();
+        this.activityId = eventInputDTO.getActivityId();
+        this.roomId = eventInputDTO.getRoomId();
+        this.start = new Date(eventInputDTO.getStartTimestamp());
+        this.end = new Date(eventInputDTO.getEndTimestamp());
+        this.campusCode = campus.getCode();
+
+        this.activity = activity;
+        this.room = room;
+        this.campus = campus;
+    }
+
+    public Event(Event event) {
+        this.id = event.getId();
+        this.activityId = event.getActivityId();
+        this.roomId = event.getRoomId();
+        this.start = event.getStart();
+        this.end = event.getEnd();
+        this.campusCode = event.getCampusCode();
+
+        this.activity = event.getActivity();
+        this.room = event.getRoom();
+        this.campus = event.getCampus();
+    }
 }

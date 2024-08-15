@@ -17,6 +17,9 @@ public class FullActivity {
     public FullActivity(Activity activity) {
         this.id = activity.getId();
         this.title = activity.getTitle();
-        this.events = activity.getEvents().stream().map(ActivityEvent::new).toList();
+        if (activity.getEvents() == null)
+            this.events = List.of();
+        else
+            this.events = activity.getEvents().stream().map(ActivityEvent::new).toList();
     }
 }

@@ -2,6 +2,7 @@ import {FC, ReactElement, useEffect, useState} from "react";
 import { Room } from "@customTypes/room";
 import {Town} from "@customTypes/town";
 import {generateRoomContent} from "@scripts/dialogGenerator";
+import Image from "next/image";
 
 interface FloorProps {
   townData: Town;
@@ -12,34 +13,42 @@ interface FloorProps {
 }
 
 const Floor: FC<FloorProps> = ({ townData,  floor, setDialogOpen, setDialogContent, sideDisplay}) => {
-  const [scale, setScale] = useState([1, 1]);
+  const [svg, setSvg] = useState<Document | null>(null);
   useEffect(() => {
-    const updateScale = () => {
-      const background = document.getElementById(`background_${floor}`);
-      const svg = document.getElementById(`floorRender${floor}`);
-      if (!svg || !background) return;
-      const {width: svgWidth, height: svgHeight} = svg.getBoundingClientRect();
-      background.style.display = "block";
-      const {width, height} = background.getBoundingClientRect();
-      background.style.display = "none";
-      if (isNaN(width) || isNaN(height) || isNaN(svgWidth) || isNaN(svgHeight)) updateScale();
-      setScale([svgWidth / width, svgHeight / height])
-    }
-    setTimeout(updateScale, 50)
-    window.addEventListener("resize", updateScale);
-    return () => {
-      window.removeEventListener("resize", updateScale);
-    };
+    fetch(`http://localhost:8080/floors/LIL/${floor}/svg`)
+      .then((response) => response.text())
+      .then((data) => {
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(data, "image/svg+xml");
+        townData.rooms.map((room: Room) => {
+          if (room.floor !== floor) return;
+          const roomCode = room.intra_name.split('/').pop()
+          const roomElement = svgDoc.getElementById(roomCode ? roomCode : "");
+          if (roomElement) {
+            roomElement.classList.add(["occupied", "reserved", "free"][room.status]);
+            if (room.no_status === true) roomElement.classList.add("nostatus");
+          }
+          const textElement = svgDoc.getElementById(`${roomCode}-Text`);
+          if (textElement) {
+            if (room.no_status === true) textElement.classList.add("nostatus_text");
+          }
+        })
+        setSvg(svgDoc);
+      });
   }, [floor]);
   return (
+    <div dangerouslySetInnerHTML={{__html: svg?.activeElement?.outerHTML || ""}} style={{width: "100%", height: "100%"}}>
+    </div>
+  )
+  /*return (
     <>
       <svg id={`floorRender${floor}`}>
-        {townData.rooms.map((room: Room) => {
+        {townData.rooms.map((room: Room, index: number) => {
           if (room.floor !== floor) return null;
           return (
             <>
-              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {if (room.no_status !== true && !sideDisplay) {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}}/>
-              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}-Text`} className={room.no_status === true ? "nostatus_text" : ""} key={`${room.intra_name}`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
+              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}`} className={`${["occupied", "reserved", "free"][room.status]} ${room.no_status === true ? "nostatus" : ""}`} key={`${room.intra_name}-${index}`} transform={`scale(${scale[0]}, ${scale[1]})`} onClick={() => {if (room.no_status !== true && !sideDisplay) {setDialogOpen(true);setDialogContent(generateRoomContent(room))}}}/>
+              <use href={`/towns/${townData.code}/svg/Z${floor}-Floor.svg#${room.intra_name.split('/').pop()}-Text`} className={room.no_status === true ? "nostatus_text" : ""} key={`${room.intra_name}-text-${index}`} transform={`scale(${scale[0]}, ${scale[1]})`}/>
             </>
           )
         })}
@@ -49,7 +58,7 @@ const Floor: FC<FloorProps> = ({ townData,  floor, setDialogOpen, setDialogConte
              style={{display: "none"}}/>
       </svg>
     </>
-  );
+  );*/
 };
 
 export default Floor

@@ -11,4 +11,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findAllByCampusCode(Pageable pageable, String campusCode);
     List<Event> findAllByCampusCodeAndStartDateGreaterThanEqualAndEndDateLessThanEqual(Pageable pageable, String campusCode, long startDate, long endDate);
     List<Event> findAllByStartGreaterThanEqualAndEndLessThanEqualAndCampusCode(Date start, Date end, String campusCode);
+    boolean existsById(int id);
+    Event findByIdAndCampusCode(int id, String campusCode);
 }

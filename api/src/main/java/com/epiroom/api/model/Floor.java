@@ -30,6 +30,9 @@ public class Floor {
     @NotNull
     private String name;
 
+    @Column(name = "svg")
+    private String svg;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "campus_code", insertable = false, updatable = false)
     private Campus campus;

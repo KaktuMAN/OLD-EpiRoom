@@ -24,10 +24,9 @@ public class CampusController {
         return ResponseEntity.status(501).build();
     }
 
-    @GetMapping("/{campusCode}/")
-    @PreAuthorize("hasAuthority('campus:read') OR hasAuthority('campus:*')")
+    @GetMapping("/{campusCode}")
     @Operation(summary = "Get a campus by code", parameters = {
-            @Parameter(name = "code", description = "The campus code", required = true),
+            @Parameter(name = "campusCode", description = "The campus code", required = true),
     })
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Campus found", content = @Content),
@@ -36,7 +35,7 @@ public class CampusController {
             @ApiResponse(responseCode = "404", description = "Campus not found", content = @Content)
     })
     public ResponseEntity<Void> getCampusByCode(@PathVariable String campusCode) {
-        return ResponseEntity.status(501).build();
+        return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/{campusCode}/")

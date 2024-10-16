@@ -59,6 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const tvSettings = !!router.query.tv;
+  const mute = !!router.query.mute;
   const [width, setWidth] = useState(750);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -99,6 +100,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
       <Head>
         <title>{townData.name != "" ? `EpiRooms - ${townData.name}` : 'EpiRooms'}</title>
       </Head>
+      <audio id={"music"} src={"/music.mp3"} autoPlay={!mute}/>
       <Snackbar open={error} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
         <Alert variant="filled" severity="error" sx={{ width: '100%' }}>
           Impossible de communiquer avec l&apos;intranet, les données affichées peuvent être obsolètes.

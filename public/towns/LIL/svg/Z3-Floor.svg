@@ -11,19 +11,27 @@
       <rect x="0" y="0" width="750px" height="432px" fill-opacity="0"/>
     </g>
     <g id="rooms">
-      <g id="S-33a-Deep-Blue">
-        <path d="M 220 267 L 414 267 L 414 427 L 220 427 L 220 267 Z"/>
+      <g id="B-31-TensorFlow">
+        <rect x="354" y="123" width="47.5" height="54"/>
+        <rect x="215" y="123" width="140" height="140"/>
+        <rect x="354" y="217" width="47.5" height="46"/>
       </g>
-      <g id="S-33b-Blue-Brain">
+      <g id="S-33a-Deep-Blue">
         <path d="M 4 267 L 220 267 L 220 427 L 4 427 L 4 267 Z"/>
       </g>
+      <g id="S-33b-Blue-Brain">
+        <path d="M 220 267 L 414 267 L 414 427 L 220 427 L 220 267 Z"/>
+      </g>
+      <g id="B-31-TensorFlow-Text">
+        <text x="286" y="200" font-family="Helvetica" font-size="16px" text-anchor="middle">TensorFlow</text>
+      </g>
       <g id="S-33a-Deep-Blue-Text">
-        <text x="322" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Deep</text>
+        <text x="76" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Deep</text>
         <text x="209" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Blue</text>
       </g>
       <g id="S-33b-Blue-Brain-Text">
         <text x="209" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Blue</text>
-        <text x="76" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Brain</text>
+        <text x="322" y="348" font-family="Helvetica" font-size="16px" text-anchor="middle">Brain</text>
       </g>
     </g>
     <g id="floor">

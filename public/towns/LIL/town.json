@@ -57,7 +57,8 @@
       "name":"B.01 - Bulma",
       "display_name":"Bulma",
       "seats": 3,
-      "floor": 0
+      "floor": 0,
+      "no_status": true
     },
     {
       "intra_name":"FR/LIL/Hopital-Militaire/B-02-Elliot-Alderson",
@@ -229,7 +230,8 @@
       "name":"B.31 - TensorFlow",
       "display_name":"TensorFlow",
       "seats": 8,
-      "floor": 3
+      "floor": 3,
+      "no_status": true
     },
     {
       "intra_name":"FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",

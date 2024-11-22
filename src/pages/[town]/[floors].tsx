@@ -59,6 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function FloorRender ({ townData }: FloorRenderProps) {
   const router = useRouter();
   const tvSettings = !!router.query.tv;
+  const pedago = !!router.query.pedago;
   const [width, setWidth] = useState(750);
   const [currentFloor, setFloor] = useState(parseInt(router.query.floors as string) || 0);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -69,6 +70,9 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
   const mobile = width < 750;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   townData.rooms.map((room) => [room.status, room.setStatus] = useState(2))
+  if (pedago) {
+    townData.rooms.map((room) => room.no_status = false)
+  }
   useEffect(() => {
     setWidth(window.innerWidth);
     fetchApiData(townData, setLoading, setError);
@@ -132,7 +136,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
           {townData.floors.map((floor: TypeFloor) => {
             if (floor.floor == currentFloor) return;
             return (
-              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}`)}}>
+              <div key={`sideFloor${floor.floor}`} style={{height: `${100 / (townData.floors.length - 1)}%`}} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}${pedago ? "?pedago=true" : ""}`)}}>
                 <Floor townData={townData} floor={floor.floor} setDialogOpen={setDialogOpen} setDialogContent={setDialogContent} sideDisplay={true}/>
               </div>
             )
@@ -146,7 +150,7 @@ export default function FloorRender ({ townData }: FloorRenderProps) {
             <ButtonGroup orientation={"vertical"} variant={"contained"}>
               {townData.floors.map((floor) => {
                 return (
-                  <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}`)}}>
+                  <Button key={`buttonFloor${floor.floor}`} disabled={floor.floor == currentFloor} onClick={(e) => {e.preventDefault(); setFloor(floor.floor); history.replaceState({}, '', `/${townData.code}/${floor.floor}${tvSettings ? "?tv=true" : ""}${pedago ? "?pedago=true" : ""}`)}}>
                     {floor.name}
                   </Button>
                 )

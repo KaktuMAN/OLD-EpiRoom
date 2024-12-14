@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="manifest" href="/manifest.json"/>
       </Head>
       <ThemeProvider theme={theme}>
-      <div id="snowflakes" style={{position: "fixed", top: 0, left: 0, width: "100%", height: "100%"}}>
+      <div id="snowflakes" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 69420, pointerEvents: "none"}}>
         {Array.from({length: 42}, (_, i) => <Snowflake key={i} />)}
       </div>
       <CssBaseline />

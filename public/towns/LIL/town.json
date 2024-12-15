@@ -31,6 +31,38 @@
         "FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
         "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"
       ]
+    },
+    {
+      "room": "FR/LIL/Hopital-Militaire/0-Tout-le-batiment",
+      "linkedRooms": [
+        "FR/LIL/Hopital-Militaire/B-01-Bulma",
+        "FR/LIL/Hopital-Militaire/B-02-Elliot-Alderson",
+        "FR/LIL/Hopital-Militaire/S-01-Stark",
+        "FR/LIL/Hopital-Militaire/S-02-Pru-Ha",
+        "FR/LIL/Hopital-Militaire/S-03-Mei-Hatsume",
+        "FR/LIL/Hopital-Militaire/B-11-Gallifrey",
+        "FR/LIL/Hopital-Militaire/B-12-Le-Continental",
+        "FR/LIL/Hopital-Militaire/B-13-Kaer-Morhen",
+        "FR/LIL/Hopital-Militaire/B-14-La-Matrice",
+        "FR/LIL/Hopital-Militaire/B-15-Krikkit",
+        "FR/LIL/Hopital-Militaire/O-11-Kanojedo",
+        "FR/LIL/Hopital-Militaire/O-12-Arrakis",
+        "FR/LIL/Hopital-Militaire/S-11-Microtech",
+        "FR/LIL/Hopital-Militaire/S-12-Pandora",
+        "FR/LIL/Hopital-Militaire/S-14-Poudlard",
+        "FR/LIL/Hopital-Militaire/S-21a-Denis",
+        "FR/LIL/Hopital-Militaire/S-21b-MacAlistair",
+        "FR/LIL/Hopital-Militaire/S-21c-Ritchie",
+        "FR/LIL/Hopital-Militaire/S-22-Ada-Lovelace",
+        "FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr",
+        "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari",
+        "FR/LIL/Hopital-Militaire/S-24-Roland-Moreno",
+        "FR/LIL/Hopital-Militaire/S-25a-Gwen",
+        "FR/LIL/Hopital-Militaire/S-25b-Barzey",
+        "FR/LIL/Hopital-Militaire/B-31-TensorFlow",
+        "FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
+        "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain"
+      ]
     }
   ],
   "floors": [
